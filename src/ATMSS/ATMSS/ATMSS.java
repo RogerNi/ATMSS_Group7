@@ -11,6 +11,10 @@ public class ATMSS extends AppThread {
     private MBox cardReaderMBox;
     private MBox keypadMBox;
     private MBox touchDisplayMBox;
+    private MBox cashDispenserMBox;
+    private MBox cashDepositMBox;
+    private MBox advicePrinterMBox;
+    private MBox buzzerMBox;
 
     //------------------------------------------------------------
     // ATMSS
@@ -28,6 +32,10 @@ public class ATMSS extends AppThread {
 	cardReaderMBox = appKickstarter.getThread("CardReaderHandler").getMBox();
 	keypadMBox = appKickstarter.getThread("KeypadHandler").getMBox();
 	touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
+	cashDispenserMBox = appKickstarter.getThread("").getMBox();
+	cashDepositMBox = appKickstarter.getThread("").getMBox();
+	advicePrinterMBox = appKickstarter.getThread("").getMBox();
+	buzzerMBox = appKickstarter.getThread("").getMBox();
 
 	for (boolean quit = false; !quit;) {
 	    Msg msg = mbox.receive();
