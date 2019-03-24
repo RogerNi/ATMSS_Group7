@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../BAMSHandler-v01.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/BAMSHandler-v01.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
