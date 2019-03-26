@@ -50,5 +50,7 @@ public class Msg {
 	CR_CardRemoved,		// Card removed
 	CR_EjectCard,		// Eject card
 	KP_KeyPressed,		// Key pressed
+    ACT_Start,          // Activity Start
+    ACT_Abort,          // Activity Stop
     } // Type
 } // Msg

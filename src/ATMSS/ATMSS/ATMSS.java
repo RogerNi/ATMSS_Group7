@@ -4,6 +4,11 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 import AppKickstarter.timer.Timer;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Queue;
+
 
 //======================================================================
 // ATMSS
@@ -15,6 +20,9 @@ public class ATMSS extends AppThread {
     private MBox cashDepositMBox;
     private MBox advicePrinterMBox;
     private MBox buzzerMBox;
+    private Hashtable<String, MBox> MBoxes;
+    private InputBuffer inBuffer;
+    private Activity currentRun;
 
     // Define States
     private final int INITIALIZE = 0;
@@ -37,6 +45,73 @@ public class ATMSS extends AppThread {
     public ATMSS(String id, AppKickstarter appKickstarter) throws Exception {
         super(id, appKickstarter);
     } // ATMSS
+
+    public class InputBuffer {
+        private String buffer = "";
+
+        public void buff(char input) {
+            buffer += input;
+        }
+
+        public String pop() {
+            String out = buffer;
+            buffer = "";
+            return out;
+        }
+
+        public void deleteLast() {
+            if (buffer.length() == 0)
+                return;
+            buffer = buffer.substring(0, buffer.length() - 1);
+        }
+
+        public int getLength() {
+            return buffer.length();
+        }
+
+    }
+
+
+    private void redirect(Msg msg) {
+        currentRun.forward(msg);
+        TransMsg transMsg = currentRun.collect();
+        while (transMsg != null) {
+            if (msg.getType() == Msg.Type.ACT_Abort) {
+                switch (msg.getDetails()){
+                    case "MainMenu":
+                        // Back to Main Menu
+                        break;
+                    case "RejectCard":
+                        // RejectCard
+                        break;
+                    case "CheckBalance":
+                        changeAct("CheckBalance");
+                }
+                return;
+            }
+            MBoxes.get(transMsg.destination).send(transMsg.msg);
+            transMsg = currentRun.collect();
+        }
+    }
+
+    private void changeAct(String className){
+        try {
+            Class[] args = {MBox.class, String.class};
+            Class activity = Class.forName(className);
+            currentRun = (Activity) activity.getConstructor(args).newInstance(id,mbox);
+            currentRun.forward(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e){
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 
     //------------------------------------------------------------
     // State
@@ -93,6 +168,14 @@ public class ATMSS extends AppThread {
         advicePrinterMBox = appKickstarter.getThread("").getMBox();
         buzzerMBox = appKickstarter.getThread("").getMBox();
 
+        MBoxes.put("cr", cardReaderMBox);
+        MBoxes.put("k", keypadMBox);
+        MBoxes.put("td", touchDisplayMBox);
+        MBoxes.put("cd", cashDispenserMBox);
+        MBoxes.put("cdc", cashDepositMBox);
+        MBoxes.put("ap", advicePrinterMBox);
+        MBoxes.put("b", buzzerMBox);
+
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();
 
@@ -145,13 +228,9 @@ public class ATMSS extends AppThread {
     // Assistant Function
     // Send Msg to All components
     private void sendAllComponents(Msg msg) {
-        cardReaderMBox.send(msg);
-        keypadMBox.send(msg);
-        touchDisplayMBox.send(msg);
-        cashDispenserMBox.send(msg);
-        cashDepositMBox.send(msg);
-        advicePrinterMBox.send(msg);
-        buzzerMBox.send(msg);
+        MBoxes.forEach((name, box) ->
+                box.send(msg)
+        );
     }
 
 
