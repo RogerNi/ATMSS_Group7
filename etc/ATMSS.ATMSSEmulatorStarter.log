@@ -1,0 +1,48 @@
+190324-23:29:48 [INFO] -- 
+190324-23:29:48 [INFO] -- 
+190324-23:29:48 [INFO] -- ============================================================
+190324-23:29:48 [INFO] -- ATMSSStarter: Application Starting...
+190324-23:29:49 [INFO] -- timer: starting...
+190324-23:29:49 [INFO] -- TouchDisplayHandler: starting...
+190324-23:29:49 [INFO] -- CardReaderHandler: starting...
+190324-23:29:49 [INFO] -- KeypadHandler: starting...
+190324-23:29:49 [INFO] -- ATMSS: starting...
+190324-23:29:54 [INFO] -- KeyPressed: 1
+190324-23:29:54 [INFO] -- TouchDisplayHandler: update display -- BlankScreen
+190324-23:29:54 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190324-23:29:55 [INFO] -- KeyPressed: 1
+190324-23:29:55 [INFO] -- TouchDisplayHandler: update display -- BlankScreen
+190324-23:29:55 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190324-23:29:57 [INFO] -- KeyPressed: 2
+190324-23:29:57 [INFO] -- TouchDisplayHandler: update display -- MainMenu
+190324-23:29:57 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190324-23:29:59 [INFO] -- KeyPressed: 3
+190324-23:29:59 [INFO] -- TouchDisplayHandler: update display -- Confirmation
+190324-23:29:59 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayConfirmation.fxml
+190324-23:30:01 [INFO] -- KeyPressed: 1
+190324-23:30:01 [INFO] -- TouchDisplayHandler: update display -- BlankScreen
+190324-23:30:01 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190324-23:30:02 [INFO] -- KeyPressed: 2
+190324-23:30:02 [INFO] -- TouchDisplayHandler: update display -- MainMenu
+190324-23:30:02 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190324-23:30:02 [INFO] -- KeyPressed: 3
+190324-23:30:02 [INFO] -- TouchDisplayHandler: update display -- Confirmation
+190324-23:30:02 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayConfirmation.fxml
+190324-23:30:06 [INFO] -- KeyPressed: Cancel
+190324-23:30:06 [INFO] -- CardReaderHandler: card ejected
+190324-23:30:06 [INFO] -- KeyPressed: Cancel
+190324-23:30:06 [INFO] -- CardReaderHandler: card ejected
+190324-23:30:07 [INFO] -- KeyPressed: Cancel
+190324-23:30:07 [INFO] -- CardReaderHandler: card ejected
+190324-23:30:07 [INFO] -- KeyPressed: Cancel
+190324-23:30:07 [INFO] -- CardReaderHandler: card ejected
+190324-23:30:08 [INFO] -- 
+190324-23:30:08 [INFO] -- 
+190324-23:30:08 [INFO] -- ============================================================
+190324-23:30:08 [INFO] -- ATMSSStarter: Application Stopping...
+190324-23:30:08 [INFO] -- KeypadHandler: terminating...
+190324-23:30:08 [INFO] -- timer: received terminate!
+190324-23:30:08 [INFO] -- ATMSS: terminating...
+190324-23:30:08 [INFO] -- timer: terminating...
+190324-23:30:08 [INFO] -- CardReaderHandler: terminating...
+190324-23:30:08 [INFO] -- TouchDisplayHandler: terminating...
