@@ -11,6 +11,13 @@ public class ATMSS extends AppThread {
     private MBox cardReaderMBox;
     private MBox keypadMBox;
     private MBox touchDisplayMBox;
+<<<<<<< HEAD
+=======
+    private MBox cashDispenserMBox;
+    private MBox cashDepositMBox;
+    private MBox advicePrinterMBox;
+    private MBox buzzerMBox;
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
 
     //------------------------------------------------------------
     // ATMSS
@@ -28,6 +35,13 @@ public class ATMSS extends AppThread {
 	cardReaderMBox = appKickstarter.getThread("CardReaderHandler").getMBox();
 	keypadMBox = appKickstarter.getThread("KeypadHandler").getMBox();
 	touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
+<<<<<<< HEAD
+=======
+	cashDispenserMBox = appKickstarter.getThread("").getMBox();
+	cashDepositMBox = appKickstarter.getThread("").getMBox();
+	advicePrinterMBox = appKickstarter.getThread("").getMBox();
+	buzzerMBox = appKickstarter.getThread("").getMBox();
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
 
 	for (boolean quit = false; !quit;) {
 	    Msg msg = mbox.receive();
@@ -35,11 +49,14 @@ public class ATMSS extends AppThread {
 	    log.fine(id + ": message received: [" + msg + "].");
 
 	    switch (msg.getType()) {
+<<<<<<< HEAD
 		case TD_MouseClicked:
 		    log.info("MouseCLicked: " + msg.getDetails());
 		    processMouseClicked(msg);
 		    break;
 
+=======
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
 		case KP_KeyPressed:
 		    log.info("KeyPressed: " + msg.getDetails());
 		    processKeyPressed(msg);
@@ -82,6 +99,7 @@ public class ATMSS extends AppThread {
         // *** The following is an example only!! ***
         if (msg.getDetails().compareToIgnoreCase("Cancel") == 0) {
 	    cardReaderMBox.send(new Msg(id, mbox, Msg.Type.CR_EjectCard, ""));
+<<<<<<< HEAD
 	} else if (msg.getDetails().compareToIgnoreCase("1") == 0) {
 	    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "BlankScreen"));
 	} else if (msg.getDetails().compareToIgnoreCase("2") == 0) {
@@ -97,4 +115,8 @@ public class ATMSS extends AppThread {
     private void processMouseClicked(Msg msg) {
 	// *** process mouse click here!!! ***
     } // processMouseClicked
+=======
+	}
+    } // processKeyPressed
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
 } // CardReaderHandler

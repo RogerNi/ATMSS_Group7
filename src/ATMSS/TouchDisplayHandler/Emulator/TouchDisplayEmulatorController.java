@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package ATMSS.TouchDisplayHandler.Emulator;
 
 import AppKickstarter.AppKickstarter;
@@ -39,3 +40,32 @@ public class TouchDisplayEmulatorController {
 	touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, x + " " + y));
     } // td_mouseClick
 } // TouchDisplayEmulatorController
+=======
+package ATMSS.TouchDisplayHandler.Emulator;
+
+import AppKickstarter.AppKickstarter;
+import AppKickstarter.misc.MBox;
+import java.util.logging.Logger;
+
+
+//======================================================================
+// TouchDisplayEmulatorController
+public class TouchDisplayEmulatorController {
+    private String id;
+    private AppKickstarter appKickstarter;
+    private Logger log;
+    private TouchDisplayEmulator touchDisplayEmulator;
+    private MBox touchDisplayMBox;
+
+
+    //------------------------------------------------------------
+    // initialize
+    public void initialize(String id, AppKickstarter appKickstarter, Logger log, TouchDisplayEmulator touchDisplayEmulator) {
+        this.id = id;
+	this.appKickstarter = appKickstarter;
+	this.log = log;
+	this.touchDisplayEmulator = touchDisplayEmulator;
+	this.touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
+    } // initialize
+} // TouchDisplayEmulatorController
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b

@@ -44,8 +44,11 @@ public class Msg {
 	TimesUp,		// Time's up for the timer
 	Poll,			// Health poll
 	PollAck,		// Health poll acknowledgement
+<<<<<<< HEAD
 	TD_UpdateDisplay,	// Update Display
 	TD_MouseClicked,	// Mouse Clicked
+=======
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
 	CR_CardInserted,	// Card inserted
 	CR_CardRemoved,		// Card removed
 	CR_EjectCard,		// Eject card

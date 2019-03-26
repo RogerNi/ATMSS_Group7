@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
@@ -10,5 +11,14 @@
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="480.0" onMouseClicked="#td_mouseClick" stroke="BLACK" strokeType="OUTSIDE" width="640" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
 	    </children>
 	</AnchorPane>
+=======
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ATMSS.TouchDisplayHandler.Emulator.TouchDisplayEmulatorController">
+    <children>
+	<TextArea fx:id="atmssTextArea" layoutX="20.0" layoutY="169.0" editable="false" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20" />
+>>>>>>> 32badf09f03914641bb40b364f4adc547501e84b
     </children>
 </AnchorPane>
