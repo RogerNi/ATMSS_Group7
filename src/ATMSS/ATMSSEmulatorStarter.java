@@ -65,9 +65,9 @@ public class ATMSSEmulatorStarter extends ATMSSStarter {
 		cardReaderEmulator.start();
 		touchDisplayEmulator.start();
 	    } catch (Exception e) {
-		System.out.println("Emulators: start failed");
-		e.printStackTrace();
-		Platform.exit();
+			System.out.println("Emulators: start failed");
+			e.printStackTrace();
+			Platform.exit();
 	    }
 	    atmssEmulatorStarter.setTimer(timer);
 	    atmssEmulatorStarter.setATMSS(atmss);
