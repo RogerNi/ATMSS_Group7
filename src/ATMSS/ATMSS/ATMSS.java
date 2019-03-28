@@ -39,6 +39,9 @@ public class ATMSS extends AppThread {
     private final int CHECKBALANCE = 50;
     //
 
+    String cardNum;
+    String cred;
+
 
     //------------------------------------------------------------
     // ATMSS
@@ -46,63 +49,53 @@ public class ATMSS extends AppThread {
         super(id, appKickstarter);
     } // ATMSS
 
-    public class InputBuffer {
-        private String buffer = "";
-
-        public void buff(char input) {
-            buffer += input;
-        }
-
-        public String pop() {
-            String out = buffer;
-            buffer = "";
-            return out;
-        }
-
-        public void deleteLast() {
-            if (buffer.length() == 0)
-                return;
-            buffer = buffer.substring(0, buffer.length() - 1);
-        }
-
-        public int getLength() {
-            return buffer.length();
-        }
-
-    }
-
 
     private void redirect(Msg msg) {
         currentRun.forward(msg);
         TransMsg transMsg = currentRun.collect();
         while (transMsg != null) {
             if (msg.getType() == Msg.Type.ACT_Abort) {
-                switch (msg.getDetails()){
+                switch (msg.getDetails()) {
                     case "MainMenu":
                         // Back to Main Menu
                         break;
-                    case "RejectCard":
-                        // RejectCard
+                    case "EjectCard":
+                        // EjectCard
                         break;
                     case "CheckBalance":
                         changeAct("CheckBalance");
+                        break;
+                    case "End":
+                        currentRun = null;
+                        cardNum = cred = "";
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, ""));
+                        break;
                 }
                 return;
             }
-            MBoxes.get(transMsg.destination).send(transMsg.msg);
+            if (msg.getType() == Msg.Type.BAMS) {
+                String reply = "";
+                currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
+            } else {
+                if (msg.getType() == Msg.Type.ACT_CRED)
+                    cred = msg.getDetails();
+                else
+                    MBoxes.get(transMsg.destination).send(transMsg.msg);
+            }
             transMsg = currentRun.collect();
         }
     }
 
-    private void changeAct(String className){
+
+    private void changeAct(String className) {
         try {
             Class[] args = {MBox.class, String.class};
             Class activity = Class.forName(className);
-            currentRun = (Activity) activity.getConstructor(args).newInstance(id,mbox);
+            currentRun = (Activity) activity.getConstructor(args).newInstance(id, mbox);
             currentRun.forward(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchMethodException e){
+        } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -176,24 +169,29 @@ public class ATMSS extends AppThread {
         MBoxes.put("ap", advicePrinterMBox);
         MBoxes.put("b", buzzerMBox);
 
+
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();
 
             log.fine(id + ": message received: [" + msg + "].");
 
             switch (msg.getType()) {
-                case TD_MouseClicked:
-                    log.info("MouseCLicked: " + msg.getDetails());
-                    processMouseClicked(msg);
-                    break;
-
-                case KP_KeyPressed:
-                    log.info("KeyPressed: " + msg.getDetails());
-                    processKeyPressed(msg);
-                    break;
-
                 case CR_CardInserted:
                     log.info("CardInserted: " + msg.getDetails());
+                    cardNum = cred = "";
+                    // Display reading card
+                    break;
+
+                case CR_Info:
+                    log.info("CardInfo: " + msg.getDetails());
+                    cardNum = msg.getDetails();
+                    cred = "";
+                    // Change to Login
+                    changeAct("Login");
+                    break;
+
+                case CR_MachError:
+                    log.warning("Card Reader Fails!");
                     break;
 
                 case TimesUp:
@@ -211,7 +209,11 @@ public class ATMSS extends AppThread {
                     break;
 
                 default:
-                    log.warning(id + ": unknown message type: [" + msg + "]");
+                    if (currentRun != null) {
+                        redirect(msg);
+//                      log.warning(id + ": unknown message type: [" + msg + "]");
+                        log.info("Redirect current message: " + msg);
+                    }
             }
         }
 
