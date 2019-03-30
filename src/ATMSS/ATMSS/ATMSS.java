@@ -1,13 +1,12 @@
 package ATMSS.ATMSS;
 
+import ATMSS.BAMSHandler.BAMSHandler;
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 import AppKickstarter.timer.Timer;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Queue;
+import java.util.*;
 
 
 //======================================================================
@@ -23,6 +22,7 @@ public class ATMSS extends AppThread {
     private Hashtable<String, MBox> MBoxes;
     private InputBuffer inBuffer;
     private Activity currentRun;
+    BAMSHandler bams;
 
     // Define States
     private final int INITIALIZE = 0;
@@ -41,6 +41,7 @@ public class ATMSS extends AppThread {
 
     String cardNum;
     String cred;
+    Queue<String> activities = new ArrayDeque<>();
 
 
     //------------------------------------------------------------
@@ -54,27 +55,42 @@ public class ATMSS extends AppThread {
         currentRun.forward(msg);
         TransMsg transMsg = currentRun.collect();
         while (transMsg != null) {
-            if (msg.getType() == Msg.Type.ACT_Abort) {
-                switch (msg.getDetails()) {
-                    case "MainMenu":
-                        // Back to Main Menu
-                        break;
-                    case "EjectCard":
-                        // EjectCard
-                        break;
-                    case "CheckBalance":
-                        changeAct("CheckBalance");
-                        break;
-                    case "End":
-                        currentRun = null;
-                        cardNum = cred = "";
-                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, ""));
-                        break;
-                }
+            if (msg.getType() == Msg.Type.ACT_AbortNow)
+                activities.clear();
+            if (msg.getType() == Msg.Type.ACT_Abort || msg.getType() == Msg.Type.ACT_AbortNow) {
+                Arrays.stream(msg.getDetails().split(";")).forEach(x -> activities.add(x));
+                String top_act = activities.poll();
+                if (top_act.equals("End")) {
+                    currentRun = null;
+                    cardNum = cred = "";
+                    activities.clear();
+                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "")); // Resume to init screen
+                } else
+                    changeAct(top_act); // change to the top of the queue
                 return;
             }
             if (msg.getType() == Msg.Type.BAMS) {
                 String reply = "";
+                String [] params = msg.getDetails().split(":");
+                try {
+                    switch (params[0]) {
+                        case "login":
+                            reply = bams.login(cardNum, params[1]);
+                        case "getAcc":
+                            reply = bams.getAccounts(cardNum,cred);
+                        case "withdraw":
+                            reply = String.valueOf(bams.withdraw(cardNum, params[1],cred,params[2]));
+                        case "deposit":
+                            reply = String.valueOf(bams.deposit(cardNum,params[1],cred,params[2]));
+                        case "enquiry":
+                            reply = String.valueOf(bams.enquiry(cardNum,params[1],cred));
+                        case "transfer":
+                            reply = String.valueOf(bams.transfer(cardNum,cred,params[1],params[2],params[3]));
+                    }
+                }catch (Exception e){
+                    log.warning("BAMS_Error: Connection failed!");
+                }
+                reply = params[0] + ":" + reply;
                 currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
             } else {
                 if (msg.getType() == Msg.Type.ACT_CRED)
@@ -92,7 +108,7 @@ public class ATMSS extends AppThread {
             Class[] args = {MBox.class, String.class};
             Class activity = Class.forName(className);
             currentRun = (Activity) activity.getConstructor(args).newInstance(id, mbox);
-            currentRun.forward(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
+            redirect(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -153,21 +169,28 @@ public class ATMSS extends AppThread {
         Timer.setTimer(id, mbox, 60000);
         log.info(id + ": starting...");
 
+        String urlPrefix = "http://cslinux0.comp.hkbu.edu.hk/comp4107_18-19_grp07/";
+        bams = new BAMSHandler(urlPrefix,log);
+
+        Hashtable<MBox, Boolean> pollAckTable = new Hashtable<>();
+
         cardReaderMBox = appKickstarter.getThread("CardReaderHandler").getMBox();
         keypadMBox = appKickstarter.getThread("KeypadHandler").getMBox();
         touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
-        cashDispenserMBox = appKickstarter.getThread("").getMBox();
-        cashDepositMBox = appKickstarter.getThread("").getMBox();
-        advicePrinterMBox = appKickstarter.getThread("").getMBox();
-        buzzerMBox = appKickstarter.getThread("").getMBox();
+//        cashDispenserMBox = appKickstarter.getThread("").getMBox();
+//        cashDepositMBox = appKickstarter.getThread("").getMBox();
+//        advicePrinterMBox = appKickstarter.getThread("").getMBox();
+//        buzzerMBox = appKickstarter.getThread("").getMBox();
+
+        MBoxes = new Hashtable<>();
 
         MBoxes.put("cr", cardReaderMBox);
         MBoxes.put("k", keypadMBox);
         MBoxes.put("td", touchDisplayMBox);
-        MBoxes.put("cd", cashDispenserMBox);
-        MBoxes.put("cdc", cashDepositMBox);
-        MBoxes.put("ap", advicePrinterMBox);
-        MBoxes.put("b", buzzerMBox);
+//        MBoxes.put("cd", cashDispenserMBox);
+//        MBoxes.put("cdc", cashDepositMBox);
+//        MBoxes.put("ap", advicePrinterMBox);
+//        MBoxes.put("b", buzzerMBox);
 
 
         for (boolean quit = false; !quit; ) {
@@ -197,10 +220,17 @@ public class ATMSS extends AppThread {
                 case TimesUp:
                     Timer.setTimer(id, mbox, 60000);
                     log.info("Poll: " + msg.getDetails());
+                    pollAckTable.forEach((key,value)->{
+                        if (value==false)
+                            log.warning("PollError: " + key.toString() + "does not respond!");
+                    });
+
+                    MBoxes.values().forEach(x->pollAckTable.put(x,false)); // Set all to false
                     sendAllComponents(new Msg(id, mbox, Msg.Type.Poll, ""));
                     break;
 
                 case PollAck:
+                    pollAckTable.put(msg.getSenderMBox(),true);
                     log.info("PollAck: " + msg.getDetails());
                     break;
 

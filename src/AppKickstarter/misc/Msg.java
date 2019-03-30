@@ -59,6 +59,7 @@ public class Msg {
 
         TD_UpdateDisplay,    // Update Display
         TD_MouseClicked,    // Mouse Clicked
+        TD_TimeOut,
         CR_CardInserted,    // Card inserted
         CR_CardRemoved,        // Card removed
         CR_EjectCard,        // Eject card
@@ -87,7 +88,9 @@ public class Msg {
         CD_Insufficient,
         ACT_Start,          // Activity Start
         ACT_Abort,          // Activity Stop
+        ACT_AbortNow,       // Directly Abort, delete Queue
         ACT_CRED,           // Change Cred
+        ACT_SUBENDS,
         BAMS,               // BAMS Message
     } // Type
 } // Msg
