@@ -5,7 +5,7 @@ import AppKickstarter.misc.Msg;
 import AppKickstarter.timer.Timer;
 
 public class Eject extends Activity {
-    Eject(MBox mbox, String id){
+     public Eject(MBox mbox, String id){
         super(mbox, id);
     }
 

@@ -5,6 +5,8 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 import AppKickstarter.timer.Timer;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
@@ -23,6 +25,7 @@ public class ATMSS extends AppThread {
     private InputBuffer inBuffer;
     private Activity currentRun;
     BAMSHandler bams;
+    Properties cfg;
 
     // Define States
     private final int INITIALIZE = 0;
@@ -55,48 +58,66 @@ public class ATMSS extends AppThread {
         currentRun.forward(msg);
         TransMsg transMsg = currentRun.collect();
         while (transMsg != null) {
-            if (msg.getType() == Msg.Type.ACT_AbortNow)
-                activities.clear();
-            if (msg.getType() == Msg.Type.ACT_Abort || msg.getType() == Msg.Type.ACT_AbortNow) {
-                Arrays.stream(msg.getDetails().split(";")).forEach(x -> activities.add(x));
-                String top_act = activities.poll();
-                if (top_act.equals("End")) {
-                    currentRun = null;
-                    cardNum = cred = "";
+            log.info("Receive transMsg with Type: "+transMsg.msg.getType());
+            switch (transMsg.msg.getType()){
+                case ACT_AbortNow:
                     activities.clear();
-                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "")); // Resume to init screen
-                } else
-                    changeAct(top_act); // change to the top of the queue
-                return;
-            }
-            if (msg.getType() == Msg.Type.BAMS) {
-                String reply = "";
-                String [] params = msg.getDetails().split(":");
-                try {
-                    switch (params[0]) {
-                        case "login":
-                            reply = bams.login(cardNum, params[1]);
-                        case "getAcc":
-                            reply = bams.getAccounts(cardNum,cred);
-                        case "withdraw":
-                            reply = String.valueOf(bams.withdraw(cardNum, params[1],cred,params[2]));
-                        case "deposit":
-                            reply = String.valueOf(bams.deposit(cardNum,params[1],cred,params[2]));
-                        case "enquiry":
-                            reply = String.valueOf(bams.enquiry(cardNum,params[1],cred));
-                        case "transfer":
-                            reply = String.valueOf(bams.transfer(cardNum,cred,params[1],params[2],params[3]));
+                    log.warning("Activity triggers ACT_AbortNow!");
+                case ACT_Abort:
+                    Arrays.stream(transMsg.msg.getDetails().split(";",-1)).forEach(x -> activities.add(x));
+                    String top_act = activities.poll();
+                    if (top_act.equals("End")) {
+                        log.info("Activity triggers End!");
+                        currentRun = null;
+                        cardNum = cred = "";
+                        activities.clear();
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "")); // Resume to init screen
+                    } else {
+                        log.info("Change activity to " + top_act);
+                        changeAct(top_act); // change to the top of the queue
                     }
-                }catch (Exception e){
-                    log.warning("BAMS_Error: Connection failed!");
-                }
-                reply = params[0] + ":" + reply;
-                currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
-            } else {
-                if (msg.getType() == Msg.Type.ACT_CRED)
+                    return;
+                case BAMS:
+                    String reply = "";
+                    String[] params = transMsg.msg.getDetails().split(":",-1);
+                    log.info("Receive BAMS request: " + params[0]);
+                    try {
+                        switch (params[0]) {
+                            case "login":
+                                reply = bams.login(cardNum, params[1]);
+                                break;
+                            case "getAcc":
+                                reply = bams.getAccounts(cardNum, cred);
+                                break;
+                            case "withdraw":
+                                reply = String.valueOf(bams.withdraw(cardNum, params[1], cred, params[2]));
+                                break;
+                            case "deposit":
+                                reply = String.valueOf(bams.deposit(cardNum, params[1], cred, params[2]));
+                                break;
+                            case "enquiry":
+                                reply = String.valueOf(bams.enquiry(cardNum, params[1], cred));
+                                break;
+                            case "transfer":
+                                reply = String.valueOf(bams.transfer(cardNum, cred, params[1], params[2], params[3]));
+                                break;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        log.warning("BAMS_Error: Connection failed!");
+                    }
+                    reply = params[0] + ":" + reply;
+                    log.info("Reply from BAMS: " + reply);
+                    currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
+                    break;
+                case ACT_CRED:
                     cred = msg.getDetails();
-                else
+                    log.info("Cred Update");
+                    break;
+                default:
+                    log.info("Redirect Messsage: " + transMsg.msg.getType() + ": " + transMsg.msg.getDetails() + " from current Activity to " + transMsg.destination);
                     MBoxes.get(transMsg.destination).send(transMsg.msg);
+                    break;
             }
             transMsg = currentRun.collect();
         }
@@ -106,71 +127,36 @@ public class ATMSS extends AppThread {
     private void changeAct(String className) {
         try {
             Class[] args = {MBox.class, String.class};
-            Class activity = Class.forName(className);
-            currentRun = (Activity) activity.getConstructor(args).newInstance(id, mbox);
+            Class activity = Class.forName("ATMSS.ATMSS." + className);
+            currentRun = (Activity) activity.getConstructor(args).newInstance(mbox, id);
             redirect(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
-
-    //------------------------------------------------------------
-    // State
-//    private static class State {
-//        private Stage currentStage;
-//
-//        private static class Stage {
-//            enum PrimaryStage {
-//                Initialize,
-//                MainPage,
-//                InsertCard,
-//                Deposit,
-//                Error;
-//            }
-//
-//            enum InsertCard implements Stage {
-//                Waiting,
-//                Reading,
-//                InputPin,
-//                CheckingPin,
-//                LockCard,
-//                ReinputPin;
-//            }
-//
-//            enum Deposit implements Stage {
-//                SelectAccount,
-//                Confirm, // Return concluded
-//                Accepted;
-//
-//            }
-//
-//            enum Withdrawal implements Stage {
-//                SelectAccount,
-//            }
-//
-//
-//        }
-//
-//
-//    }
 
 
     //------------------------------------------------------------
     // run
     public void run() {
-        Timer.setTimer(id, mbox, 60000);
+        cfg = new Properties();
+        try {
+            FileInputStream in = new FileInputStream("etc/ATM.cfg");
+            cfg.load(in);
+            log.info("Properties Read Successfully");
+            in.close();
+        } catch (Exception e) {
+            log.warning("Properties Read Failed");
+            e.printStackTrace();
+        }
+//        log.info(cfg.toString());
+
+
+        Timer.setTimer(id, mbox, Long.valueOf(cfg.getProperty("Timeout.Poll")));
         log.info(id + ": starting...");
 
-        String urlPrefix = "http://cslinux0.comp.hkbu.edu.hk/comp4107_18-19_grp07/";
-        bams = new BAMSHandler(urlPrefix,log);
+        String urlPrefix = cfg.getProperty("Server.IP");
+        bams = new BAMSHandler(urlPrefix, log);
 
         Hashtable<MBox, Boolean> pollAckTable = new Hashtable<>();
 
@@ -200,9 +186,11 @@ public class ATMSS extends AppThread {
 
             switch (msg.getType()) {
                 case CR_CardInserted:
-                    log.info("CardInserted: " + msg.getDetails());
-                    cardNum = cred = "";
-                    // Display reading card
+                    log.info("CardInfo: " + msg.getDetails());
+                    cardNum = msg.getDetails();
+                    cred = "";
+                    // Change to Login
+                    changeAct("Login");
                     break;
 
                 case CR_Info:
@@ -218,19 +206,19 @@ public class ATMSS extends AppThread {
                     break;
 
                 case TimesUp:
-                    Timer.setTimer(id, mbox, 60000);
+                    Timer.setTimer(id, mbox, Long.valueOf(cfg.getProperty("Timeout.Poll")));
                     log.info("Poll: " + msg.getDetails());
-                    pollAckTable.forEach((key,value)->{
-                        if (value==false)
+                    pollAckTable.forEach((key, value) -> {
+                        if (value == false)
                             log.warning("PollError: " + key.toString() + "does not respond!");
                     });
 
-                    MBoxes.values().forEach(x->pollAckTable.put(x,false)); // Set all to false
+                    MBoxes.values().forEach(x -> pollAckTable.put(x, false)); // Set all to false
                     sendAllComponents(new Msg(id, mbox, Msg.Type.Poll, ""));
                     break;
 
                 case PollAck:
-                    pollAckTable.put(msg.getSenderMBox(),true);
+                    pollAckTable.put(msg.getSenderMBox(), true);
                     log.info("PollAck: " + msg.getDetails());
                     break;
 
@@ -239,13 +227,21 @@ public class ATMSS extends AppThread {
                     break;
 
                 case KP_KeyPressed:
+//                    Buzzer Mbox short buzz
+                    if (currentRun != null) {
+                        redirect(msg);
+//                      log.warning(id + ": unknown message type: [" + msg + "]");
+                        log.info("Redirect current message: " + msg);
+                    } else
+                        log.info("Keypad: " + "invalid press");
+                    break;
 
 
                 default:
                     if (currentRun != null) {
                         redirect(msg);
 //                      log.warning(id + ": unknown message type: [" + msg + "]");
-                        log.info("Redirect current message: " + msg);
+//                        log.info("Redirect current message: " + msg);
                     }
             }
         }

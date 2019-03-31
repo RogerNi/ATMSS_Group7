@@ -4,7 +4,7 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 
 public class MainMenu extends Activity {
-    MainMenu(MBox mbox, String mid){
+    public MainMenu(MBox mbox, String mid){
         super(mbox, mid);
     }
     @Override
@@ -16,7 +16,7 @@ public class MainMenu extends Activity {
                         "Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service","td"); // Update MainMenu
                 break;
             case KP_KeyPressed:
-                addQueue(Msg.Type.BZ_ShortBuzz,"","b");
+//                addQueue(Msg.Type.BZ_ShortBuzz,"","b");
                 if(msg.getDetails().equals("Cancel"))
                     addQueue(Msg.Type.ACT_Abort,"Eject:End","");
                 break;
