@@ -238,6 +238,9 @@ public class ATMSS extends AppThread {
                     quit = true;
                     break;
 
+                case KP_KeyPressed:
+
+
                 default:
                     if (currentRun != null) {
                         redirect(msg);
