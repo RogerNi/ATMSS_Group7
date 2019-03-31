@@ -13,7 +13,7 @@ public abstract class Activity {
 
 //    Activity sub = null;
 
-    Activity(MBox mMbox, String mId){
+    public Activity(MBox mMbox, String mId){
         msgQueue = new LinkedList<>();
         masterId = mId;
         masterMBox = mMbox;

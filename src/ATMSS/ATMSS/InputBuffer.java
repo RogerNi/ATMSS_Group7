@@ -7,6 +7,10 @@ public class InputBuffer {
         buffer += input;
     }
 
+    public String get(){
+        return buffer;
+    }
+
     public String pop() {
         String out = buffer;
         buffer = "";

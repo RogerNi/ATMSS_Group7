@@ -29,7 +29,7 @@
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="50.0" prefWidth="50.0" text="1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"><font><Font size="16.0" /></font></Button>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="50.0" prefWidth="50.0" text="2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="0.0"><font><Font size="16.0" /></font></Button>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="50.0" prefWidth="50.0" text="3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0"><font><Font size="16.0" /></font></Button>
-                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="50.0" prefWidth="120.0" text="???" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="0.0"><font><Font size="16.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="50.0" prefWidth="120.0" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="0.0"><font><Font size="16.0" /></font></Button>
             </children>
         </AnchorPane>
 
