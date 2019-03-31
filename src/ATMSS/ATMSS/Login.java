@@ -37,7 +37,8 @@ public class Login extends Activity {
                         retry++;
                         if (retry == 2) {
                             addQueue(Msg.Type.TD_UpdateDisplay, "", "td"); // Retain Card Display
-                            addQueue(Msg.Type.ACT_Abort,"RetainCard","");
+                            addQueue(Msg.Type.CR_Retain,"","");
+                            addQueue(Msg.Type.ACT_Abort,"End","");
                         } else {
                             addQueue(Msg.Type.TD_UpdateDisplay,"","td"); // Retry PIN
                         }
