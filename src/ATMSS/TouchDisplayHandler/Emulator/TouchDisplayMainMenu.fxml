@@ -3,17 +3,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Line?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ATMSS.TouchDisplayHandler.Emulator.TouchDisplayEmulatorController">
     <children>
 	<AnchorPane prefHeight="480.0" prefWidth="640.0" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20">
 	    <children>
+		<Text fx:id="mainText" x="100" y="50" wrappingWidth="420"/>
+		<!--Setting wrappingWidth and right alignment in inputFieldPrefix is to make sure the underline will be
+		displayed just after the inputFieldPrefix, even the length of text changes-->
+		<Text fx:id="inputFieldPrefix" x="90" y="200" wrappingWidth="200" textAlignment="RIGHT"/>
+		<Line fx:id="inputFieldUnderline" startX="300" endX="500" startY="200" endY="200"/>
+		<Text fx:id="inputFieldContent" x="310" y="200"/>
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" />
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" />
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="70" AnchorPane.leftAnchor="0" />
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="70" AnchorPane.rightAnchor="0" />
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="140" AnchorPane.leftAnchor="0" />
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="white" height="70.0" stroke="BLACK" strokeType="OUTSIDE" width="300.0" AnchorPane.bottomAnchor="140" AnchorPane.rightAnchor="0" />
-		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="480.0" onMouseClicked="#td_mouseClick" stroke="BLACK" strokeType="OUTSIDE" width="640" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
+		<Text fx:id="button0Text" AnchorPane.bottomAnchor="150" AnchorPane.leftAnchor="10"/>
+        <Text fx:id="button1Text" AnchorPane.bottomAnchor="80" AnchorPane.leftAnchor="10"/>
+        <Text fx:id="button2Text" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10"/>
+        <Text fx:id="button3Text" AnchorPane.bottomAnchor="150" AnchorPane.rightAnchor="10"/>
+        <Text fx:id="button4Text" AnchorPane.bottomAnchor="80" AnchorPane.rightAnchor="10"/>
+        <Text fx:id="button5Text" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="10"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="480.0" onMouseClicked="#td_mouseClick" stroke="BLACK" strokeType="OUTSIDE" width="640" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
 	    </children>
 	</AnchorPane>
     </children>

@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
+import java.util.Arrays;
+
 
 //======================================================================
 // TouchDisplayEmulator
@@ -60,7 +62,52 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     protected void handleUpdateDisplay(Msg msg) {
 	log.info(id + ": update display -- " + msg.getDetails());
 
-	switch (msg.getDetails()) {
+	//According to the protocol that my teammates and I discussed, we separate the
+	// parameters in msg.details by colon.
+	String[] params=msg.getDetails().split(":");
+
+	if(params[0].equals("0"))
+	{
+		//According that protocol, if the first parameter is 1, I will update the whole screen.
+		switch (params[1])
+		{
+			case "TEMP1":
+				//According that protocol, the second parameter tells the screen which template to use.
+				//TEMP1 means the touch screen use the first template, i.e. the one with nothing in it
+				//I will add dynamic contents according to the instruction given by ATMSS
+				reloadStage("TouchDisplayEmulator.fxml", params);
+				//According that protocol, the third parameter tells the screen the main text.
+				this.touchDisplayEmulatorController.setMainText(params[2]);
+				break;
+			case "TEMP2":
+				//According that protocol, the second parameter tells the screen which template to use.
+				//TEMP2 means the touch screen use the second template, i.e. the one with 6 buttons in it
+				//I will add dynamic contents according to the instruction given by ATMSS
+				reloadStage("TouchDisplayMainMenu.fxml", params);
+				break;
+            case "TEMP3":
+                //According that protocol, the second parameter tells the screen which template to use.
+                //TEMP2 means the touch screen use the second template, i.e. the one with 6 buttons in it
+                //I will add dynamic contents according to the instruction given by ATMSS
+                reloadStage("TouchDisplayConfirmation.fxml", params);
+                break;
+		}
+	}else if(params[0].equals("1"))
+	{
+	    //According to our protocol, if the first parameter is 1, I will only update the content of input field.
+        //The second parameter will be the content of input field.
+        touchDisplayEmulatorController.setInputFieldContent(params[1]);
+	}else
+	{
+		switch (params[0])
+		{
+			case "test1":
+				this.touchDisplayEmulatorController.setMainText("What?");
+				this.touchDisplayEmulatorController.set6ButtonsText(new String[]{"button0"});
+		}
+	}
+
+	/*switch (msg.getDetails()) {
 	    case "BlankScreen":
 		reloadStage("TouchDisplayEmulator.fxml");
 		break;
@@ -76,13 +123,13 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 	    default:
 		log.severe(id + ": update display with unknown display type -- " + msg.getDetails());
 		break;
-	}
+	}*/
     } // handleUpdateDisplay
 
 
     //------------------------------------------------------------
     // reloadStage
-    private void reloadStage(String fxmlFName) {
+    private void reloadStage(String fxmlFName, String[] params) {
         TouchDisplayEmulator touchDisplayEmulator = this;
 
         Platform.runLater(new Runnable() {
@@ -98,6 +145,63 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 		    touchDisplayEmulatorController = (TouchDisplayEmulatorController) loader.getController();
 		    touchDisplayEmulatorController.initialize(id, atmssStarter, log, touchDisplayEmulator);
 		    myStage.setScene(new Scene(root, WIDTH, HEIGHT));
+
+		    //I put most part of code for updating display here due to the need of currency control.
+            //I must wait until the new stage is completely loaded then update dynamic content.
+
+			//According that protocol, the third parameter tells the screen the main text.
+			touchDisplayEmulatorController.setMainText(params[2]);
+
+			//Tell the controller that we have gone to another fxml file.
+            touchDisplayEmulatorController.setCurrentPage(fxmlFName);
+
+			System.out.println("fxmlFName: "+fxmlFName);
+
+			switch(fxmlFName)
+            {
+                case "TouchDisplayEmulator.fxml":
+                    //According to that protocol, if we use template 1, the 4th parameter will tell the screen whether to
+                    //display the input field (e.g. PIN, amount of money)
+                    if(params[3].equals("T"))
+                    {
+                        //According to that protocol, if we use template 1, the 5th parameter will tell the screen
+                        //what the input field prefix is.
+                        touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[4]);
+                    }else
+					{
+						//One of my teammate ask me to let the touch screen to sleep for 3 seconds
+						//if it use template 1 and display no input box in order to let the user clearly
+						//see the texts on screen
+						Thread.sleep(3000);
+					}
+                    break;
+                case "TouchDisplayMainMenu.fxml":
+                    //According to that protocol, if we use template 2, the 4th to the 9th parameters will be the
+                    //texts of the 6 buttons.
+                    touchDisplayEmulatorController.set6ButtonsText(Arrays.copyOfRange(params, 3, 9));
+                    //According to that protocol, if we use template 2, the 10th parameter will tell the screen whether to
+                    //display the input field (e.g. PIN, amount of money)
+                    if(params[9].equals("T"))
+                    {
+                        //According to that protocol, if we use template 2, the 11th parameter will tell the screen
+                        //what the input field prefix is.
+                        touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[10]);
+                    }
+                    break;
+                case "TouchDisplayConfirmation.fxml":
+                    //According to that protocol, if we use template 3, the 4th and the 5th parameters will be the
+                    //texts of the 6 buttons.
+                    touchDisplayEmulatorController.set2ButtonsText(Arrays.copyOfRange(params, 3, 5));
+                    //According to that protocol, if we use template 3, the 6th parameter will tell the screen whether to
+                    //display the input field (e.g. PIN, amount of money)
+                    if(params[5].equals("T"))
+                    {
+                        //According to that protocol, if we use template 3, the 7th parameter will tell the screen
+                        //what the input field prefix is.
+                        touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[6]);
+                    }
+                    break;
+            }
 		} catch (Exception e) {
 		    log.severe(id + ": failed to load " + fxmlFName);
 		    e.printStackTrace();

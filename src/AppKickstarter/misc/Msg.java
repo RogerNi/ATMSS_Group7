@@ -59,7 +59,7 @@ public class Msg {
 
         TD_UpdateDisplay,    // Update Display
         TD_MouseClicked,    // Mouse Clicked
-        TD_TimeOut,
+        TD_TimesUp,
         CR_CardInserted,    // Card inserted
         CR_CardRemoved,        // Card removed
         CR_EjectCard,        // Eject card

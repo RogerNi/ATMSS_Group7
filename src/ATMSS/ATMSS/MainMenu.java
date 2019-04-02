@@ -39,7 +39,7 @@ public class MainMenu extends Activity {
                         break;
                 }
                 break;
-            case TD_TimeOut:
+            case TD_TimesUp:
 //                addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:Operation TimeOut!\nCard Retained.\nPlease Contact Bank for more information.","td");
                 addQueue(Msg.Type.ACT_AbortNow,"Retain:End","");
                 break;

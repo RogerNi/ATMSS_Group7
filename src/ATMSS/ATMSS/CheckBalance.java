@@ -71,7 +71,7 @@ public class CheckBalance extends Activity {
                             accString, "td");
                 }
                 break;
-            case TD_TimeOut:
+            case TD_TimesUp:
                 addQueue(ACT_AbortNow, "Retain:End", "");
                 break;
 //            case ACT_SUBENDS:

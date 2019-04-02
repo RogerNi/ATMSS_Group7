@@ -7,55 +7,61 @@ import AppKickstarter.misc.*;
 //======================================================================
 // TouchDisplayHandler
 public class TouchDisplayHandler extends AppThread {
-    //------------------------------------------------------------
-    // TouchDisplayHandler
-    public TouchDisplayHandler(String id, AppKickstarter appKickstarter) throws Exception {
-	super(id, appKickstarter);
-    } // TouchDisplayHandler
+	//------------------------------------------------------------
+	// TouchDisplayHandler
+
+	public TouchDisplayHandler(String id, AppKickstarter appKickstarter) throws Exception {
+		super(id, appKickstarter);
+	} // TouchDisplayHandler
 
 
-    //------------------------------------------------------------
-    // run
-    public void run() {
-	MBox atmss = appKickstarter.getThread("ATMSS").getMBox();
-	log.info(id + ": starting...");
+	//------------------------------------------------------------
+	// run
+	public void run() {
+		MBox atmss = appKickstarter.getThread("ATMSS").getMBox();
+		log.info(id + ": starting...");
 
-	for (boolean quit = false; !quit;) {
-	    Msg msg = mbox.receive();
+		for (boolean quit = false; !quit;) {
+			Msg msg = mbox.receive();
 
-	    log.fine(id + ": message received: [" + msg + "].");
+			log.fine(id + ": message received: [" + msg + "].");
 
-	    switch (msg.getType()) {
-		case TD_MouseClicked:
-		    atmss.send(new Msg(id, mbox, Msg.Type.TD_MouseClicked, msg.getDetails()));
-		    break;
+			switch (msg.getType()) {
+				case TD_MouseClicked:
+					atmss.send(new Msg(id, mbox, Msg.Type.TD_MouseClicked, msg.getDetails()));
+					break;
 
-		case TD_UpdateDisplay:
-		    handleUpdateDisplay(msg);
-		    break;
+				case TD_UpdateDisplay:
+					handleUpdateDisplay(msg);
+					break;
 
-		case Poll:
-		    atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
-		    break;
+				//One of my teammates ask me to tell ATMSS if the touch screen has not interacted with user
+				//or receive instructions from ATMSS for 60 seconds
+				case TimesUp:
+					atmss.send(new Msg(this.id, this.mbox, Msg.Type.TD_TimesUp, ""));
 
-		case Terminate:
-		    quit = true;
-		    break;
+				case Poll:
+					atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
+					break;
 
-		default:
-		    log.warning(id + ": unknown message type: [" + msg + "]");
-	    }
-	}
+				case Terminate:
+					quit = true;
+					break;
 
-	// declaring our departure
-	appKickstarter.unregThread(this);
-	log.info(id + ": terminating...");
-    } // run
+				default:
+					log.warning(id + ": unknown message type: [" + msg + "]");
+			}
+		}
+
+		// declaring our departure
+		appKickstarter.unregThread(this);
+		log.info(id + ": terminating...");
+	} // run
 
 
-    //------------------------------------------------------------
-    // handleUpdateDisplay
-    protected void handleUpdateDisplay(Msg msg) {
-	log.info(id + ": update display -- " + msg.getDetails());
-    } // handleUpdateDisplay
+	//------------------------------------------------------------
+	// handleUpdateDisplay
+	protected void handleUpdateDisplay(Msg msg) {
+		log.info(id + ": update display -- " + msg.getDetails());
+	} // handleUpdateDisplay
 } // TouchDisplayHandler
