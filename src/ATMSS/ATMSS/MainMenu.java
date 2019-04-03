@@ -2,6 +2,7 @@ package ATMSS.ATMSS;
 
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
+import com.sun.javaws.ui.UpdateDialog;
 
 public class MainMenu extends Activity {
     public MainMenu(MBox mbox, String mid){
@@ -13,7 +14,7 @@ public class MainMenu extends Activity {
             case ACT_Start:
                 addQueue(Msg.Type.TD_UpdateDisplay,"0:"+
                         "TEMP2:"+"Welcome!\nPlease select service.:"+
-                        "Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service","td"); // Update MainMenu
+                        "Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F","td"); // Update MainMenu
                 break;
             case KP_KeyPressed:
 //                addQueue(Msg.Type.BZ_ShortBuzz,"","b");
@@ -21,6 +22,7 @@ public class MainMenu extends Activity {
                     addQueue(Msg.Type.ACT_Abort,"Eject:End","");
                 break;
             case TD_MouseClicked:
+                addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:Please Wait:F","td");
                 switch (msg.getDetails()){
                     case "0":
                         addQueue(Msg.Type.ACT_Abort,"CheckBalance","");

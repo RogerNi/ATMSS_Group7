@@ -20,7 +20,7 @@ public class Login extends Activity {
                 break;
             case KP_KeyPressed:
                 if (msg.getDetails().equals("Enter")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "", "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F", "td");
                     addQueue(Msg.Type.BAMS, "login:" + inBuffer.pop(), "");
                 } else if (msg.getDetails().equals("Erase")) {
                     inBuffer.clear();

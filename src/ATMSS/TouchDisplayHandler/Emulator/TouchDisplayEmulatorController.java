@@ -209,7 +209,6 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
         this.mainText.setText(mainT);
         this.mainText.setVisible(true);
         this.log.fine(id+": Set main text to be: "+this.mainText.getText());
@@ -220,22 +219,52 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
+
+        int len=buttonsText.length;
+        if(len<=0)
+        {
+            return;
+        }
         this.button0Text.setText(buttonsText[0]);
         this.button0Text.setVisible(true);
         this.log.fine(id+": Set the text of button 0 to be: "+this.button0Text.getText());
+        len--;
+        if(len<=0)
+        {
+            return;
+        }
         this.button1Text.setText(buttonsText[1]);
         this.button1Text.setVisible(true);
         this.log.fine(id+": Set the text of button 1 to be: "+this.button1Text.getText());
+        len--;
+        if(len<=0)
+        {
+            return;
+        }
         this.button2Text.setText(buttonsText[2]);
         this.button2Text.setVisible(true);
         this.log.fine(id+": Set the text of button 2 to be: "+this.button2Text.getText());
+        len--;
+        if(len<=0)
+        {
+            return;
+        }
         this.button3Text.setText(buttonsText[3]);
         this.button3Text.setVisible(true);
         this.log.fine(id+": Set the text of button 3 to be: "+this.button3Text.getText());
+        len--;
+        if(len<=0)
+        {
+            return;
+        }
         this.button4Text.setText(buttonsText[4]);
         this.button4Text.setVisible(true);
         this.log.fine(id+": Set the text of button 4 to be: "+this.button4Text.getText());
+        len--;
+        if(len<=0)
+        {
+            return;
+        }
         this.button5Text.setText(buttonsText[5]);
         this.button5Text.setVisible(true);
         this.log.fine(id+": Set the text of button 5 to be: "+this.button5Text.getText());
@@ -246,7 +275,6 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
         this.button0Text.setText(buttonsText[0]);
         this.button0Text.setVisible(true);
         this.log.fine(id+": Set the text of button 0 to be: "+this.button0Text.getText());
@@ -260,7 +288,6 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
         //According to our protocol, the ATMSS won't give me a colon, I have to add it here.
         this.inputFieldPrefix.setText(prefix+":");
         this.inputFieldPrefix.setVisible(true);
@@ -274,7 +301,6 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
         this.inputFieldContent.setText(content);
         this.inputFieldContent.setVisible(true);
         this.log.fine(id+": Set input field content to be: "+this.inputFieldContent.getText());
@@ -286,7 +312,6 @@ public class TouchDisplayEmulatorController {
         //Stop timer and start again.
         Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
         this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        //Tell ATMSS which button is clicked
         this.currentFXML=nameOfFXML;
     }
 
@@ -299,6 +324,11 @@ public class TouchDisplayEmulatorController {
         //display the line after the input field prefix.
         return (double) Math.round(fontSize*1.33);
     }*/
+
+    public void freeze()
+    {
+        this.touchDisplayMBox.send(new Msg(null, null, Msg.Type.TD_Freeze, null));
+    }
 
 
 } // TouchDisplayEmulatorController

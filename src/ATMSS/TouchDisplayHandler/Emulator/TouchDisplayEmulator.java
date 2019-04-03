@@ -24,6 +24,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     private String id;
     private Stage myStage;
     private TouchDisplayEmulatorController touchDisplayEmulatorController;
+    //private boolean sleep;
 
     //------------------------------------------------------------
     // TouchDisplayEmulator
@@ -77,7 +78,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 				//I will add dynamic contents according to the instruction given by ATMSS
 				reloadStage("TouchDisplayEmulator.fxml", params);
 				//According that protocol, the third parameter tells the screen the main text.
-				this.touchDisplayEmulatorController.setMainText(params[2]);
+				//this.touchDisplayEmulatorController.setMainText(params[2]);
 				break;
 			case "TEMP2":
 				//According that protocol, the second parameter tells the screen which template to use.
@@ -132,11 +133,19 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     private void reloadStage(String fxmlFName, String[] params) {
         TouchDisplayEmulator touchDisplayEmulator = this;
 
+
+
         Platform.runLater(new Runnable() {
 	    @Override
 	    public void run() {
 		try {
 		    log.info(id + ": loading fxml: " + fxmlFName);
+
+			//According to that protocol, if we use template 2, the ATMSS will give me texts of some buttons
+			//The ATMSS may give me 1 to 6 parameters for texts of buttons, but won't give me how many parameters
+			//are for texts of  buttons, I have to check it by myself.
+			int numOfButtons;
+
 
 		    Parent root;
 		    FXMLLoader loader = new FXMLLoader();
@@ -145,6 +154,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 		    touchDisplayEmulatorController = (TouchDisplayEmulatorController) loader.getController();
 		    touchDisplayEmulatorController.initialize(id, atmssStarter, log, touchDisplayEmulator);
 		    myStage.setScene(new Scene(root, WIDTH, HEIGHT));
+
 
 		    //I put most part of code for updating display here due to the need of currency control.
             //I must wait until the new stage is completely loaded then update dynamic content.
@@ -169,24 +179,52 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
                         touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[4]);
                     }else
 					{
-						//One of my teammate ask me to let the touch screen to sleep for 3 seconds
+						//One of my teammate ask me to let the touch screen to show its content to user for at least 3 seconds
 						//if it use template 1 and display no input box in order to let the user clearly
 						//see the texts on screen
-						Thread.sleep(3000);
+						//This seemingly simple functionality turns out to be very difficult ti implement
+						//If I let the thread sleep here, since updating display is asynchronous, the updating will
+						//also pause here, which is undesirable. After try a lot of unsuccessful method (including
+						//create another thread and pause it, then join), I come up with this method: let the controller
+						//send freeze signal to handler, then let this thread continue. The handler will pause itself upon
+						//receiving this signal, it pause itself without affecting current updating.
+						//sleep=true;
+//						Freeze f=new Freeze();
+//						f.start();
+//						f.join();
+						touchDisplayEmulatorController.freeze();
 					}
                     break;
                 case "TouchDisplayMainMenu.fxml":
-                    //According to that protocol, if we use template 2, the 4th to the 9th parameters will be the
-                    //texts of the 6 buttons.
-                    touchDisplayEmulatorController.set6ButtonsText(Arrays.copyOfRange(params, 3, 9));
+                    //According to that protocol, if we use template 2, the ATMSS will give me texts of some buttons
+					//The ATMSS may give me 1 to 6 parameters for texts of buttons, but won't give me how many parameters
+					//are for texts of  buttons, I have to check it by myself.
+
+					if(params[params.length-1].equals("F"))
+					{
+						//My teammates promise me that they will never let ATMSS give me the input field prefix to be
+						//"F", thus I am able to check the number of buttons by myself, otherwise I have no way to
+						// check it by myself, since the text on button may be anything, including "T" and "F"
+						//With this assumption, the last parameter is "F" means I shouldn't display input box.
+						numOfButtons=params.length-4;
+					}else
+					{
+						//Else, the screen should display the input box
+						//The method of calculating number of buttons is different
+						numOfButtons=params.length-5;
+						//According to that protocol, if we use template 2 and display the input box, the last
+						// parameter will tell the scree what the input field prefix is.
+						touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[params.length-1]);
+					}
+                    touchDisplayEmulatorController.set6ButtonsText(Arrays.copyOfRange(params, 3, 3+numOfButtons));
                     //According to that protocol, if we use template 2, the 10th parameter will tell the screen whether to
                     //display the input field (e.g. PIN, amount of money)
-                    if(params[9].equals("T"))
+                    /*if(params[9].equals("T"))
                     {
                         //According to that protocol, if we use template 2, the 11th parameter will tell the screen
                         //what the input field prefix is.
                         touchDisplayEmulatorController.setInputFieldPrefixAndUnderline(params[10]);
-                    }
+                    }*/
                     break;
                 case "TouchDisplayConfirmation.fxml":
                     //According to that protocol, if we use template 3, the 4th and the 5th parameters will be the
@@ -209,4 +247,12 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 	    }
 	});
     } // reloadStage
+
+	/*public boolean isSleep() {
+		return sleep;
+	}
+
+	public void setSleep(boolean sleep) {
+		this.sleep = sleep;
+	}*/
 } // TouchDisplayEmulator

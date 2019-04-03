@@ -178,6 +178,7 @@ public class ATMSS extends AppThread {
 //        MBoxes.put("ap", advicePrinterMBox);
 //        MBoxes.put("b", buzzerMBox);
 
+        touchDisplayMBox.send(new Msg(id,mbox, Msg.Type.TD_UpdateDisplay,"0:TEMP1:ATM\nInsert Card Please:F"));
 
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();

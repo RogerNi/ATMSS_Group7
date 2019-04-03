@@ -1,34 +1,41 @@
-190331-15:48:02 [INFO] -- 
-190331-15:48:02 [INFO] -- 
-190331-15:48:02 [INFO] -- ============================================================
-190331-15:48:02 [INFO] -- ATMSSStarter: Application Starting...
-190331-15:48:04 [INFO] -- TouchDisplayHandler: starting...
-190331-15:48:04 [INFO] -- CardReaderHandler: starting...
-190331-15:48:04 [INFO] -- KeypadHandler: starting...
-190331-15:48:04 [INFO] -- Properties Read Successfully
-190331-15:48:04 [INFO] -- timer: starting...
-190331-15:48:04 [INFO] -- ATMSS: starting...
-190331-15:48:08 [INFO] -- CardInfo: 4107-7014
-190331-15:48:08 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190331-15:48:08 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Input PIN:T,PIN from current Activity to td
-190331-15:48:08 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Input PIN:T,PIN
-190331-15:48:08 [SEVERE] -- TouchDisplayHandler: update display with unknown display type -- 0:TEMP1:Input PIN:T,PIN
-190331-15:48:11 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190331-15:48:11 [INFO] -- Redirect Messsage: TD_UpdateDisplay:  from current Activity to td
-190331-15:48:11 [INFO] -- Receive transMsg with Type: BAMS
-190331-15:48:11 [INFO] -- TouchDisplayHandler: update display -- 
-190331-15:48:11 [SEVERE] -- TouchDisplayHandler: update display with unknown display type -- 
-190331-15:48:11 [INFO] -- Receive BAMS request: login
-190331-15:48:14 [INFO] -- Reply from BAMS: login:Credible_Credential!!!
-190331-15:48:14 [INFO] -- Receive transMsg with Type: ACT_CRED
-190331-15:48:14 [INFO] -- Cred Update
-190331-15:48:14 [INFO] -- Receive transMsg with Type: ACT_Abort
-190331-15:48:14 [INFO] -- Change activity to MainMenu
-190331-15:48:14 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190331-15:48:14 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
-Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service from current Activity to td
-190331-15:48:14 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- Enter
-190331-15:48:14 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
-Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service
-190331-15:48:14 [SEVERE] -- TouchDisplayHandler: update display with unknown display type -- 0:TEMP2:Welcome!
-Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service
+190402-12:03:39 [INFO] -- 
+190402-12:03:39 [INFO] -- 
+190402-12:03:39 [INFO] -- ============================================================
+190402-12:03:39 [INFO] -- ATMSSStarter: Application Starting...
+190402-12:03:41 [INFO] -- TouchDisplayHandler: starting...
+190402-12:03:41 [INFO] -- timer: starting...
+190402-12:03:41 [INFO] -- Properties Read Successfully
+190402-12:03:41 [INFO] -- ATMSS: starting...
+190402-12:03:41 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:ATM
+Insert Card Please:F
+190402-12:03:41 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190402-12:03:41 [INFO] -- CardReaderHandler: starting...
+190402-12:03:41 [INFO] -- KeypadHandler: starting...
+190402-12:03:48 [INFO] -- CardInfo: 4107-7014
+190402-12:03:48 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190402-12:03:48 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Input PIN:T,PIN from current Activity to td
+190402-12:03:48 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Input PIN:T,PIN
+190402-12:03:48 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190402-12:03:56 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190402-12:03:56 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:7 from current Activity to td
+190402-12:03:56 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 7
+190402-12:03:56 [INFO] -- TouchDisplayHandler: update display -- 1:7
+190402-12:04:00 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190402-12:04:00 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
+190402-12:04:00 [INFO] -- Receive transMsg with Type: BAMS
+190402-12:04:00 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
+190402-12:04:00 [INFO] -- Receive BAMS request: login
+190402-12:04:00 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190402-12:04:03 [INFO] -- Reply from BAMS: login:Credible_Credential!!!
+190402-12:04:03 [INFO] -- Receive transMsg with Type: ACT_CRED
+190402-12:04:03 [INFO] -- Cred Update
+190402-12:04:03 [INFO] -- Receive transMsg with Type: ACT_Abort
+190402-12:04:03 [INFO] -- Change activity to MainMenu
+190402-12:04:03 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190402-12:04:03 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
+Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F from current Activity to td
+190402-12:04:03 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- Enter
+190402-12:04:03 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
+Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F
+190402-12:04:03 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190402-12:04:03 [SEVERE] -- TouchDisplayHandler: failed to load TouchDisplayMainMenu.fxml

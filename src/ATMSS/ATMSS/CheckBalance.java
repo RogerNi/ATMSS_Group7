@@ -26,7 +26,7 @@ public class CheckBalance extends Activity {
         switch (msg.getType()) {
             case ACT_Start:
                 // BAMS Check_Balance
-                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!", "td");  // Set screen to waiting
+                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
                 addQueue(BAMS, "getAcc", "");
                 break;
             case KP_KeyPressed:
@@ -39,7 +39,7 @@ public class CheckBalance extends Activity {
                 if (stage == 1) {
                     stage = 2;
                     String account = accs[Integer.valueOf(msg.getDetails())];
-                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.", "td");
+                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
                     addQueue(BAMS, "enquiry:" + account, "");
                 } else if (stage == 3) {
                     switch (msg.getDetails()) {
@@ -58,7 +58,7 @@ public class CheckBalance extends Activity {
                     // Show Enquiry Result
                     stage = 3;
                     addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Account Balance\n" +
-                            reply[1] + ":Back to Main Menu:End Service", "td");
+                            reply[1] + ":Back to Main Menu:End Service:F", "td");
                 } else {
                     // Select Account
                     stage = 1;
@@ -67,8 +67,8 @@ public class CheckBalance extends Activity {
                     for (String acc : accs) {
                         accString += ":" + acc;
                     }
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please select the account you want to check" +
-                            accString, "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Please select the account you want to check" +
+                            accString + ":F", "td");
                 }
                 break;
             case TD_TimesUp:
