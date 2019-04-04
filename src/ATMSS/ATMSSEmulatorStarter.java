@@ -1,5 +1,10 @@
 package ATMSS;
 
+import ATMSS.AdvicePrinterHandler.AdvicePrinterHandler;
+import ATMSS.AdvicePrinterHandler.Emulator.AdvicePrinterEmulator;
+import ATMSS.BuzzerHandler.BuzzerHandler;
+import ATMSS.CashDepositeCollectorHandler.CashDepositeCollectorHandler;
+import ATMSS.CashDepositeCollectorHandler.Emulator.CashDepositeCollectorEmulator;
 import AppKickstarter.timer.Timer;
 
 import ATMSS.ATMSS.ATMSS;
@@ -51,7 +56,9 @@ public class ATMSSEmulatorStarter extends ATMSSStarter {
 	    CardReaderEmulator cardReaderEmulator = null;
 	    KeypadEmulator keypadEmulator = null;
 	    TouchDisplayEmulator touchDisplayEmulator = null;
-
+		BuzzerHandler buzzerHandler = null;
+		AdvicePrinterEmulator advicePrinterEmulator = null;
+		CashDepositeCollectorEmulator cashDepositeCollectorEmulator =null;
 	    // create emulators
 	    try {
 	        timer = new Timer("timer", atmssEmulatorStarter);
@@ -59,11 +66,16 @@ public class ATMSSEmulatorStarter extends ATMSSStarter {
 	        cardReaderEmulator = new CardReaderEmulator("CardReaderHandler", atmssEmulatorStarter);
 	        keypadEmulator = new KeypadEmulator("KeypadHandler", atmssEmulatorStarter);
 	        touchDisplayEmulator = new TouchDisplayEmulator("TouchDisplayHandler", atmssEmulatorStarter);
+			buzzerHandler = new BuzzerHandler("BuzzerHandler",atmssEmulatorStarter);
+			advicePrinterEmulator = new AdvicePrinterEmulator("AdvicePrinterHandler",atmssEmulatorStarter);
+			cashDepositeCollectorEmulator = new CashDepositeCollectorEmulator("CashDepositHandler",atmssEmulatorStarter);
 
 		// start emulator GUIs
 		keypadEmulator.start();
 		cardReaderEmulator.start();
 		touchDisplayEmulator.start();
+		advicePrinterEmulator.start();
+		cashDepositeCollectorEmulator.start();
 	    } catch (Exception e) {
 			System.out.println("Emulators: start failed");
 			e.printStackTrace();
@@ -74,13 +86,17 @@ public class ATMSSEmulatorStarter extends ATMSSStarter {
 	    atmssEmulatorStarter.setCardReaderHandler(cardReaderEmulator);
 	    atmssEmulatorStarter.setKeypadHandler(keypadEmulator);
 	    atmssEmulatorStarter.setTouchDisplayHandler(touchDisplayEmulator);
-
+	    atmssEmulatorStarter.setAdvicePrinterHandler(advicePrinterEmulator);
+	    atmssEmulatorStarter.setCashDepositHandler(cashDepositeCollectorEmulator);
 	    // start threads
 	    new Thread(timer).start();
 	    new Thread(atmss).start();
 	    new Thread(cardReaderEmulator).start();
 	    new Thread(keypadEmulator).start();
 	    new Thread(touchDisplayEmulator).start();
+	    new Thread(buzzerHandler).start();
+	    new Thread(advicePrinterEmulator).start();
+	    new Thread(cashDepositeCollectorEmulator).start();
 	} // start
     } // Emulators
 
@@ -102,4 +118,10 @@ public class ATMSSEmulatorStarter extends ATMSSStarter {
     private void setTouchDisplayHandler(TouchDisplayHandler touchDisplayHandler) {
         this.touchDisplayHandler = touchDisplayHandler;
     }
+    private void setAdvicePrinterHandler(AdvicePrinterHandler advicePrinterHandler){
+		this.advicePrinterHandler = advicePrinterHandler;
+	}
+	private void setCashDepositHandler(CashDepositeCollectorHandler cashDepositHandler){
+    	this.cashDepositeCollectorHandler = cashDepositHandler;
+	}
 } // ATMSSEmulatorStarter

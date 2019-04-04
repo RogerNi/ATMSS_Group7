@@ -60,6 +60,7 @@ public class Msg {
         TD_UpdateDisplay,    // Update Display
         TD_MouseClicked,    // Mouse Clicked
         TD_TimesUp,
+        TD_Freeze,
         CR_CardInserted,    // Card inserted
         CR_CardRemoved,        // Card removed
         CR_EjectCard,        // Eject card
@@ -74,6 +75,8 @@ public class Msg {
         AP_PrintCompleted,  // Print complete
         AP_OutOfPaper,
         AP_Jam,
+        AP_AdviceTaken,
+        AP_TimesUp,
         BZ_ShortBuzz,
         BZ_LongBuzz,
         BZ_Stop,
