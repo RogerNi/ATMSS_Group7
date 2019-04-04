@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.logging.Logger;
 
 
 //======================================================================
@@ -58,28 +59,29 @@ public class ATMSS extends AppThread {
         currentRun.forward(msg);
         TransMsg transMsg = currentRun.collect();
         while (transMsg != null) {
-            log.info("Receive transMsg with Type: "+transMsg.msg.getType());
-            switch (transMsg.msg.getType()){
+            log.info("Receive transMsg with Type: " + transMsg.msg.getType());
+            switch (transMsg.msg.getType()) {
                 case ACT_AbortNow:
                     activities.clear();
                     log.warning("Activity triggers ACT_AbortNow!");
                 case ACT_Abort:
-                    Arrays.stream(transMsg.msg.getDetails().split(";",-1)).forEach(x -> activities.add(x));
+                    Arrays.stream(transMsg.msg.getDetails().split(":", -1)).forEach(x -> activities.add(x));
                     String top_act = activities.poll();
                     if (top_act.equals("End")) {
                         log.info("Activity triggers End!");
                         currentRun = null;
                         cardNum = cred = "";
                         activities.clear();
-                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "")); // Resume to init screen
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F")); // Resume to init screen
                     } else {
-                        log.info("Change activity to " + top_act);
-                        changeAct(top_act); // change to the top of the queue
+                        String [] acts = top_act.split(",");
+                        log.info("Change activity to " + acts[0]);
+                        changeAct(acts[0],acts[acts.length-1]); // change to the top of the queue
                     }
                     return;
                 case BAMS:
                     String reply = "";
-                    String[] params = transMsg.msg.getDetails().split(":",-1);
+                    String[] params = transMsg.msg.getDetails().split(":", -1);
                     log.info("Receive BAMS request: " + params[0]);
                     try {
                         switch (params[0]) {
@@ -124,12 +126,12 @@ public class ATMSS extends AppThread {
     }
 
 
-    private void changeAct(String className) {
+    private void changeAct(String className, String detail) {
         try {
-            Class[] args = {MBox.class, String.class};
+            Class[] args = {MBox.class, String.class, Logger.class};
             Class activity = Class.forName("ATMSS.ATMSS." + className);
-            currentRun = (Activity) activity.getConstructor(args).newInstance(mbox, id);
-            redirect(new Msg(id, mbox, Msg.Type.ACT_Start, ""));
+            currentRun = (Activity) activity.getConstructor(args).newInstance(mbox, id, log);
+            redirect(new Msg(id, mbox, Msg.Type.ACT_Start, detail));
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
@@ -164,9 +166,9 @@ public class ATMSS extends AppThread {
         keypadMBox = appKickstarter.getThread("KeypadHandler").getMBox();
         touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
 //        cashDispenserMBox = appKickstarter.getThread("").getMBox();
-//        cashDepositMBox = appKickstarter.getThread("").getMBox();
-//        advicePrinterMBox = appKickstarter.getThread("").getMBox();
-//        buzzerMBox = appKickstarter.getThread("").getMBox();
+        cashDepositMBox = appKickstarter.getThread("CashDepositHandler").getMBox();
+        advicePrinterMBox = appKickstarter.getThread("AdvicePrinterHandler").getMBox();
+        buzzerMBox = appKickstarter.getThread("BuzzerHandler").getMBox();
 
         MBoxes = new Hashtable<>();
 
@@ -174,10 +176,11 @@ public class ATMSS extends AppThread {
         MBoxes.put("k", keypadMBox);
         MBoxes.put("td", touchDisplayMBox);
 //        MBoxes.put("cd", cashDispenserMBox);
-//        MBoxes.put("cdc", cashDepositMBox);
-//        MBoxes.put("ap", advicePrinterMBox);
-//        MBoxes.put("b", buzzerMBox);
+        MBoxes.put("cdc", cashDepositMBox);
+        MBoxes.put("ap", advicePrinterMBox);
+        MBoxes.put("b", buzzerMBox);
 
+        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F"));
 
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();
@@ -190,7 +193,7 @@ public class ATMSS extends AppThread {
                     cardNum = msg.getDetails();
                     cred = "";
                     // Change to Login
-                    changeAct("Login");
+                    changeAct("Login","");
                     break;
 
                 case CR_Info:
@@ -198,7 +201,7 @@ public class ATMSS extends AppThread {
                     cardNum = msg.getDetails();
                     cred = "";
                     // Change to Login
-                    changeAct("Login");
+                    changeAct("Login","");
                     break;
 
                 case CR_MachError:
@@ -228,6 +231,7 @@ public class ATMSS extends AppThread {
 
                 case KP_KeyPressed:
 //                    Buzzer Mbox short buzz
+                    buzzerMBox.send(new Msg(id,mbox, Msg.Type.BZ_ShortBuzz,""));
                     if (currentRun != null) {
                         redirect(msg);
 //                      log.warning(id + ": unknown message type: [" + msg + "]");
@@ -253,7 +257,10 @@ public class ATMSS extends AppThread {
 
     // Initializing Function
     private void init() {
-
+        currentRun = null;
+        cardNum = cred = "";
+        activities.clear();
+        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F")); // Resume to init screen
     }
 
     // Assistant Function

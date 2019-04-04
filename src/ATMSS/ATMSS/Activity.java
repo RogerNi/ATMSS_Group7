@@ -5,18 +5,20 @@ import AppKickstarter.misc.Msg;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Logger;
 
 public abstract class Activity {
 
     MBox masterMBox;
     String masterId;
-
+    Logger log;
 //    Activity sub = null;
 
-    public Activity(MBox mMbox, String mId){
+    public Activity(MBox mMbox, String mId, Logger log){
         msgQueue = new LinkedList<>();
         masterId = mId;
         masterMBox = mMbox;
+        this.log = log;
     }
 
     Queue<TransMsg> msgQueue;
