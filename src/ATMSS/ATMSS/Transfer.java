@@ -65,7 +65,7 @@ public class Transfer extends Activity {
                     addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");
                     addQueue(BAMS, "transfer:" + send[0] + ":" + send[1] + ":" + send[2], "");
                     advice = new AdviceTemp("Transfer");
-                    advice.setAccount("from" + send[0] + "to" + send[1]);
+                    advice.setAccount("from：" + send[0] + " to：" + send[1]);
                     advice.setAmount(send[2]);
                 } else if (msg.getDetails().equals("Erase")) {
                     inBuffer.clear();
