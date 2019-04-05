@@ -90,6 +90,11 @@ public class Msg {
         CD_Complete,
         CD_TimeOut,
         CD_Insufficient,
+        CD_InvalidAmount,
+        CD_Insufficient100HKDNotes,
+        CD_CashPrepared,
+        CD_CashRetain,
+        CD_Timeout,
         ACT_Start,          // Activity Start
         ACT_Abort,          // Activity Stop
         ACT_AbortNow,       // Directly Abort, delete Queue
