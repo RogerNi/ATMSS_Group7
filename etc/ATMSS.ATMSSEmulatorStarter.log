@@ -1,233 +1,240 @@
-190405-15:18:30 [INFO] -- 
-190405-15:18:30 [INFO] -- 
-190405-15:18:30 [INFO] -- ============================================================
-190405-15:18:30 [INFO] -- ATMSSStarter: Application Starting...
-190405-15:18:32 [INFO] -- timer: starting...
-190405-15:18:32 [INFO] -- Properties Read Successfully
-190405-15:18:32 [INFO] -- ATMSS: starting...
-190405-15:18:32 [INFO] -- CashDepositHandler: starting...
-190405-15:18:32 [INFO] -- CardReaderHandler: starting...
-190405-15:18:32 [INFO] -- TouchDisplayHandler: starting...
-190405-15:18:32 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:ATM
+190405-17:42:28 [INFO] -- 
+190405-17:42:28 [INFO] -- 
+190405-17:42:28 [INFO] -- ============================================================
+190405-17:42:28 [INFO] -- ATMSSStarter: Application Starting...
+190405-17:42:31 [INFO] -- timer: starting...
+190405-17:42:31 [INFO] -- CardReaderHandler: starting...
+190405-17:42:31 [INFO] -- CashDepositHandler: starting...
+190405-17:42:31 [INFO] -- Properties Read Successfully
+190405-17:42:31 [INFO] -- KeypadHandler: starting...
+190405-17:42:31 [INFO] -- AdvicePrinterHandler: starting...
+190405-17:42:31 [INFO] -- BuzzerHandler: starting...
+190405-17:42:31 [INFO] -- TouchDisplayHandler: starting...
+190405-17:42:31 [INFO] -- ATMSS: starting...
+190405-17:42:31 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:ATM
 Insert Card Please:F
-190405-15:18:32 [INFO] -- BuzzerHandler: starting...
-190405-15:18:32 [INFO] -- AdvicePrinterHandler: starting...
-190405-15:18:32 [INFO] -- KeypadHandler: starting...
-190405-15:18:32 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:32 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:37 [INFO] -- CardInfo: 123456789098
-190405-15:18:37 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:37 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Input PIN:T:PIN from current Activity to td
-190405-15:18:37 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Input PIN:T:PIN
-190405-15:18:37 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:39 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:39 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:* from current Activity to td
-190405-15:18:39 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:39 [INFO] -- TouchDisplayHandler: update display -- 1:*
-190405-15:18:39 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:39 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:39 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:** from current Activity to td
-190405-15:18:39 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:39 [INFO] -- TouchDisplayHandler: update display -- 1:**
-190405-15:18:39 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:40 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:40 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:*** from current Activity to td
-190405-15:18:40 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:40 [INFO] -- TouchDisplayHandler: update display -- 1:***
-190405-15:18:40 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:40 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:40 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:**** from current Activity to td
-190405-15:18:40 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:40 [INFO] -- TouchDisplayHandler: update display -- 1:****
-190405-15:18:40 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:41 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:41 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:***** from current Activity to td
-190405-15:18:41 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:41 [INFO] -- TouchDisplayHandler: update display -- 1:*****
-190405-15:18:41 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:41 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:41 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:****** from current Activity to td
-190405-15:18:41 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
-190405-15:18:41 [INFO] -- TouchDisplayHandler: update display -- 1:******
-190405-15:18:41 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:42 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:42 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
-190405-15:18:42 [INFO] -- Receive transMsg with Type: BAMS
-190405-15:18:42 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
-190405-15:18:42 [INFO] -- Receive BAMS request: login
-190405-15:18:42 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:42 [INFO] -- BuzzerHandler: terminating...
-190405-15:18:44 [INFO] -- Reply from BAMS: login:40243
-190405-15:18:44 [INFO] -- Login Activity: CRED: 40243
-190405-15:18:44 [INFO] -- Receive transMsg with Type: ACT_CRED
-190405-15:18:44 [INFO] -- ATMSS: Cred Update to 40243
-190405-15:18:44 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:18:44 [INFO] -- Change activity to MainMenu
-190405-15:18:44 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:44 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
+190405-17:42:31 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:31 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:36 [INFO] -- CardInfo: 123456789098
+190405-17:42:36 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:36 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Input PIN:T:PIN from current Activity to td
+190405-17:42:36 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Input PIN:T:PIN
+190405-17:42:36 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:39 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:39 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:* from current Activity to td
+190405-17:42:39 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:39 [INFO] -- TouchDisplayHandler: update display -- 1:*
+190405-17:42:39 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:39 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:39 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:** from current Activity to td
+190405-17:42:39 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:39 [INFO] -- TouchDisplayHandler: update display -- 1:**
+190405-17:42:39 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:39 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:39 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:*** from current Activity to td
+190405-17:42:39 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:39 [INFO] -- TouchDisplayHandler: update display -- 1:***
+190405-17:42:39 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:40 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:40 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:**** from current Activity to td
+190405-17:42:40 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:40 [INFO] -- TouchDisplayHandler: update display -- 1:****
+190405-17:42:40 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:40 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:40 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:***** from current Activity to td
+190405-17:42:40 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:40 [INFO] -- TouchDisplayHandler: update display -- 1:*****
+190405-17:42:40 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:40 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:40 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 1:****** from current Activity to td
+190405-17:42:40 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- 0
+190405-17:42:40 [INFO] -- TouchDisplayHandler: update display -- 1:******
+190405-17:42:40 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:41 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:41 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
+190405-17:42:41 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:42:41 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
+190405-17:42:41 [INFO] -- Receive BAMS request: login
+190405-17:42:41 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:41 [INFO] -- BuzzerHandler: terminating...
+190405-17:42:44 [INFO] -- Reply from BAMS: login:95807
+190405-17:42:44 [INFO] -- Login Activity: CRED: 95807
+190405-17:42:44 [INFO] -- Receive transMsg with Type: ACT_CRED
+190405-17:42:44 [INFO] -- ATMSS: Cred Update to 95807
+190405-17:42:44 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:42:44 [INFO] -- Change activity to MainMenu
+190405-17:42:44 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:44 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
 Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F from current Activity to td
-190405-15:18:44 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- Enter
-190405-15:18:45 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
+190405-17:42:44 [INFO] -- Redirect current message: KeypadHandler (KP_KeyPressed) -- Enter
+190405-17:42:44 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
 Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F
-190405-15:18:45 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:18:47 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:18:47 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:47 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
-190405-15:18:47 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:18:47 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
-190405-15:18:47 [INFO] -- Change activity to CheckBalance
-190405-15:18:47 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:47 [INFO] -- Check Balance Activity: Get Msg: Type: ACT_Start, Msg: CheckBalance
-190405-15:18:47 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:47 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait!:F from current Activity to td
-190405-15:18:47 [INFO] -- Receive transMsg with Type: BAMS
-190405-15:18:47 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait!:F
-190405-15:18:47 [INFO] -- Receive BAMS request: getAcc
-190405-15:18:47 [INFO] -- Send BAMS Request to server: cardNum: 123456789098 cred: 40243
-190405-15:18:47 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:48 [INFO] -- Reply from BAMS: getAcc:111-222-334/111-222-335/
-190405-15:18:48 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: getAcc:111-222-334/111-222-335/
-190405-15:18:48 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:48 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F from current Activity to td
-190405-15:18:53 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F
-190405-15:18:53 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:18:54 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:18:54 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
-190405-15:18:54 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:54 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait.:F from current Activity to td
-190405-15:18:54 [INFO] -- Receive transMsg with Type: BAMS
-190405-15:18:54 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait.:F
-190405-15:18:54 [INFO] -- Receive BAMS request: enquiry
-190405-15:18:54 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:18:54 [INFO] -- Reply from BAMS: enquiry:2100.0
-190405-15:18:54 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: enquiry:2100.0
-190405-15:18:54 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:18:54 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Account Balance
+190405-17:42:44 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:42:45 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:42:45 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:45 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
+190405-17:42:45 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:42:45 [INFO] -- Change activity to CheckBalance
+190405-17:42:45 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
+190405-17:42:45 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:45 [INFO] -- Check Balance Activity: Get Msg: Type: ACT_Start, Msg: CheckBalance
+190405-17:42:45 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:45 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait!:F from current Activity to td
+190405-17:42:45 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:42:45 [INFO] -- Receive BAMS request: getAcc
+190405-17:42:45 [INFO] -- Send BAMS Request to server: cardNum: 123456789098 cred: 95807
+190405-17:42:45 [INFO] -- Reply from BAMS: getAcc:111-222-334/111-222-335/
+190405-17:42:45 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: getAcc:111-222-334/111-222-335/
+190405-17:42:45 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:45 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F from current Activity to td
+190405-17:42:48 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait!:F
+190405-17:42:48 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:51 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F
+190405-17:42:51 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:42:53 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:42:53 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
+190405-17:42:53 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:53 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait.:F from current Activity to td
+190405-17:42:53 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:42:53 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait.:F
+190405-17:42:53 [INFO] -- Receive BAMS request: enquiry
+190405-17:42:53 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:42:53 [INFO] -- Reply from BAMS: enquiry:2100.0
+190405-17:42:53 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: enquiry:2100.0
+190405-17:42:53 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:53 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Account Balance
 2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F from current Activity to td
-190405-15:18:57 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Account Balance
+190405-17:42:56 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Account Balance
 2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F
-190405-15:18:57 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:19:00 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:19:00 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
-190405-15:19:00 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:19:00 [INFO] -- Change activity to MainMenu
-190405-15:19:00 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:00 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
+190405-17:42:56 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:42:59 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:42:59 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
+190405-17:42:59 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:42:59 [INFO] -- Change activity to MainMenu
+190405-17:42:59 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:42:59 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
 Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F from current Activity to td
-190405-15:19:00 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
+190405-17:42:59 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
 Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F
-190405-15:19:00 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:19:02 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:19:02 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:02 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
-190405-15:19:02 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:19:02 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
-190405-15:19:02 [INFO] -- Change activity to CheckBalance
-190405-15:19:02 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:02 [INFO] -- Check Balance Activity: Get Msg: Type: ACT_Start, Msg: CheckBalance
-190405-15:19:02 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:02 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait!:F from current Activity to td
-190405-15:19:02 [INFO] -- Receive transMsg with Type: BAMS
-190405-15:19:02 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait!:F
-190405-15:19:02 [INFO] -- Receive BAMS request: getAcc
-190405-15:19:02 [INFO] -- Send BAMS Request to server: cardNum: 123456789098 cred: 40243
-190405-15:19:02 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:02 [INFO] -- Reply from BAMS: getAcc:111-222-334/111-222-335/
-190405-15:19:02 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: getAcc:111-222-334/111-222-335/
-190405-15:19:02 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:02 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F from current Activity to td
-190405-15:19:08 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F
-190405-15:19:08 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:19:09 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:19:09 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
-190405-15:19:09 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:09 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait.:F from current Activity to td
-190405-15:19:09 [INFO] -- Receive transMsg with Type: BAMS
-190405-15:19:09 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait.:F
-190405-15:19:09 [INFO] -- Receive BAMS request: enquiry
-190405-15:19:09 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:09 [INFO] -- Reply from BAMS: enquiry:2100.0
-190405-15:19:09 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: enquiry:2100.0
-190405-15:19:09 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:09 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Account Balance
+190405-17:42:59 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:03 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:03 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:03 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
+190405-17:43:03 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:43:03 [INFO] -- Change activity to CheckBalance
+190405-17:43:03 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
+190405-17:43:03 [INFO] -- Check Balance Activity: Get Msg: Type: ACT_Start, Msg: CheckBalance
+190405-17:43:03 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:03 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:03 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait!:F from current Activity to td
+190405-17:43:03 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:43:03 [INFO] -- Receive BAMS request: getAcc
+190405-17:43:03 [INFO] -- Send BAMS Request to server: cardNum: 123456789098 cred: 95807
+190405-17:43:03 [INFO] -- Reply from BAMS: getAcc:111-222-334/111-222-335/
+190405-17:43:03 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: getAcc:111-222-334/111-222-335/
+190405-17:43:03 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:03 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F from current Activity to td
+190405-17:43:06 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait!:F
+190405-17:43:06 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:09 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F
+190405-17:43:09 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:11 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:11 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
+190405-17:43:11 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:11 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait.:F from current Activity to td
+190405-17:43:11 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:43:11 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait.:F
+190405-17:43:11 [INFO] -- Receive BAMS request: enquiry
+190405-17:43:11 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:11 [INFO] -- Reply from BAMS: enquiry:2100.0
+190405-17:43:11 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: enquiry:2100.0
+190405-17:43:11 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:11 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Account Balance
 2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F from current Activity to td
-190405-15:19:12 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Account Balance
+190405-17:43:14 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Account Balance
 2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F
-190405-15:19:12 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-190405-15:19:14 [INFO] -- Redirect current message: TD_MouseClicked
-190405-15:19:14 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 2
-190405-15:19:14 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:19:14 [INFO] -- Change activity to Eject
-190405-15:19:14 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:14 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please take away your card:F from current Activity to td
-190405-15:19:14 [INFO] -- Receive transMsg with Type: CR_EjectCard
-190405-15:19:14 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please take away your card:F
-190405-15:19:14 [INFO] -- Redirect Messsage: CR_EjectCard:  from current Activity to cr
-190405-15:19:14 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:14 [INFO] -- Receive transMsg with Type: BZ_LongBuzz
-190405-15:19:14 [INFO] -- Redirect Messsage: BZ_LongBuzz:  from current Activity to b
-190405-15:19:14 [INFO] -- CardReaderHandler: card ejected
-190405-15:19:14 [INFO] -- BuzzerHandler: terminating...
-190405-15:19:20 [INFO] -- CardReaderHandler: card removed
-190405-15:19:20 [INFO] -- Redirect current message: CR_CardRemoved
-190405-15:19:20 [INFO] -- Eject Activity: Card Removed
-190405-15:19:20 [INFO] -- Receive transMsg with Type: BZ_Stop
-190405-15:19:20 [INFO] -- Redirect Messsage: BZ_Stop:  from current Activity to b
-190405-15:19:20 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:20 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Thank you!:F from current Activity to td
-190405-15:19:20 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:19:20 [INFO] -- Change activity to PrintAdvice
-190405-15:19:20 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Thank you!:F
-190405-15:19:20 [INFO] -- Print Advice: Get Msg: Type: ACT_Start Msg: Bank of Group_7
-
-Advice
-Account	111-222-334
-Operation	null
-Amount	2100.0
-Thank you for using our ATM service.
-See you next time!
-190405-15:19:20 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:20 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:20 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Waiting for advice printing:F from current Activity to td
-190405-15:19:20 [INFO] -- Receive transMsg with Type: AP_Print
-190405-15:19:20 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Waiting for advice printing:F
-190405-15:19:20 [INFO] -- Redirect Messsage: AP_Print: Bank of Group_7
-
-Advice
-Account	111-222-334
-Operation	null
-Amount	2100.0
-Thank you for using our ATM service.
-See you next time! from current Activity to ap
-190405-15:19:20 [INFO] -- AdvicePrinterHandler: Print advice...
-190405-15:19:20 [INFO] -- Redirect current message: AP_PrintStarted
-190405-15:19:20 [INFO] -- Print Advice: Get Msg: Type: AP_PrintStarted Msg: null
-190405-15:19:20 [INFO] -- Redirect current message: AP_PrintCompleted
-190405-15:19:20 [INFO] -- Print Advice: Get Msg: Type: AP_PrintCompleted Msg: null
-190405-15:19:20 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
-190405-15:19:20 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please take away your advice!:F from current Activity to td
-190405-15:19:20 [INFO] -- Receive transMsg with Type: BZ_LongBuzz
-190405-15:19:20 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please take away your advice!:F
-190405-15:19:20 [INFO] -- Redirect Messsage: BZ_LongBuzz:  from current Activity to b
-190405-15:19:20 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:20 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:20 [INFO] -- BuzzerHandler: terminating...
-190405-15:19:20 [INFO] -- BuzzerHandler: terminating...
-190405-15:19:24 [INFO] -- Redirect current message: AP_AdviceTaken
-190405-15:19:24 [INFO] -- Print Advice: Get Msg: Type: AP_AdviceTaken Msg: null
-190405-15:19:24 [INFO] -- Receive transMsg with Type: BZ_Stop
-190405-15:19:24 [INFO] -- Redirect Messsage: BZ_Stop:  from current Activity to b
-190405-15:19:24 [INFO] -- Receive transMsg with Type: ACT_Abort
-190405-15:19:24 [INFO] -- Activity triggers End!
-190405-15:19:24 [INFO] -- BuzzerHandler: terminating...
-190405-15:19:29 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:ATM
+190405-17:43:14 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:16 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:16 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
+190405-17:43:16 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:43:16 [INFO] -- Change activity to MainMenu
+190405-17:43:16 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:16 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Welcome!
+Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F from current Activity to td
+190405-17:43:16 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Welcome!
+Please select service.:Check Balance:Withdraw Cash:Deposit Cash:Transfer:End Service:F
+190405-17:43:16 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:17 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:17 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:17 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait:F from current Activity to td
+190405-17:43:17 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:43:17 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait:F
+190405-17:43:17 [INFO] -- Change activity to CheckBalance
+190405-17:43:17 [INFO] -- Check Balance Activity: Get Msg: Type: ACT_Start, Msg: CheckBalance
+190405-17:43:17 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:17 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:17 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait!:F from current Activity to td
+190405-17:43:17 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:43:17 [INFO] -- Receive BAMS request: getAcc
+190405-17:43:17 [INFO] -- Send BAMS Request to server: cardNum: 123456789098 cred: 95807
+190405-17:43:17 [INFO] -- Reply from BAMS: getAcc:111-222-334/111-222-335/
+190405-17:43:17 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: getAcc:111-222-334/111-222-335/
+190405-17:43:17 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:17 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F from current Activity to td
+190405-17:43:20 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait!:F
+190405-17:43:20 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:23 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Please select the account you want to check:111-222-334:111-222-335:F
+190405-17:43:23 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:27 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:27 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 0
+190405-17:43:27 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:27 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please Wait.:F from current Activity to td
+190405-17:43:27 [INFO] -- Receive transMsg with Type: BAMS
+190405-17:43:27 [INFO] -- Receive BAMS request: enquiry
+190405-17:43:27 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please Wait.:F
+190405-17:43:27 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:27 [INFO] -- Reply from BAMS: enquiry:2100.0
+190405-17:43:27 [INFO] -- Check Balance Activity: Get Msg: Type: BAMS, Msg: enquiry:2100.0
+190405-17:43:27 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:27 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP2:Account Balance
+2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F from current Activity to td
+190405-17:43:30 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP2:Account Balance
+2100.0:Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F
+190405-17:43:30 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
+190405-17:43:31 [INFO] -- Poll: [29050]: Time's up!
+190405-17:43:31 [INFO] -- PollAck: TouchDisplayHandler is up!
+190405-17:43:31 [INFO] -- BuzzerHandler: terminating...
+190405-17:43:31 [INFO] -- PollAck: CardReaderHandler is up!
+190405-17:43:31 [INFO] -- PollAck: BuzzerHandler is up!
+190405-17:43:31 [INFO] -- PollAck: KeypadHandler is up!
+190405-17:43:31 [INFO] -- PollAck: AdvicePrinterHandler is up!
+190405-17:43:31 [INFO] -- PollAck: CashDepositHandler is up!
+190405-17:43:32 [INFO] -- Redirect current message: TD_MouseClicked
+190405-17:43:32 [INFO] -- Check Balance Activity: Get Msg: Type: TD_MouseClicked, Msg: 3
+190405-17:43:32 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:43:32 [INFO] -- Change activity to Eject
+190405-17:43:32 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:32 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Please take away your card:F from current Activity to td
+190405-17:43:32 [INFO] -- Receive transMsg with Type: CR_EjectCard
+190405-17:43:32 [INFO] -- Redirect Messsage: CR_EjectCard:  from current Activity to cr
+190405-17:43:32 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Please take away your card:F
+190405-17:43:32 [INFO] -- Receive transMsg with Type: BZ_LongBuzz
+190405-17:43:32 [INFO] -- CardReaderHandler: card ejected
+190405-17:43:32 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:32 [INFO] -- Redirect Messsage: BZ_LongBuzz:  from current Activity to b
+190405-17:43:32 [INFO] -- BuzzerHandler: terminating...
+190405-17:43:37 [INFO] -- CardReaderHandler: card removed
+190405-17:43:37 [INFO] -- Redirect current message: CR_CardRemoved
+190405-17:43:37 [INFO] -- Eject Activity: Card Removed
+190405-17:43:37 [INFO] -- Receive transMsg with Type: BZ_Stop
+190405-17:43:37 [INFO] -- Redirect Messsage: BZ_Stop:  from current Activity to b
+190405-17:43:37 [INFO] -- Receive transMsg with Type: TD_UpdateDisplay
+190405-17:43:37 [INFO] -- Redirect Messsage: TD_UpdateDisplay: 0:TEMP1:Thank you!:F from current Activity to td
+190405-17:43:37 [INFO] -- Receive transMsg with Type: ACT_Abort
+190405-17:43:37 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:Thank you!:F
+190405-17:43:37 [INFO] -- Activity triggers End!
+190405-17:43:37 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+190405-17:43:37 [INFO] -- BuzzerHandler: terminating...
+190405-17:43:40 [INFO] -- TouchDisplayHandler: update display -- 0:TEMP1:ATM
 Insert Card Please:F
-190405-15:19:29 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-190405-15:19:32 [INFO] -- Poll: [57630]: Time's up!
-190405-15:19:32 [INFO] -- BuzzerHandler: terminating...
-190405-15:19:32 [INFO] -- PollAck: TouchDisplayHandler is up!
-190405-15:19:32 [INFO] -- PollAck: CardReaderHandler is up!
-190405-15:19:32 [INFO] -- PollAck: AdvicePrinterHandler is up!
-190405-15:19:32 [INFO] -- PollAck: BuzzerHandler is up!
-190405-15:19:32 [INFO] -- PollAck: KeypadHandler is up!
-190405-15:19:32 [INFO] -- PollAck: CashDepositHandler is up!
+190405-17:43:40 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml

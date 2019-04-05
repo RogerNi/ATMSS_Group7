@@ -24,7 +24,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     private String id;
     private Stage myStage;
     private TouchDisplayEmulatorController touchDisplayEmulatorController;
-    //private boolean sleep;
+    private boolean sleep;
 
     //------------------------------------------------------------
     // TouchDisplayEmulator
@@ -32,6 +32,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 	super(id, atmssStarter);
 	this.atmssStarter = atmssStarter;
 	this.id = id;
+	this.sleep=false;
     } // TouchDisplayEmulator
 
 
@@ -60,8 +61,10 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 
     //------------------------------------------------------------
     // handleUpdateDisplay
-    protected void handleUpdateDisplay(Msg msg) {
+    protected boolean handleUpdateDisplay(Msg msg) {
 	log.info(id + ": update display -- " + msg.getDetails());
+
+	this.sleep=false;
 
 	//According to the protocol that my teammates and I discussed, we separate the
 	// parameters in msg.details by colon.
@@ -76,7 +79,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 				//According that protocol, the second parameter tells the screen which template to use.
 				//TEMP1 means the touch screen use the first template, i.e. the one with nothing in it
 				//I will add dynamic contents according to the instruction given by ATMSS
-				reloadStage("TouchDisplayEmulator.fxml", params);
+				this.sleep=reloadStage("TouchDisplayEmulator.fxml", params);
 				//According that protocol, the third parameter tells the screen the main text.
 				//this.touchDisplayEmulatorController.setMainText(params[2]);
 				break;
@@ -125,13 +128,41 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 		log.severe(id + ": update display with unknown display type -- " + msg.getDetails());
 		break;
 	}*/
-    } // handleUpdateDisplay
+		return sleep;
+	} // handleUpdateDisplay
 
 
     //------------------------------------------------------------
     // reloadStage
-    private void reloadStage(String fxmlFName, String[] params) {
+    private boolean reloadStage(String fxmlFName, String[] params) {
         TouchDisplayEmulator touchDisplayEmulator = this;
+
+
+		//One of my teammate ask me to let the touch screen to show its content to user for at least 3 seconds
+		//if it use template 1 and display no input box in order to let the user clearly
+		//see the texts on screen
+		//This seemingly simple functionality turns out to be very difficult ti implement
+		//If I let the thread sleep here, since updating display is asynchronous, the updating will
+		//also pause here, which is undesirable. After try a lot of unsuccessful method (including
+		//create another thread and pause it, then join), I come up with this method: let the controller
+		//send freeze signal to handler, then let this thread continue. The handler will pause itself upon
+		//receiving this signal, it pause itself without affecting current updating. But this is still unsatisfactory.
+		//If ATMSS send me 2 consecutive singnals, the concurrency control has problems.
+		//At last, I let the reloadStage and handleUpdateDisplay to return a boolean variable to tell the
+		//handler thread whether to freeze or not. This attempt succeeds. A little point is that I set
+		//the value of "sleep" not in "runLater" part but here so that it can work correctly.
+        if(fxmlFName.equals("TouchDisplayEmulator.fxml"))
+		{
+			if(params[3].equals("F"))
+			{
+				//My teammate said that maybe ATMSS will send me an extra parameter to instruct screen not to sleep
+				//If that extra parameter doesn't exist or is "S", the screen will freeze. Otherwise, it doesn't freeze.
+				if(params.length<=4 || params[4].equals("S"))
+				{
+					this.sleep=true;
+				}
+			}
+		}
 
 
 
@@ -187,12 +218,17 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 						//also pause here, which is undesirable. After try a lot of unsuccessful method (including
 						//create another thread and pause it, then join), I come up with this method: let the controller
 						//send freeze signal to handler, then let this thread continue. The handler will pause itself upon
-						//receiving this signal, it pause itself without affecting current updating.
+						//receiving this signal, it pause itself without affecting current updating. But this is still unsatisfactory.
+						//If ATMSS send me 2 consecutive singnals, the concurrency control has problems.
+						//At last, I let the reloadStage and handleUpdateDisplay to return a boolean variable to tell the
+						//handler thread whether to freeze or not. This attempt succeeds. A little point is that I set\
+						//the value of "sleep" not here because it is "runLater". I set it at beginning of this method.
 						//sleep=true;
 //						Freeze f=new Freeze();
 //						f.start();
 //						f.join();
-						touchDisplayEmulatorController.freeze();
+						//touchDisplayEmulatorController.freeze();
+						//sleep=true;
 					}
                     break;
                 case "TouchDisplayMainMenu.fxml":
@@ -246,13 +282,24 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 		}
 	    }
 	});
+        return sleep;
     } // reloadStage
+
+
+	protected void handleTimeout()
+	{
+		super.handleTimeout();
+		//Notify the controller that no need to cancel the timer
+		this.touchDisplayEmulatorController.setTD_timerId(-1);
+	}
 
 	/*public boolean isSleep() {
 		return sleep;
-	}
+	}*/
 
-	public void setSleep(boolean sleep) {
+	/*public void setSleep(boolean sleep) {
 		this.sleep = sleep;
 	}*/
+
+
 } // TouchDisplayEmulator
