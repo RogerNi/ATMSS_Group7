@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="All hardware except CashDispenser Added but not tested!!">
-      <change afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/PrintAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" afterDir="false" />
+    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="All hardware implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/ATM.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/etc/ATM.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" beforeDir="false" afterPath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Eject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Eject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestBAMSHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestBAMSHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-398">
+            <state relative-caret-position="-438">
               <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -125,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            <state relative-caret-position="196">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#219#220#0" expanded="true" />
@@ -139,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="91">
-              <caret line="69" column="54" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="54" />
+              <caret line="49" column="94" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -236,10 +220,10 @@
         <option value="$PROJECT_DIR$/etc/ATM.cfg" />
         <option value="$PROJECT_DIR$/src/TestBAMSHandler.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/PrintAdvice.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" />
       </list>
     </option>
   </component>
@@ -332,7 +316,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554448303732" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554448711569" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BAMSHandler-v01.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -487,7 +471,7 @@
       <workItem from="1553586463112" duration="17863000" />
       <workItem from="1553752779428" duration="20037000" />
       <workItem from="1553941049905" duration="34973000" />
-      <workItem from="1554397382171" duration="5569000" />
+      <workItem from="1554397382171" duration="6000000" />
     </task>
     <task id="LOCAL-00001" summary="Update State Indicator">
       <created>1553600820262</created>
@@ -552,17 +536,31 @@
       <option name="project" value="LOCAL" />
       <updated>1554388961951</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="All hardware implemented">
+      <created>1554448329556</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1554448329556</updated>
+    </task>
+    <task id="LOCAL-00011" summary="All hardware implemented">
+      <created>1554448338907</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1554448338907</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78442000" />
+    <option name="totallyTimeSpent" value="78873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19352227" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19352227" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -571,7 +569,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32906765" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32906765" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32906765" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -641,7 +639,8 @@
     <MESSAGE value="Touch Screen added" />
     <MESSAGE value="Touch Screen updated" />
     <MESSAGE value="All hardware except CashDispenser Added but not tested!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="All hardware except CashDispenser Added but not tested!!" />
+    <MESSAGE value="All hardware implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="All hardware implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -982,16 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="69" column="54" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -1016,16 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-398">
-          <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/PrintAdvice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -1040,12 +1019,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        <state relative-caret-position="196">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#219#220#0" expanded="true" />
             <element signature="e#257#258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-438">
+          <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="49" column="94" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

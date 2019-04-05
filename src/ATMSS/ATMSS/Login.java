@@ -47,7 +47,7 @@ public class Login extends Activity {
                     if (msg.getDetails().equals("00") || msg.getDetails().equals(".") || msg.getDetails().equals(""))
                         break;
                     inBuffer.buff(msg.getDetails().toCharArray()[0]);
-                    addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get(), "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get().replaceAll("[0-9]","*"), "td");
                     // Update Display
                 }
                 break;
