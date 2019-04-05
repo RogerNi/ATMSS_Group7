@@ -25,16 +25,18 @@ public class CheckBalance extends Activity {
 
     @Override
     void forward(Msg msg) {
+        log.info("Check Balance Activity: Get Msg: Type: " +msg.getType()+ ", Msg: "+msg.getDetails());
         switch (msg.getType()) {
+
             case ACT_Start:
                 // BAMS Check_Balance
-                if (msg.getDetails().equals("")) {
+                if (msg.getDetails().equals("CheckBalance")) {
                     addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
                     addQueue(BAMS, "getAcc", "");
                 } else {
                     stage = 4;
                     addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
-                    addQueue(BAMS, "enquiry:" + msg.getDetails(), "");
+                    addQueue(BAMS, "enquiry:" + msg.getDetails().split(",")[1], "");
                 }
                 break;
             case KP_KeyPressed:
@@ -71,6 +73,7 @@ public class CheckBalance extends Activity {
                 }
                 break;
             case BAMS:
+
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("enquiry")) {
                     // Show Enquiry Result

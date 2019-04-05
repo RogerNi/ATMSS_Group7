@@ -66,7 +66,10 @@ public class ATMSS extends AppThread {
                     log.warning("Activity triggers ACT_AbortNow!");
                 case ACT_Abort:
                     Arrays.stream(transMsg.msg.getDetails().split(":", -1)).forEach(x -> activities.add(x));
-                    String top_act = activities.poll();
+                    String top_act = "";
+                    do {
+                        top_act = activities.poll();
+                    } while (top_act.equals(""));
                     if (top_act.equals("End")) {
                         log.info("Activity triggers End!");
                         currentRun = null;
@@ -89,6 +92,7 @@ public class ATMSS extends AppThread {
                                 reply = bams.login(cardNum, params[1]);
                                 break;
                             case "getAcc":
+                                log.info("Send BAMS Request to server: cardNum: "+cardNum+" cred: "+cred);
                                 reply = bams.getAccounts(cardNum, cred);
                                 break;
                             case "withdraw":
@@ -113,8 +117,8 @@ public class ATMSS extends AppThread {
                     currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
                     break;
                 case ACT_CRED:
-                    cred = msg.getDetails();
-                    log.info("Cred Update");
+                    cred = transMsg.msg.getDetails();
+                    log.info("ATMSS: Cred Update to "+cred);
                     break;
                 default:
                     log.info("Redirect Messsage: " + transMsg.msg.getType() + ": " + transMsg.msg.getDetails() + " from current Activity to " + transMsg.destination);
@@ -181,7 +185,7 @@ public class ATMSS extends AppThread {
         MBoxes.put("b", buzzerMBox);
 
         touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F"));
-
+        buzzerMBox.send(new Msg(id,mbox, Msg.Type.BZ_ShortBuzz,""));
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();
 
@@ -243,6 +247,7 @@ public class ATMSS extends AppThread {
 
                 default:
                     if (currentRun != null) {
+                        log.info("Redirect current message: " + msg.getType());
                         redirect(msg);
 //                      log.warning(id + ": unknown message type: [" + msg + "]");
 //                        log.info("Redirect current message: " + msg);

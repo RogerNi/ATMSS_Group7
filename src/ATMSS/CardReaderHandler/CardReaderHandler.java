@@ -35,8 +35,14 @@ public class CardReaderHandler extends AppThread {
 		    break;
 
 		case CR_CardRemoved:
+			atmss.send(new Msg(id, mbox, Msg.Type.CR_CardRemoved, msg.getDetails()));
 		    handleCardRemove();
 		    break;
+
+			case TimesUp:
+				atmss.send(new Msg(id,mbox,Msg.Type.CR_TimeOut, msg.getDetails()));
+				break;
+
 
 		case Poll:
 		    atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));

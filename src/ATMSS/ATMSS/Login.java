@@ -67,6 +67,7 @@ public class Login extends Activity {
                     } else {
                         // Update credit and exit Activity
                         addQueue(Msg.Type.ACT_CRED, reply[1], "");
+                        log.info("Login Activity: CRED: "+reply[1]);
                         addQueue(Msg.Type.ACT_Abort, "MainMenu", "");
                     }
                 }
