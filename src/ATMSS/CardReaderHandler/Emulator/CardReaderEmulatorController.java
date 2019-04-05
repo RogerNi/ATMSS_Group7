@@ -58,11 +58,13 @@ public class CardReaderEmulatorController {
 		break;
 
 	    case "Insert Card":
-		if (cardNumField.getText().length() != 0) {
-		    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
-		    cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
-		    cardStatusField.setText("Card Inserted");
-		}
+		if(cardStatusField.getText().equals("")||cardStatusField.getText().equals("Card Reader Empty")){
+				if (cardNumField.getText().length() != 0) {
+					cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
+					cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
+					cardStatusField.setText("Card Inserted");
+				}
+			}
 		break;
 
 	    case "Remove Card":
@@ -71,6 +73,10 @@ public class CardReaderEmulatorController {
 		    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardRemoved, cardNumField.getText()));
 		}
 		break;
+
+		case  "Machine Error":
+			cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_MachError, ""));
+			break;
 
 	    default:
 	        log.warning(id + ": unknown button: [" + btn.getText() + "]");

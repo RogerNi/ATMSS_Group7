@@ -2,6 +2,7 @@ package ATMSS.CardReaderHandler.Emulator;
 
 import ATMSS.ATMSSStarter;
 import ATMSS.CardReaderHandler.CardReaderHandler;
+import AppKickstarter.timer.Timer;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ public class CardReaderEmulator extends CardReaderHandler {
     private String id;
     private Stage myStage;
     private CardReaderEmulatorController cardReaderEmulatorController;
+    private int timer_id;
 
     //------------------------------------------------------------
     // CardReaderEmulator
@@ -26,6 +28,7 @@ public class CardReaderEmulator extends CardReaderHandler {
 	super(id, atmssStarter);
 	this.atmssStarter = atmssStarter;
 	this.id = id;
+	this.timer_id = timer_id;
     } // CardReaderEmulator
 
 
@@ -69,6 +72,7 @@ public class CardReaderEmulator extends CardReaderHandler {
 	super.handleCardEject();
 	cardReaderEmulatorController.appendTextArea("Card Ejected");
 	cardReaderEmulatorController.updateCardStatus("Card Ejected");
+	timer_id = Timer.setTimer(id,mbox,60000);
     } // handleCardEject
 
 
@@ -79,5 +83,6 @@ public class CardReaderEmulator extends CardReaderHandler {
 	super.handleCardRemove();
 	cardReaderEmulatorController.appendTextArea("Card Removed");
 	cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
+	Timer.cancelTimer(id, mbox,timer_id);
     } // handleCardRemove
 } // CardReaderEmulator

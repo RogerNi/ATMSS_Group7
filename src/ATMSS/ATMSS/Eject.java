@@ -20,6 +20,7 @@ public class Eject extends Activity {
                 addQueue(Msg.Type.BZ_LongBuzz,"","b");
                 break;
             case CR_CardRemoved:
+                log.info("Eject Activity: Card Removed");
                 addQueue(Msg.Type.BZ_Stop,"","b");
                 addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:Thank you!:F","td");
                 addQueue(Msg.Type.ACT_Abort,"End","");

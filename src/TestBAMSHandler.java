@@ -18,7 +18,7 @@ public class TestBAMSHandler {
         BAMSHandler bams = new BAMSHandler(urlPrefix, initLogger());	// with logger
 
         try {
-            testLogin(bams);
+//            testLogin(bams);
             testGetAcc(bams);
             testWithdraw(bams);
             testDeposit(bams);
@@ -36,7 +36,7 @@ public class TestBAMSHandler {
     // testLogin
     static void testLogin(BAMSHandler bams) throws BAMSInvalidReplyException, IOException {
         System.out.println("Login:");
-        String cred = bams.login("12345678-0", "456123789");
+        String cred = bams.login("123456789098", "000000");
         System.out.println("cred: " + cred);
         System.out.println();
     } // testLogin
@@ -46,7 +46,7 @@ public class TestBAMSHandler {
     // testGetAcc
     static void testGetAcc(BAMSHandler bams) throws BAMSInvalidReplyException, IOException {
         System.out.println("GetAcc:");
-        String accounts = bams.getAccounts("12345678-1", "cred-1");
+        String accounts = bams.getAccounts("123456789098", "28312");
         System.out.println("accounts: " + accounts);
         System.out.println();
     } // testGetAcc
