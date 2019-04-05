@@ -69,10 +69,12 @@ public class CardReaderEmulator extends CardReaderHandler {
     // handleCardEject
     protected void handleCardEject() {
         // fixme
-	super.handleCardEject();
-	cardReaderEmulatorController.appendTextArea("Card Ejected");
-	cardReaderEmulatorController.updateCardStatus("Card Ejected");
-	timer_id = Timer.setTimer(id,mbox,60000);
+		if(cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Inserted")==0){
+			super.handleCardEject();
+			cardReaderEmulatorController.appendTextArea("Card Ejected");
+			cardReaderEmulatorController.updateCardStatus("Card Ejected");
+			timer_id = Timer.setTimer(id,mbox,60000);
+		}
     } // handleCardEject
 
 
@@ -85,4 +87,13 @@ public class CardReaderEmulator extends CardReaderHandler {
 	cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
 	Timer.cancelTimer(id, mbox,timer_id);
     } // handleCardRemove
+
+	//handleCardRetain
+	protected  void handleCardRetain(){
+    	if(cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Ejected")==0){
+			super.handleCardRetain();
+			cardReaderEmulatorController.appendTextArea("Card Retained");
+			cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
+		}
+    }
 } // CardReaderEmulator
