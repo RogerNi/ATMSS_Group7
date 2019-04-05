@@ -120,16 +120,7 @@ public class Transfer extends Activity {
 
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("transfer")) {
-                    // Show Enquiry Result
-//                    if (stage != 4) {
-//                        stage = 3;
-//                        advice.setAmount(reply[1]);
-//                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Account Balance\n" +
-//                                reply[1] + ":Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
-//                    } else {
-//                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Account Balance\n" +
-//                                reply[1] + ":Continue:F", "td");
-//                    }
+
                     stage = 5;
                     addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Finish transfer:" +
                             "Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
