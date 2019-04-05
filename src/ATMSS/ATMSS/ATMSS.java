@@ -111,6 +111,9 @@ public class ATMSS extends AppThread {
                     } catch (Exception e) {
                         e.printStackTrace();
                         log.warning("BAMS_Error: Connection failed!");
+                        touchDisplayMBox.send(new Msg(id,mbox, Msg.Type.TD_UpdateDisplay,"0:TEMP1:ATM lost connection to the server\nPlease try again later\nSorry for any inconvenience:F"));
+                        transMsg = new TransMsg(new Msg(id,mbox, Msg.Type.ACT_AbortNow,"Eject:End"),"");
+                        continue;
                     }
                     reply = params[0] + ":" + reply;
                     log.info("Reply from BAMS: " + reply);
