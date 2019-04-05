@@ -18,7 +18,7 @@ public class TestBAMSHandler {
         BAMSHandler bams = new BAMSHandler(urlPrefix, initLogger());	// with logger
 
         try {
-//            testLogin(bams);
+            testLogin(bams);
             testGetAcc(bams);
             testWithdraw(bams);
             testDeposit(bams);

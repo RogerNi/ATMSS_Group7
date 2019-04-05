@@ -42,12 +42,12 @@ public class Login extends Activity {
                     // Update Display
                     addQueue(Msg.Type.TD_UpdateDisplay, "1::T,PIN", "td");
                 } else if (msg.getDetails().equals("Cancel")) {
-                    addQueue(Msg.Type.ACT_AbortNow,"Eject:End","");
+                    addQueue(Msg.Type.ACT_AbortNow, "Eject:End", "");
                 } else {
                     if (msg.getDetails().equals("00") || msg.getDetails().equals(".") || msg.getDetails().equals(""))
                         break;
                     inBuffer.buff(msg.getDetails().toCharArray()[0]);
-                    addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get().replaceAll("[0-9]","*"), "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get().replaceAll("[0-9]", "*"), "td");
                     // Update Display
                 }
                 break;
@@ -62,12 +62,15 @@ public class Login extends Activity {
 //                            addQueue(Msg.Type.CR_Retain,"","cr");
                             addQueue(Msg.Type.ACT_Abort, "Retain:End", "");
                         } else {
-                            addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:F", "td"); // Retry PIN
+                            addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:T,PIN", "td"); // Retry PIN
                         }
+                    } else if (reply.equals("invalid")) {
+                            addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F","");
+                            addQueue(Msg.Type.ACT_AbortNow,"Eject:End","");
                     } else {
                         // Update credit and exit Activity
                         addQueue(Msg.Type.ACT_CRED, reply[1], "");
-                        log.info("Login Activity: CRED: "+reply[1]);
+                        log.info("Login Activity: CRED: " + reply[1]);
                         addQueue(Msg.Type.ACT_Abort, "MainMenu", "");
                     }
                 }

@@ -13,6 +13,8 @@ public class TouchDisplayHandler extends AppThread {
 	//protected boolean sleep;
 	//private int freezeTimerId;
 
+	private static final long FREEZING_TIME_MILLISECONDS=3000;
+
     public TouchDisplayHandler(String id, AppKickstarter appKickstarter) throws Exception {
 	super(id, appKickstarter);
 	//this.freezeTimerId=-1;
@@ -48,22 +50,32 @@ public class TouchDisplayHandler extends AppThread {
 					e.printStackTrace();
 				}
 			}*/
-		    handleUpdateDisplay(msg);
+			//The
+		    if(handleUpdateDisplay(msg))
+			{
+				try {
+
+					Thread.sleep(this.FREEZING_TIME_MILLISECONDS);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		    break;
 
 		//One of my teammates ask me to tell ATMSS if the touch screen has not interacted with user
 		//or receive instructions from ATMSS for 60 seconds
 		case TimesUp:
+
 			atmss.send(new Msg(this.id, this.mbox, Msg.Type.TD_TimesUp, ""));
 			break;
 
-		case TD_Freeze:
+		/*case TD_Freeze:
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			break;
+			break;*/
 
 		case Poll:
 		    atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
@@ -86,9 +98,17 @@ public class TouchDisplayHandler extends AppThread {
 
     //------------------------------------------------------------
     // handleUpdateDisplay
-    protected void handleUpdateDisplay(Msg msg) {
+	//Due to the need of realising the freezing screen functionality, I need to return a boolean variable.
+    protected boolean handleUpdateDisplay(Msg msg) {
 	log.info(id + ": update display -- " + msg.getDetails());
+	return true;
     } // handleUpdateDisplay
+
+
+	protected void handleTimeout()
+	{
+		log.info(id+": times up!");
+	}
 
 	/*protected boolean isSleep() {
 		return sleep;
