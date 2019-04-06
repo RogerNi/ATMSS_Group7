@@ -86,8 +86,7 @@ public class Transfer extends Activity {
                 if (stage == 1) {
                     stage = 2;
                     send[0] = accs[Integer.valueOf(msg.getDetails())];
-//                    advice = new AdviceTemp("Transfer");
-//                    advice.setAccount(account);
+
                     addQueue(BAMS, "getAcc", "");
                 } else if (stage == 2) {
                     if (Integer.valueOf(msg.getDetails()) < accs.length) {
@@ -120,10 +119,15 @@ public class Transfer extends Activity {
 
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("transfer")) {
-
-                    stage = 5;
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Finish transfer:" +
-                            "Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
+                    if(reply[1] != "-1") {
+                        stage = 5;
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Finish transfer:" +
+                                "Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
+                    }else{
+                        stage = 5;
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Your balance is insufficient:" +
+                                "Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
+                    }
                 } else {
                     // Select Account
                     accs = reply[1].split("/");
