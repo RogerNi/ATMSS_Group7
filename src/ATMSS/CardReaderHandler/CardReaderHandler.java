@@ -27,6 +27,7 @@ public class CardReaderHandler extends AppThread {
 
 	    switch (msg.getType()) {
 		case CR_CardInserted:
+			handleCardInsert();
 		    atmss.send(new Msg(id, mbox, Msg.Type.CR_CardInserted, msg.getDetails()));
 		    break;
 
@@ -35,14 +36,17 @@ public class CardReaderHandler extends AppThread {
 		    break;
 
 		case CR_CardRemoved:
+			handleCardRemove();
 			atmss.send(new Msg(id, mbox, Msg.Type.CR_CardRemoved, msg.getDetails()));
-		    handleCardRemove();
 		    break;
 
 			case TimesUp:
 				atmss.send(new Msg(id,mbox,Msg.Type.CR_TimeOut, msg.getDetails()));
 				break;
 
+			case CR_Retain:
+				handleCardRetain();
+				break;
 
 		case Poll:
 		    atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
@@ -82,4 +86,9 @@ public class CardReaderHandler extends AppThread {
     protected void handleCardRemove() {
 	log.info(id + ": card removed");
     } // handleCardRemove
+
+	//handleCardRetain
+	protected void handleCardRetain()  {
+		log.info(id + ": card retained");
+	} // handleCardRetain
 } // CardReaderHandler

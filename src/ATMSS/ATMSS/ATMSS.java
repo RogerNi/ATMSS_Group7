@@ -125,6 +125,8 @@ public class ATMSS extends AppThread {
                     break;
                 default:
                     log.info("Redirect Messsage: " + transMsg.msg.getType() + ": " + transMsg.msg.getDetails() + " from current Activity to " + transMsg.destination);
+//                    if(transMsg.destination.equals("td"))
+//                        break;
                     MBoxes.get(transMsg.destination).send(transMsg.msg);
                     break;
             }

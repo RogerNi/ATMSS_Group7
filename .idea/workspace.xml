@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Cash Dispenser Added">
+    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Card Reader Updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" beforeDir="false" afterPath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/AppKickstarter/misc/Msg$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/AppKickstarter/misc/Msg$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,82 +23,99 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+            <state relative-caret-position="91">
+              <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="14" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2880#2881#0" expanded="true" />
+                <element signature="e#2920#2921#0" expanded="true" />
+                <element signature="e#3079#3080#0" expanded="true" />
+                <element signature="e#3130#3131#0" expanded="true" />
+                <element signature="e#3202#3203#0" expanded="true" />
+                <element signature="e#3234#3235#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/BAMSHandler-v01.jar!/ATMSS/BAMSHandler/BAMSMsg/EnquiryReq.class">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/Emulator/CashDispenserEmulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="91">
+              <caret line="143" column="25" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Withdraw.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/Emulator/CashDispenserEmulatorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#219#220#0" expanded="true" />
-                <element signature="e#257#258#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="91">
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/CashDispenserHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="97" column="78" selection-start-line="97" selection-start-column="68" selection-end-line="97" selection-end-column="78" />
+            <state relative-caret-position="124">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="96" column="19" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+            <state relative-caret-position="91">
+              <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
               <folding>
-                <element signature="e#645#646#0" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#709#710#0" expanded="true" />
-                <element signature="e#742#743#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-                <element signature="e#798#799#0" expanded="true" />
-                <element signature="e#832#833#0" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulatorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3795">
-              <caret line="174" column="11" selection-start-line="174" selection-start-column="11" selection-end-line="174" selection-end-column="11" />
+            <state relative-caret-position="91">
+              <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/Emulator/AdvicePrinterEmulatorController.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="-3">
+              <caret line="168" column="25" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,7 +138,6 @@
       <find>get</find>
       <find>getType</find>
       <find>0:</find>
-      <find>End</find>
       <find>split</find>
       <find>change</find>
       <find>Removed</find>
@@ -124,6 +148,17 @@
       <find>tim</find>
       <find>timer</find>
       <find>TIME</find>
+      <find>TD_</find>
+      <find>T:P</find>
+      <find>ATM</find>
+      <find>TD_Update</find>
+      <find>TD_Times</find>
+      <find>End</find>
+      <find>TD_Upda</find>
+      <find>Retain</find>
+      <find>run</find>
+      <find>runLater</find>
+      <find>runL</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,7 +187,6 @@
         <option value="$PROJECT_DIR$/src/ATMSS/KeypadHandler/Emulator/KeypadEmulator.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" />
         <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayGUIMainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayGUICfm.fxml" />
         <option value="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulatorController.java" />
@@ -180,14 +214,15 @@
         <option value="$PROJECT_DIR$/etc/ATM.cfg" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/PrintAdvice.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" />
         <option value="$PROJECT_DIR$/src/TestBAMSHandler.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Retain.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/Emulator/AdvicePrinterEmulator.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Withdraw.java" />
         <option value="$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" />
       </list>
     </option>
   </component>
@@ -230,19 +265,6 @@
               <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
               <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppKickstarter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppKickstarter" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,6 +273,36 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
               <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="CardReaderHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="CardReaderHandler" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="CashDepositeCollectorHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="CashDepositeCollectorHandler" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
@@ -258,6 +310,29 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
               <item name="CashDispenserHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="CashDispenserHandler" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="TouchDisplayHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ATMSS" type="462c0819:PsiDirectoryNode" />
+              <item name="TouchDisplayHandler" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
@@ -272,7 +347,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554461486660" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554486033482" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BAMSHandler-v01.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -280,15 +355,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\niron\IdeaProjects\ATMSS_Group7\src\ATMSS" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\niron\IdeaProjects\ATMSS_Group7\sound" />
       <recent name="C:\Users\jckyau\Downloads\comp4107\project\AppKickstarter\ATMStarter\src\ATMSS\TouchDisplayHandler\Emulator" />
       <recent name="C:\Users\jckyau\Downloads\comp4107\project\AppKickstarter\ATMStarter\src\ATMSS\CardReaderHandler\Emulator" />
       <recent name="C:\Users\jckyau\Downloads\comp4107\project\AppKickstarter\ATMStarter\src\ATMSS\KeypadHandler\Emulator" />
       <recent name="C:\Users\jckyau\Downloads\comp4107\project\AppKickstarter\ATMStarter\src\ATMSS\TouchDisplayHandler" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\niron\IdeaProjects\ATMSS_Group7\src\ATMSS" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -428,7 +503,7 @@
       <workItem from="1553752779428" duration="20037000" />
       <workItem from="1553941049905" duration="34973000" />
       <workItem from="1554397382171" duration="7527000" />
-      <workItem from="1554450374113" duration="5089000" />
+      <workItem from="1554450374113" duration="12162000" />
     </task>
     <task id="LOCAL-00001" summary="Update State Indicator">
       <created>1553600820262</created>
@@ -535,15 +610,28 @@
       <option name="project" value="LOCAL" />
       <updated>1554461419530</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Cash Dispenser Added and Msg type fixed">
+      <created>1554461502107</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1554461502107</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Card Reader Updated">
+      <created>1554480388094</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1554480388094</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85489000" />
+    <option name="totallyTimeSpent" value="92562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19676113" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -554,14 +642,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32906765" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32906765" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32906765" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3985375" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32906765" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32906765" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32906765" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
@@ -614,6 +702,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update State Indicator" />
     <MESSAGE value="Add Main Frame for ATMSS implementation" />
@@ -629,41 +727,11 @@
     <MESSAGE value="TouchScreen Display updated" />
     <MESSAGE value="Login Bug fixed" />
     <MESSAGE value="Cash Dispenser Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cash Dispenser Added" />
+    <MESSAGE value="Cash Dispenser Added and Msg type fixed" />
+    <MESSAGE value="Card Reader Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Card Reader Updated" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TouchDisplayHandler/TouchDisplayHandler.java" />
-    <entry file="file://$PROJECT_DIR$/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java" />
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayConfirmation.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayMainMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppKickstarter/timer/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -711,25 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-717">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/TouchDisplayHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulatorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="329" column="64" lean-forward="true" selection-start-line="329" selection-start-column="64" selection-end-line="329" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14243#14244#0" expanded="true" />
-            <element signature="e#14332#14333#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -796,62 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Eject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1472">
-          <caret line="72" column="83" selection-start-line="72" selection-start-column="83" selection-end-line="72" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="83" column="61" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppKickstarter/AppKickstarter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1265">
@@ -865,18 +858,6 @@
           <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -913,35 +894,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#1732#1733#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#1964#1965#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2156#2157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestBAMSHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -967,16 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Retain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/AdvicePrinterHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1051">
@@ -984,44 +930,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/Emulator/AdvicePrinterEmulatorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/Emulator/AdvicePrinterEmulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
           <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3795">
-          <caret line="174" column="11" selection-start-line="174" selection-start-column="11" selection-end-line="174" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1056,8 +968,219 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/CashDispenserHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
+        <state relative-caret-position="2208">
           <caret line="97" column="78" selection-start-line="97" selection-start-column="68" selection-end-line="97" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/AdvicePrinterHandler/Emulator/AdvicePrinterEmulatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/com/sun/javafx/tk/quantum/GlassViewEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="294" selection-start-line="294" selection-end-line="294" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-269">
+          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/TouchDisplayHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="59" column="40" lean-forward="true" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="103" column="20" lean-forward="true" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Retain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1641">
+          <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+          <folding>
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+            <element signature="e#1998#1999#0" expanded="true" />
+            <element signature="e#2038#2039#0" expanded="true" />
+            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2309#2310#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Eject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="45" column="63" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="161" column="1" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="168" column="25" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="14" />
+          <folding>
+            <element signature="e#2880#2881#0" expanded="true" />
+            <element signature="e#2920#2921#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3130#3131#0" expanded="true" />
+            <element signature="e#3202#3203#0" expanded="true" />
+            <element signature="e#3234#3235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/Emulator/CashDispenserEmulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="143" column="25" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/Emulator/CashDispenserEmulatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/AirQuality (solution).java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
         </state>
       </provider>
     </entry>

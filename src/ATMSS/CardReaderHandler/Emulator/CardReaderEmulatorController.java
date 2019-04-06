@@ -58,14 +58,14 @@ public class CardReaderEmulatorController {
 		break;
 
 	    case "Insert Card":
-		if(cardStatusField.getText().equals("")||cardStatusField.getText().equals("Card Reader Empty")){
+			if(cardStatusField.getText().equals("")||cardStatusField.getText().equals("Card Reader Empty")){
 				if (cardNumField.getText().length() != 0) {
 					cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
 					cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
 					cardStatusField.setText("Card Inserted");
 				}
 			}
-		break;
+			break;
 
 	    case "Remove Card":
 	        if (cardStatusField.getText().compareTo("Card Ejected") == 0) {
@@ -97,4 +97,9 @@ public class CardReaderEmulatorController {
     public void appendTextArea(String status) {
 	cardReaderTextArea.appendText(status+"\n");
     } // appendTextArea
+
+	//getStatus
+	public TextField getCardStatusField(){
+    	return cardStatusField;
+	}//getStatus
 } // CardReaderEmulatorController
