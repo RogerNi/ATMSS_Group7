@@ -27,6 +27,7 @@ public class Login extends Activity {
     }
 
     void forward(Msg msg) {
+        label:
         switch (msg.getType()) {
             case ACT_Start:
                 // Change Screen
@@ -34,21 +35,26 @@ public class Login extends Activity {
                 inBuffer.clear();
                 break;
             case KP_KeyPressed:
-                if (msg.getDetails().equals("Enter")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F", "td");
-                    addQueue(Msg.Type.BAMS, "login:" + inBuffer.pop(), "");
-                } else if (msg.getDetails().equals("Erase")) {
-                    inBuffer.clear();
-                    // Update Display
-                    addQueue(Msg.Type.TD_UpdateDisplay, "1::T,PIN", "td");
-                } else if (msg.getDetails().equals("Cancel")) {
-                    addQueue(Msg.Type.ACT_AbortNow, "Eject:End", "");
-                } else {
-                    if (msg.getDetails().equals("00") || msg.getDetails().equals(".") || msg.getDetails().equals(""))
+                switch (msg.getDetails()) {
+                    case "Enter":
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F", "td");
+                        addQueue(Msg.Type.BAMS, "login:" + inBuffer.pop(), "");
                         break;
-                    inBuffer.buff(msg.getDetails().toCharArray()[0]);
-                    addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get().replaceAll("[0-9]", "*"), "td");
-                    // Update Display
+                    case "Erase":
+                        inBuffer.clear();
+                        // Update Display
+                        addQueue(Msg.Type.TD_UpdateDisplay, "1:", "td");
+                        break;
+                    case "Cancel":
+                        addQueue(Msg.Type.ACT_AbortNow, "Eject:End", "");
+                        break;
+                    default:
+                        if (msg.getDetails().equals("00") || msg.getDetails().equals(".") || msg.getDetails().equals(""))
+                            break label;
+                        inBuffer.buff(msg.getDetails().toCharArray()[0]);
+                        addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get().replaceAll("[0-9]", "*"), "td");
+                        // Update Display
+                        break;
                 }
                 break;
             case BAMS:
@@ -65,8 +71,8 @@ public class Login extends Activity {
                             addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:T,PIN", "td"); // Retry PIN
                         }
                     } else if (reply.equals("invalid")) {
-                            addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F","");
-                            addQueue(Msg.Type.ACT_AbortNow,"Eject:End","");
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F", "");
+                        addQueue(Msg.Type.ACT_AbortNow, "Eject:End", "");
                     } else {
                         // Update credit and exit Activity
                         addQueue(Msg.Type.ACT_CRED, reply[1], "");
