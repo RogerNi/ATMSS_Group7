@@ -4,6 +4,7 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import AppKickstarter.timer.Timer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
@@ -26,8 +27,7 @@ public class TouchDisplayEmulatorController {
     private MBox touchDisplayMBox;
     private String currentFXML;
 
-    private int TD_timerId=-1;
-    private static final long TIME_LIMIT=60000;
+
 
     private static final double MAIN_TEXT_FONT_SIZE=20.0;
     private static final double INPUT_FIELD_PREFIX_FONT_SIZE=20.0;
@@ -103,27 +103,21 @@ public class TouchDisplayEmulatorController {
                 {
                     //Button 0 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                    Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "0"));
                 }else if(y>340 && y<410)
                 {
                     //Button 1 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "1"));
                 }else if(y>410 && y<480)
                 {
                     //Button 2 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "2"));
                 }
@@ -133,27 +127,21 @@ public class TouchDisplayEmulatorController {
                 {
                     //Button 3 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "3"));
                 }else if(y>340 && y<410)
                 {
                     //Button 4 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "4"));
                 }else if(y>410 && y<480)
                 {
                     //Button 5 is clicked
                     //Stop timer and start again.
-                    if(this.TD_timerId!=-1)
-                        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                    this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                    this.touchDisplayEmulator.resetTimer();
                     //Tell ATMSS which button is clicked
                     touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "5"));
                 }
@@ -164,18 +152,14 @@ public class TouchDisplayEmulatorController {
             {
                 //Button 0 is clicked
                 //Stop timer and start again.
-                if(this.TD_timerId!=-1)
-                    Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                this.touchDisplayEmulator.resetTimer();
                 //Tell ATMSS which button is clicked
                 touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "0"));
             }else if(x>380 && x<540 && y>390 && y<430)
             {
                 //Button 1 is clicked
                 //Stop timer and start again.
-                if(this.TD_timerId!=-1)
-                    Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-                this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
+                this.touchDisplayEmulator.resetTimer();
                 //Tell ATMSS which button is clicked
                 touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, "1"));
             }
@@ -217,11 +201,6 @@ public class TouchDisplayEmulatorController {
 
     public void setMainText(String mainT)
     {
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-            Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        if(!this.currentFXML.equals("TouchDisplayEmulator.fxml"))
-            this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
         this.mainText.setText(mainT);
         this.mainText.setVisible(true);
         this.log.fine(id+": Set main text to be: "+this.mainText.getText());
@@ -229,11 +208,6 @@ public class TouchDisplayEmulatorController {
 
     public void set6ButtonsText(String[] buttonsText)
     {
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-            Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-
         int len=buttonsText.length;
         if(len<=0)
         {
@@ -286,10 +260,6 @@ public class TouchDisplayEmulatorController {
 
     public void set2ButtonsText(String[] buttonsText)
     {
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-            Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
         this.button0Text.setText(buttonsText[0]);
         this.button0Text.setVisible(true);
         this.log.fine(id+": Set the text of button 0 to be: "+this.button0Text.getText());
@@ -300,11 +270,6 @@ public class TouchDisplayEmulatorController {
 
     public void setInputFieldPrefixAndUnderline(String prefix)
     {
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-            Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        if(!this.currentFXML.equals("TouchDisplayEmulator.fxml"))
-        this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
         //According to our protocol, the ATMSS won't give me a colon, I have to add it here.
         this.inputFieldPrefix.setText(prefix+":");
         this.inputFieldPrefix.setVisible(true);
@@ -313,33 +278,32 @@ public class TouchDisplayEmulatorController {
         this.log.fine(id+": Display input field underline");
     }
 
+    //Other mehtod must be called by reloadStage method, and that part of reloadStage has been surrounded by
+    //runLater block, only this method need to be treated specially: add runLater in this method.
     public void setInputFieldContent(String content)
     {
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-            Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        if(!this.currentFXML.equals("TouchDisplayEmulator.fxml"))
-            this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
-        this.inputFieldContent.setText(content);
-        this.inputFieldContent.setVisible(true);
-        this.log.fine(id+": Set input field content to be: "+this.inputFieldContent.getText());
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    inputFieldContent.setText(content);
+                    inputFieldContent.setVisible(true);
+                    log.fine(id+": Set input field content to be: "+inputFieldContent.getText());
+                } catch (Exception e) {
+                    log.severe(id + ": failed to load ");
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     //Used by TouchScreenEmulator to tell this controller what fxml file I am using
     public void setCurrentPage(String nameOfFXML)
     {
-        System.out.println("Set page: "+nameOfFXML);
-        //Stop timer and start again.
-        if(this.TD_timerId!=-1)
-        Timer.cancelTimer(this.id,this.touchDisplayMBox,this.TD_timerId);
-        if(!nameOfFXML.equals("TouchDisplayEmulator.fxml"))
-        this.TD_timerId=Timer.setTimer(this.id,this.touchDisplayMBox,this.TIME_LIMIT);
         this.currentFXML=nameOfFXML;
     }
 
-    public void setTD_timerId(int TD_timerId) {
-        this.TD_timerId = TD_timerId;
-    }
 
     /*//Return the number of pixels per character.
     private double pixelsPerChar(double fontSize)

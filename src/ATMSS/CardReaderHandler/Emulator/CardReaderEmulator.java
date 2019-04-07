@@ -41,17 +41,19 @@ public class CardReaderEmulator extends CardReaderHandler {
 	String fxmlName = "CardReaderEmulator.fxml";
 	loader.setLocation(CardReaderEmulator.class.getResource(fxmlName));
 	root = loader.load();
-	cardReaderEmulatorController = (CardReaderEmulatorController) loader.getController();
-	cardReaderEmulatorController.initialize(id, atmssStarter, log, this);
-	myStage.initStyle(StageStyle.DECORATED);
-	myStage.setScene(new Scene(root, 350, 470));
-	myStage.setTitle("Card Reader");
-	myStage.setResizable(false);
-	myStage.setOnCloseRequest((WindowEvent event) -> {
-	    atmssStarter.stopApp();
-	    Platform.exit();
-	});
-	myStage.show();
+		Platform.runLater(() -> {
+			cardReaderEmulatorController = (CardReaderEmulatorController) loader.getController();
+			cardReaderEmulatorController.initialize(id, atmssStarter, log, this);
+			myStage.initStyle(StageStyle.DECORATED);
+			myStage.setScene(new Scene(root, 350, 470));
+			myStage.setTitle("Card Reader");
+			myStage.setResizable(false);
+			myStage.setOnCloseRequest((WindowEvent event) -> {
+				atmssStarter.stopApp();
+				Platform.exit();
+			});
+			myStage.show();
+		});
     } // CardReaderEmulator
 
 
@@ -90,7 +92,7 @@ public class CardReaderEmulator extends CardReaderHandler {
 
 	//handleCardRetain
 	protected  void handleCardRetain(){
-    	if(cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Ejected")==0){
+    	if(cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Ejected")==0||cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Inserted")==0){
 			super.handleCardRetain();
 			cardReaderEmulatorController.appendTextArea("Card Retained");
 			cardReaderEmulatorController.updateCardStatus("Card Reader Empty");

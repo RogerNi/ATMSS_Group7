@@ -5,6 +5,7 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -106,23 +107,64 @@ public class AdvicePrinterEmulatorController {
 
     public void setMainText(String adviceText)
     {
-        this.advicePrinterTextArea.setText(adviceText);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    advicePrinterTextArea.setText(adviceText);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set text");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setRemainingPaperText(String num)
     {
-        this.remainingPaperField.setText(num);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    remainingPaperField.setText(num);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set remaining paper field");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setAdviceStatusField(String status)
     {
-        this.adviceStatusField.setText(status);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    adviceStatusField.setText(status);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set status field");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void retainAdvice()
     {
-        this.setMainText("");
-        JOptionPane.showMessageDialog(null, "Advice retained!");
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    setMainText("");
+                    JOptionPane.showMessageDialog(null, "Advice retained!");
+                } catch (Exception e) {
+                    log.severe(id + ": failed to show retaining advice event");
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 
