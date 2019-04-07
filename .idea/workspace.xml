@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Bugs fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,10 +15,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
+            <state relative-caret-position="91">
               <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
             </state>
           </provider>
@@ -70,6 +71,21 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="e#1875#1876#0" expanded="true" />
+                <element signature="e#1916#1917#0" expanded="true" />
+                <element signature="e#1955#1956#0" expanded="true" />
+                <element signature="e#2011#2012#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,18 +110,6 @@
                 <element signature="e#1450#1536#1" />
                 <element signature="e#1594#2209#1" />
                 <element signature="e#1848#2050#1" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,7 +228,6 @@
         <option value="$PROJECT_DIR$/src/AppKickstarter/misc/Msg.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSSStarter.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSSEmulatorStarter.java" />
@@ -237,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/CheckBalance.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java" />
       </list>
     </option>
   </component>
@@ -322,7 +326,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554653665339" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554655235066" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BAMSHandler-v01.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -479,7 +483,7 @@
       <workItem from="1553941049905" duration="34973000" />
       <workItem from="1554397382171" duration="7527000" />
       <workItem from="1554450374113" duration="12162000" />
-      <workItem from="1554536200017" duration="14647000" />
+      <workItem from="1554536200017" duration="15362000" />
     </task>
     <task id="LOCAL-00001" summary="Update State Indicator">
       <created>1553600820262</created>
@@ -628,17 +632,24 @@
       <option name="project" value="LOCAL" />
       <updated>1554653064845</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Bugs fixed">
+      <created>1554653759764</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1554653759764</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107209000" />
+    <option name="totallyTimeSpent" value="107924000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -647,7 +658,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32906765" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32906765" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32906765" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3985375" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -655,7 +666,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32906765" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32906765" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32906765" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32906765" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -976,19 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="e#1875#1876#0" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-            <element signature="e#1955#1956#0" expanded="true" />
-            <element signature="e#2011#2012#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1186,8 +1184,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="91">
           <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

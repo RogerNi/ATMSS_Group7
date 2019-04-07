@@ -5,6 +5,7 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -88,14 +89,18 @@ public class CardReaderEmulatorController {
     //------------------------------------------------------------
     // updateCardStatus
     public void updateCardStatus(String status) {
-	cardStatusField.setText(status);
+        Platform.runLater(() -> {
+            cardStatusField.setText(status);
+        });
     } // updateCardStatus
 
 
     //------------------------------------------------------------
     // appendTextArea
     public void appendTextArea(String status) {
-	cardReaderTextArea.appendText(status+"\n");
+        Platform.runLater(() -> {
+            cardReaderTextArea.appendText(status + "\n");
+        });
     } // appendTextArea
 
 	//getStatus
