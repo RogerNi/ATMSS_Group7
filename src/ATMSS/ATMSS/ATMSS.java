@@ -58,6 +58,7 @@ public class ATMSS extends AppThread {
                         top_act = activities.poll();
                     } while (top_act.equals(""));
                     if (top_act.equals("End")) {
+                        cashDispenserMBox.send(new Msg(id,mbox, Msg.Type.CD_CashAmountLeft,""));
                         log.info("Activity triggers End!");
                         currentRun = null;
                         cardNum = cred = "";
