@@ -16,13 +16,11 @@ public class CashDepositeCollectorEmulator extends CashDepositeCollectorHandler 
     private String id;
     private Stage myStage;
     private CashDepositeCollectorEmulatorController cashDepositeCollectorEmulatorController;
-    private int timer_id;
 
     public CashDepositeCollectorEmulator(String id, ATMSSStarter atmssStarter) {
         super(id, atmssStarter);
         this.atmssStarter = atmssStarter;
         this.id = id;
-        this.timer_id = timer_id;
     }
 
     //------------------------------------------------------------
@@ -34,17 +32,19 @@ public class CashDepositeCollectorEmulator extends CashDepositeCollectorHandler 
         String fxmlName = "CashDepositeCollectorEmulator.fxml";
         loader.setLocation(CashDepositeCollectorEmulator.class.getResource(fxmlName));
         root = loader.load();
-        CashDepositeCollectorEmulatorController cashDepositeCollectorEmulatorController = (CashDepositeCollectorEmulatorController) loader.getController();
-        cashDepositeCollectorEmulatorController.initialize(id, atmssStarter, log, this);
-        myStage.initStyle(StageStyle.DECORATED);
-        myStage.setScene(new Scene(root, 350, 470));
-        myStage.setTitle("Cash Deposite Collector");
-        myStage.setResizable(false);
-        myStage.setOnCloseRequest((WindowEvent event) -> {
-            atmssStarter.stopApp();
-            Platform.exit();
+        Platform.runLater(() -> {
+            cashDepositeCollectorEmulatorController = (CashDepositeCollectorEmulatorController) loader.getController();
+            cashDepositeCollectorEmulatorController.initialize(id, atmssStarter, log, this);
+            myStage.initStyle(StageStyle.DECORATED);
+            myStage.setScene(new Scene(root, 350, 470));
+            myStage.setTitle("Cash Deposite Collector");
+            myStage.setResizable(false);
+            myStage.setOnCloseRequest((WindowEvent event) -> {
+                atmssStarter.stopApp();
+                Platform.exit();
+            });
+            myStage.show();
         });
-        myStage.show();
     }
 
     protected void handleReady() {
@@ -53,4 +53,13 @@ public class CashDepositeCollectorEmulator extends CashDepositeCollectorHandler 
         cashDepositeCollectorEmulatorController.appendTextArea("Ready");
         cashDepositeCollectorEmulatorController.setStatus("Ready");
     }
+
+    protected void handleTimeOut() {
+        // fixme
+        super.handleTimeOut();
+        cashDepositeCollectorEmulatorController.appendTextArea("Retain Invalid Money.");
+        cashDepositeCollectorEmulatorController.setStatus("Clear");
+        cashDepositeCollectorEmulatorController.setNum_Invalid();
+    }
 }
+
