@@ -25,7 +25,6 @@ public class MainMenu extends Activity {
                     addQueue(Msg.Type.ACT_Abort, "Eject:End", "");
                 break;
             case TD_MouseClicked:
-                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F", "td");
                 switch (msg.getDetails()) {
                     case "0":
                         addQueue(Msg.Type.ACT_Abort, "CheckBalance", "");

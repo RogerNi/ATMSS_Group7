@@ -28,20 +28,7 @@ public class ATMSS extends AppThread {
     BAMSHandler bams;
     Properties cfg;
 
-    // Define States
-    private final int INITIALIZE = 0;
-    private final int MAINPAGE = 1;
-    private final int ERROR = -1;
-    private final int INSERTCARD = 10;
-    // +0 for waiting cards, +1 for reading cards, +2 for input pin, +3 for checking pin, +4 for lock card, +5 for Reinput Pin, +8 for communicating, +9 for abort operation
-    private final int DEPOSIT = 20;
-    // +0 for select account, +1 for confirm, +2 for accepted, +8 for communicating, +9 for abort operation
-    private final int WITHDRAWAL = 30;
-    // +0 for select account, +1 for input amount, +8 for communicating, +9 for abort operation
-    private final int TRANSFER = 40;
-    //
-    private final int CHECKBALANCE = 50;
-    //
+    int [] cashLeft = new int[2];
 
     String cardNum;
     String cred;
@@ -75,7 +62,7 @@ public class ATMSS extends AppThread {
                         currentRun = null;
                         cardNum = cred = "";
                         activities.clear();
-                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F")); // Resume to init screen
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
                     } else {
                         String [] acts = top_act.split(",");
                         log.info("Change activity to " + acts[0]);
@@ -174,7 +161,7 @@ public class ATMSS extends AppThread {
         cardReaderMBox = appKickstarter.getThread("CardReaderHandler").getMBox();
         keypadMBox = appKickstarter.getThread("KeypadHandler").getMBox();
         touchDisplayMBox = appKickstarter.getThread("TouchDisplayHandler").getMBox();
-//        cashDispenserMBox = appKickstarter.getThread("").getMBox();
+        cashDispenserMBox = appKickstarter.getThread("CashDispenserHandler").getMBox();
         cashDepositMBox = appKickstarter.getThread("CashDepositHandler").getMBox();
         advicePrinterMBox = appKickstarter.getThread("AdvicePrinterHandler").getMBox();
         buzzerMBox = appKickstarter.getThread("BuzzerHandler").getMBox();
@@ -184,7 +171,7 @@ public class ATMSS extends AppThread {
         MBoxes.put("cr", cardReaderMBox);
         MBoxes.put("k", keypadMBox);
         MBoxes.put("td", touchDisplayMBox);
-//        MBoxes.put("cd", cashDispenserMBox);
+        MBoxes.put("cd", cashDispenserMBox);
         MBoxes.put("cdc", cashDepositMBox);
         MBoxes.put("ap", advicePrinterMBox);
         MBoxes.put("b", buzzerMBox);
@@ -248,7 +235,10 @@ public class ATMSS extends AppThread {
                     } else
                         log.info("Keypad: " + "invalid press");
                     break;
-
+                case CD_CashAmountLeft:
+                    String [] msgInfo = msg.getDetails().split(",");
+                    cashLeft[0] = Integer.valueOf(msgInfo[0]);
+                    cashLeft[1] = Integer.valueOf(msgInfo[1]);
 
                 default:
                     if (currentRun != null) {
@@ -270,7 +260,18 @@ public class ATMSS extends AppThread {
         currentRun = null;
         cardNum = cred = "";
         activities.clear();
-        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F")); // Resume to init screen
+        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
+    }
+
+    private String noCashInfo(){
+        if(cashLeft[0]==0)
+            if(cashLeft[1]==0)
+                return "\nThis machine does not provide cash withdraw!";
+            else
+                return "\nThis machine does not provide 500 HKD cash!";
+        if(cashLeft[1]==0)
+            return "This machine does not provide 100 HKD cash!";
+        return "";
     }
 
     // Assistant Function

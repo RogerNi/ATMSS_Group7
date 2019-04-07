@@ -4,6 +4,7 @@ import ATMSS.ATMSSStarter;
 import ATMSS.TouchDisplayHandler.TouchDisplayHandler;
 import AppKickstarter.misc.Msg;
 
+import AppKickstarter.timer.Timer;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,9 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     private TouchDisplayEmulatorController touchDisplayEmulatorController;
     private boolean sleep;
 
+	private int timerId;
+	private static final long TIME_LIMIT=60000;
+
     //------------------------------------------------------------
     // TouchDisplayEmulator
     public TouchDisplayEmulator(String id, ATMSSStarter atmssStarter) throws Exception {
@@ -33,6 +37,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 	this.atmssStarter = atmssStarter;
 	this.id = id;
 	this.sleep=false;
+	this.timerId=-1;
     } // TouchDisplayEmulator
 
 
@@ -62,13 +67,16 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     //------------------------------------------------------------
     // handleUpdateDisplay
     protected boolean handleUpdateDisplay(Msg msg) {
+
+	this.resetTimer();
+
 	log.info(id + ": update display -- " + msg.getDetails());
 
 	this.sleep=false;
 
 	//According to the protocol that my teammates and I discussed, we separate the
 	// parameters in msg.details by colon.
-	String[] params=msg.getDetails().split(":");
+	String[] params=msg.getDetails().split(":",-1);
 
 	if(params[0].equals("0"))
 	{
@@ -289,8 +297,14 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 	protected void handleTimeout()
 	{
 		super.handleTimeout();
-		//Notify the controller that no need to cancel the timer
-		this.touchDisplayEmulatorController.setTD_timerId(-1);
+		this.timerId=-1;
+	}
+
+	public void resetTimer()
+	{
+		if(this.timerId!=-1)
+			Timer.cancelTimer(this.id,this.mbox,this.timerId);
+		this.timerId=Timer.setTimer(this.id,this.mbox,this.TIME_LIMIT);
 	}
 
 	/*public boolean isSleep() {

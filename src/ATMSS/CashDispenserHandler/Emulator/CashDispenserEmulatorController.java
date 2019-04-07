@@ -5,6 +5,7 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -141,22 +142,62 @@ public class CashDispenserEmulatorController {
 
     public void setRemaining500HKDNotesField(String s)
     {
-        this.remaining500HKDNotesField.setText(s);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    remaining500HKDNotesField.setText(s);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set remaining 500HKD Notes field");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setRemaining100HKDNotesField(String s)
     {
-        this.remaining100HKDNotesField.setText(s);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    remaining100HKDNotesField.setText(s);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set remaining 100HKD Notes field");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setCashStatusField(String s)
     {
-        this.cashStatusField.setText(s);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    cashStatusField.setText(s);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set cash status field");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void setCashOutArea(String s)
     {
-        this.cashOutArea.setText(s);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    cashOutArea.setText(s);
+                } catch (Exception e) {
+                    log.severe(id + ": failed to set cash out area");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public String getCashStatus()
@@ -168,10 +209,21 @@ public class CashDispenserEmulatorController {
     //Here "retain out cash" means retain the cash which is already out
     public void retainOutCash()
     {
-        JOptionPane.showMessageDialog(null, "Out cash retained!");
-        //Clear the cash out area.
-        this.cashOutArea.setText("");
-        this.cashStatusField.setText("Ready");
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JOptionPane.showMessageDialog(null, "Out cash retained!");
+                    //Clear the cash out area.
+                    cashOutArea.setText("");
+                    cashStatusField.setText("Ready");
+                } catch (Exception e) {
+                    log.severe(id + ": failed to show retain out cash event");
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
 } // CardReaderEmulatorController

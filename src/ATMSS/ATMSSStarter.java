@@ -2,6 +2,7 @@ package ATMSS;
 
 import ATMSS.AdvicePrinterHandler.AdvicePrinterHandler;
 import ATMSS.CashDepositeCollectorHandler.CashDepositeCollectorHandler;
+import ATMSS.CashDispenserHandler.CashDispenserHandler;
 import ATMSS.KeypadHandler.Emulator.KeypadEmulator;
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.Msg;
@@ -25,6 +26,7 @@ public class ATMSSStarter extends AppKickstarter {
     protected TouchDisplayHandler touchDisplayHandler;
     protected AdvicePrinterHandler advicePrinterHandler;
     protected CashDepositeCollectorHandler cashDepositeCollectorHandler;
+    protected CashDispenserHandler cashDispenserHandler;
 
 
     //------------------------------------------------------------

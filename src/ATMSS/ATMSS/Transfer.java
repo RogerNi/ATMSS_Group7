@@ -119,7 +119,7 @@ public class Transfer extends Activity {
 
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("transfer")) {
-                    if(reply[1] != "-1") {
+                    if(!reply[1].equals("-1")) {
                         stage = 5;
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Finish transfer:" +
                                 "Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
