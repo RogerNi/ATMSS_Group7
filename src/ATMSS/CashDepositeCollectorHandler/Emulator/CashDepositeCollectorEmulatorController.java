@@ -7,6 +7,7 @@ import AppKickstarter.misc.Msg;
 import java.util.logging.Logger;
 
 import AppKickstarter.timer.Timer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -34,7 +35,7 @@ public class CashDepositeCollectorEmulatorController {
         this.appKickstarter = appKickstarter;
         this.log = log;
         this.cashDepositeCollectorEmulator = cashDepositeCollectorEmulator;
-        this.cashDepositeCollectorMBox = appKickstarter.getThread("CashDepositHandler").getMBox();
+        this.cashDepositeCollectorMBox = appKickstarter.getThread("CashDepositeCollectorHandler").getMBox();
         this.status = status;
         this.timer_id = timer_id;
     } // initialize
@@ -122,7 +123,9 @@ public class CashDepositeCollectorEmulatorController {
     //------------------------------------------------------------
     // appendTextArea
     public void appendTextArea(String status) {
-        CashDepositeCollectorTextArea.appendText(status+"\n");
+        Platform.runLater(() -> {
+            CashDepositeCollectorTextArea.appendText(status + "\n");
+        });
     } // appendTextArea
 
     //change state
