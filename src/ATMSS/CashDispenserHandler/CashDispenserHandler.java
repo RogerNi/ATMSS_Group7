@@ -91,6 +91,10 @@ public class CashDispenserHandler extends AppThread {
                     atmss.send(new Msg(this.id, this.mbox, Msg.Type.CD_CashAmountLeft, msg.getDetails()));
                     break;
 
+                case CD_CashAmountLeft:
+                    atmss.send(new Msg(this.id, this.mbox, Msg.Type.CD_CashAmountLeft, this.handlecashAmountQuery()));
+                    break;
+
                 case TimesUp:
                     //If the user fails to take away the cash within the time limit after cash is out,
                     //the timer in CashDispenserEmulator will timeout
@@ -169,6 +173,13 @@ public class CashDispenserHandler extends AppThread {
     protected void handleTimeout()
     {
         log.info(id+": Timeout! Out cash retained!");
+    }
+
+    //Method at sub-class will return the requested information.
+    protected String handlecashAmountQuery()
+    {
+        log.info(id+": Inquired by ATMSS  about the left amount of each kind of bank notes");
+        return null;
     }
 
 } // AdvicePrinterHandler

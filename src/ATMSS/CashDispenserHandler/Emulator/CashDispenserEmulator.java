@@ -238,4 +238,10 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         this.cashDispenserEmulatorController.setRemaining500HKDNotesField("Remaining number of 500 HKD notes: "+this.currentNumOf500HKDNotes);
         this.cashDispenserEmulatorController.setRemaining100HKDNotesField("Remaining number of 100 HKD notes: "+this.currentNumOf100HKDNotes);
     }
+
+    protected String handlecashAmountQuery()
+    {
+        super.handlecashAmountQuery();
+        return this.currentNumOf500HKDNotes+","+this.currentNumOf100HKDNotes;
+    }
 } // CashDispenserEmulator

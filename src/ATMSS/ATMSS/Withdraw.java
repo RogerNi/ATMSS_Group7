@@ -28,6 +28,7 @@ public class Withdraw extends Activity {
     public Withdraw(MBox mMbox, String mId, Logger log) {
         super(mMbox, mId, log);
         inputBuffer = new InputBuffer();
+        advice = new AdviceTemp("Withdraw");
     }
 
     private boolean amountLegal(int amount){
@@ -47,7 +48,6 @@ public class Withdraw extends Activity {
 
     @Override
     void forward(Msg msg) {
-        advice = new AdviceTemp("Withdraw");
         log.info("Withdraw Activity: Get Msg: Type: " + msg.getType() + ", Msg: " + msg.getDetails());
         switch (msg.getType()) {
             case ACT_Start:
@@ -102,7 +102,7 @@ public class Withdraw extends Activity {
                 }
                 break;
             case CD_CashAmountLeft:
-                String [] a = msg.getDetails().split("，");
+                String [] a = msg.getDetails().split(",");
                 amountLeft[0] = Integer.valueOf(a[0]);
                 amountLeft[1] = Integer.valueOf(a[1]);
                 break;
@@ -138,13 +138,13 @@ public class Withdraw extends Activity {
                                 addQueue(ACT_Abort, "Eject:CashOut:End", "");
                                 break;
                             case "1":
-                                addQueue(ACT_Abort, "CheckBalance,0:Eject:CashOut:End", "");
+                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":Eject:CashOut:End", "");
                                 break;
                             case "2":
                                 addQueue(ACT_Abort, "PrintAdvice,"+advice.generate()+":Eject:CashOut:End", "");
                                 break;
                             case "3":
-                                addQueue(ACT_Abort, "CheckBalance:PrintAdvice,"+advice.generate()+":Eject:CashOut", "");
+                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":PrintAdvice,"+advice.generate()+":Eject:CashOut", "");
                                 break;
                         }
                         break;
