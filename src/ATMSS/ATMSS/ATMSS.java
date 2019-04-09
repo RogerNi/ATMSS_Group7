@@ -240,7 +240,6 @@ public class ATMSS extends AppThread {
                     cashLeft[0] = Integer.valueOf(msgInfo[0]);
                     cashLeft[1] = Integer.valueOf(msgInfo[1]);
 //                  touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
-                    break;
                 default:
                     if (currentRun != null) {
                         log.info("Redirect current message: " + msg.getType());
