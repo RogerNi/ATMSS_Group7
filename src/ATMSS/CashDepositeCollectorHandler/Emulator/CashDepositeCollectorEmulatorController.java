@@ -35,7 +35,7 @@ public class CashDepositeCollectorEmulatorController {
         this.appKickstarter = appKickstarter;
         this.log = log;
         this.cashDepositeCollectorEmulator = cashDepositeCollectorEmulator;
-        this.cashDepositeCollectorMBox = appKickstarter.getThread("CashDepositeCollectorHandler").getMBox();
+        this.cashDepositeCollectorMBox = appKickstarter.getThread("CashDepositHandler").getMBox();
         this.status = status;
         this.timer_id = timer_id;
     } // initialize
