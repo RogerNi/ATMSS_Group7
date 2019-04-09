@@ -37,7 +37,7 @@ public class Login extends Activity {
             case KP_KeyPressed:
                 switch (msg.getDetails()) {
                     case "Enter":
-                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F", "td");
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait:F:N", "td");
                         addQueue(Msg.Type.BAMS, "login:" + inBuffer.pop(), "");
                         break;
                     case "Erase":

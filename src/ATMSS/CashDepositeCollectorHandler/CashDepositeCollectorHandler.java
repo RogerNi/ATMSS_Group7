@@ -28,15 +28,25 @@ public class CashDepositeCollectorHandler extends AppThread {
 
                 case CDC_CashIn:
                     atmss.send(new Msg(id, mbox, Msg.Type.CDC_CashIn, msg.getDetails()));
+                    handleCashIn();
                     break;
 
                 case CDC_Complete:
                     atmss.send(new Msg(id, mbox, Msg.Type.CDC_Complete, "complete"));
+                    handleComplete();
+                    break;
+
+                case CDC_Invalid:
+                    atmss.send(new Msg(id, mbox, Msg.Type.CDC_Invalid, msg.getDetails()));
                     break;
 
                 case TimesUp:
-                    atmss.send(new Msg(id,mbox,Msg.Type.CDC_TimeOut, msg.getDetails()));
-                    handleTimeOut();
+                    int pivot = handleTimeOut();
+                    if(pivot==0){
+                        atmss.send(new Msg(id, mbox, Msg.Type.CDC_TimeOut, "0"));
+                    }else if(pivot==1){
+                        atmss.send(new Msg(id, mbox, Msg.Type.CDC_TimeOut, "1"));
+                    }
                     break;
 
                 case Poll:
@@ -61,7 +71,11 @@ public class CashDepositeCollectorHandler extends AppThread {
         log.info(id + ": Ready!");
     }
 
-    protected void handleTimeOut() {
-        log.info(id + ": Retain Invalid Money.");
+    protected int handleTimeOut() { log.info(id + ": Retain Invalid Money."); return -1;}
+
+    protected void handleComplete() {
+        log.info(id + ": Complete! ");
     }
+
+    protected void handleCashIn() {}
 }
