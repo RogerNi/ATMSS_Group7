@@ -168,4 +168,19 @@ public class AdvicePrinterEmulatorController {
 
     }
 
+    public void timeoutWithoutRetainingAdvice()
+    {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JOptionPane.showMessageDialog(null, "Advice Printer Timeout!");
+                } catch (Exception e) {
+                    log.severe(id + ": failed to show Advice Printer Timeout event");
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 } // CardReaderEmulatorController

@@ -23,6 +23,8 @@ public class AdvicePrinterEmulator extends AdvicePrinterHandler {
 
     private static final int INITIAL_NUM_OF_PAPER_PIECES=3;
     private static final long TIME_LIMIT=10000;
+    private static final boolean ABLE_TO_RETAIN_ADVICE=true;
+
 
     private int numOfRemainingPaperPieces;
     private boolean isJammed;
@@ -121,7 +123,13 @@ public class AdvicePrinterEmulator extends AdvicePrinterHandler {
     protected void handleTimeout()
     {
         super.handleTimeout();
-        this.advicePrinterEmulatorController.retainAdvice();
+        if(this.ABLE_TO_RETAIN_ADVICE)
+        {
+            this.advicePrinterEmulatorController.retainAdvice();
+        }else
+        {
+            this.advicePrinterEmulatorController.timeoutWithoutRetainingAdvice();
+        }
         this.adviceStatus="Ready";
         this.advicePrinterEmulatorController.setAdviceStatusField(this.adviceStatus);
     }

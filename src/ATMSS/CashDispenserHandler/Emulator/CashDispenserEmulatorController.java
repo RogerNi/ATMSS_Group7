@@ -226,4 +226,20 @@ public class CashDispenserEmulatorController {
 
     }
 
+    public void timeoutWithoutRetainingOutCash()
+    {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JOptionPane.showMessageDialog(null, "Cash Dispenser Timeout!");
+                } catch (Exception e) {
+                    log.severe(id + ": failed to show Cash Dispenser Timeout event");
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
 } // CardReaderEmulatorController
