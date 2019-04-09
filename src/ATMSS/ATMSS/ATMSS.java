@@ -58,6 +58,7 @@ public class ATMSS extends AppThread {
                         top_act = activities.poll();
                     } while (top_act.equals(""));
                     if (top_act.equals("End")) {
+                        touchDisplayMBox.send(new Msg(id, mbox,Msg.Type.TD_UpdateDisplay,"0:TEMP1:Thank you!:F"));
                         cashDispenserMBox.send(new Msg(id,mbox, Msg.Type.CD_CashAmountLeft,""));
                         log.info("Activity triggers End!");
                         currentRun = null;
