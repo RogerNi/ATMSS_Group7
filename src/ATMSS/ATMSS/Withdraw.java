@@ -144,7 +144,7 @@ public class Withdraw extends Activity {
                                 addQueue(ACT_Abort, "PrintAdvice,"+advice.generate()+":Eject:CashOut:End", "");
                                 break;
                             case "3":
-                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":PrintAdvice,"+advice.generate()+":Eject:CashOut", "");
+                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":PrintAdvice,"+advice.generate()+":Eject:CashOut:End", "");
                                 break;
                         }
                         break;
