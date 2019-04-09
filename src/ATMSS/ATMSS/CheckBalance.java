@@ -84,7 +84,7 @@ public class CheckBalance extends Activity {
                                 reply[1] + ":Back to Main Menu:Print Advice and Back:Print Advice and End:End Service:F", "td");
                     } else {
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP3:Account Balance\n" +
-                                reply[1] + ":Continue:F", "td");
+                                reply[1] + ":Continue::F", "td");
                     }
                 } else {
                     // Select Account
