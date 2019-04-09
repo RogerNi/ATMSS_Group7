@@ -68,7 +68,7 @@ public class Login extends Activity {
 //                            addQueue(Msg.Type.CR_Retain,"","cr");
                             addQueue(Msg.Type.ACT_Abort, "Retain:End", "");
                         } else {
-                            addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:T,PIN", "td"); // Retry PIN
+                            addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:T:PIN", "td"); // Retry PIN
                         }
                     } else if (reply.equals("invalid")) {
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F", "");
