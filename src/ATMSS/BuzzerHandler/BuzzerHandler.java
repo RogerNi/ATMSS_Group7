@@ -70,11 +70,11 @@ public class BuzzerHandler extends AppThread {
             log.fine(id + ": message received: [" + msg + "].");
             switch (msg.getType()) {
                 case BZ_ShortBuzz:
-                    Playsound("short.wav",1);
+                    Playsound("sound/short.wav",1);
                     break;
 
                 case BZ_LongBuzz:
-                    Playsound("short.wav",0);
+                    Playsound("sound/short.wav",0);
                     break;
 
                 case BZ_Stop:
