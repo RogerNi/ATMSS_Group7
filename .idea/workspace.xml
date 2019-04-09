@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Bugs fixed">
+    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Buzzer sound added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" beforeDir="false" afterPath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,10 +15,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ATMSS.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ATMSS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5126">
+            <state relative-caret-position="99">
               <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
             </state>
           </provider>
@@ -70,15 +71,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CashDepositeCollectorHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CashDepositeCollectorHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
+            <state relative-caret-position="245">
               <caret line="62" selection-start-line="62" selection-end-line="62" />
               <folding>
                 <element signature="e#1875#1876#0" expanded="true" />
                 <element signature="e#1916#1917#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuzzerHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/BuzzerHandler/BuzzerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="836">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -105,15 +115,6 @@
                 <element signature="e#560#561#0" expanded="true" />
                 <element signature="e#598#599#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CashDispenserHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDispenserHandler/CashDispenserHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1958">
-              <caret line="90" column="101" selection-start-line="90" selection-start-column="91" selection-end-line="90" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -211,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/TouchDisplayHandler.java" />
         <option value="$PROJECT_DIR$/src/AppKickstarter/misc/AppThread.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Activity.java" />
-        <option value="$PROJECT_DIR$/src/ATMSS/BuzzerHandler/BuzzerHandler.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Eject.java" />
@@ -235,6 +235,7 @@
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java" />
+        <option value="$PROJECT_DIR$/src/ATMSS/BuzzerHandler/BuzzerHandler.java" />
       </list>
     </option>
   </component>
@@ -266,6 +267,11 @@
               <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
               <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATMSS_Group7" type="462c0819:PsiDirectoryNode" />
+              <item name="sound" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ATMSS_Group7" type="b2602c69:ProjectViewProjectNode" />
@@ -647,7 +653,21 @@
       <option name="project" value="LOCAL" />
       <updated>1554653759764</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Bugs fixed">
+      <created>1554803717860</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1554803717860</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Buzzer sound added">
+      <created>1554803841079</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1554803841079</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -659,12 +679,13 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32906765" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32906765" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32906765" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32880434" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32906765" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="5" />
@@ -676,7 +697,6 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3985375" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32906765" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -759,7 +779,8 @@
     <MESSAGE value="Transfer Update" />
     <MESSAGE value="Hardware Updates" />
     <MESSAGE value="Bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs fixed" />
+    <MESSAGE value="Buzzer sound added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Buzzer sound added" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/AppKickstarter/timer/Timer.java">
@@ -817,13 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/BuzzerHandler/BuzzerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1518">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -964,6 +978,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-48">
           <caret line="43" column="25" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -971,6 +988,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
           <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+            <element signature="e#1998#1999#0" expanded="true" />
+            <element signature="e#2038#2039#0" expanded="true" />
+            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2309#2310#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -978,6 +1005,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1310">
           <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="14" />
+          <folding>
+            <element signature="e#2880#2881#0" expanded="true" />
+            <element signature="e#2920#2921#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3130#3131#0" expanded="true" />
+            <element signature="e#3202#3203#0" expanded="true" />
+            <element signature="e#3234#3235#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1030,6 +1065,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1118,21 +1156,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5126">
-          <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
+        <state relative-caret-position="245">
           <caret line="62" selection-start-line="62" selection-end-line="62" />
           <folding>
             <element signature="e#1875#1876#0" expanded="true" />
             <element signature="e#1916#1917#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/BuzzerHandler/BuzzerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
         </state>
       </provider>
     </entry>

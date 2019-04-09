@@ -213,7 +213,9 @@ public class CashDispenserEmulatorController {
             @Override
             public void run() {
                 try {
-                    JOptionPane.showMessageDialog(null, "Out cash retained!");
+                    //JOptionPane.showMessageDialog(null, "Out cash retained!");
+                    Alert alert=new Alert(Alert.AlertType.INFORMATION, "Out cash retained!");
+                    alert.show();
                     //Clear the cash out area.
                     cashOutArea.setText("");
                     cashStatusField.setText("Ready");
@@ -232,7 +234,9 @@ public class CashDispenserEmulatorController {
             @Override
             public void run() {
                 try {
-                    JOptionPane.showMessageDialog(null, "Cash Dispenser Timeout!");
+                    //JOptionPane.showMessageDialog(null, "Cash Dispenser Timeout!");
+                    Alert alert=new Alert(Alert.AlertType.INFORMATION, "Cash Dispenser Timeout!");
+                    alert.show();
                 } catch (Exception e) {
                     log.severe(id + ": failed to show Cash Dispenser Timeout event");
                     e.printStackTrace();

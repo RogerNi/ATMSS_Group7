@@ -26,7 +26,7 @@ public class CashDispenserEmulator extends CashDispenserHandler {
     private static final int INITIAL_NUM_OF_500HKD_NOTES=3;
     private static final int INITIAL_NUM_OF_100HKD_NOTES=10;
     //In case we are provided hardware that cannot retain cash
-    private static final boolean ABLE_TO_RETAIN_CASH=true;
+    private static final boolean ABLE_TO_RETAIN_CASH=false;
 
 
     /*private int numOfRemainingPaperPieces;
