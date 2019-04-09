@@ -70,8 +70,8 @@ public class Login extends Activity {
                         } else {
                             addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Wrong PIN\nPlease Input PIN:T:PIN", "td"); // Retry PIN
                         }
-                    } else if (reply.equals("invalid")) {
-                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F", "");
+                    } else if (reply[1].equals("invalid")) {
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:This card has been banned by the bank.\nContact the bank for more information!:F", "td");
                         addQueue(Msg.Type.ACT_AbortNow, "Eject:End", "");
                     } else {
                         // Update credit and exit Activity
