@@ -84,6 +84,7 @@ public class Msg {
         CDC_TimeOut,
         CDC_CashIn,
         CDC_Complete,       // All invalid cash taken away
+        CDC_Invalid,
         CD_CashOut,         // Amount of money
         CD_CashPrepare,
         CD_CashAmountLeft,        //
