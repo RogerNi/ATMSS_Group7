@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Hardware Updated">
+    <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Transfer updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/CashOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/CashOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/CardReaderHandler/CardReaderHandler.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,28 +20,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppKickstarter/AppKickstarter.java">
+        <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1426">
-              <caret line="75" column="66" selection-start-line="75" selection-start-column="66" selection-end-line="75" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-410">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="-973">
+              <caret line="151" column="22" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CashOut.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+            <state relative-caret-position="529">
+              <caret line="25" column="54" lean-forward="true" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,12 +118,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+            <state relative-caret-position="249">
+              <caret line="94" column="30" lean-forward="true" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
-                <element signature="e#598#599#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -236,9 +238,9 @@
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/AdviceTemp.java" />
         <option value="$PROJECT_DIR$/src/AppKickstarter/AppKickstarter.java" />
-        <option value="$PROJECT_DIR$/etc/ATM.cfg" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/PrintAdvice.java" />
         <option value="$PROJECT_DIR$/src/ATMSS/ATMSS/CashOut.java" />
+        <option value="$PROJECT_DIR$/etc/ATM.cfg" />
       </list>
     </option>
   </component>
@@ -500,7 +502,7 @@
       <workItem from="1554397382171" duration="7527000" />
       <workItem from="1554450374113" duration="12162000" />
       <workItem from="1554536200017" duration="15362000" />
-      <workItem from="1554976103826" duration="1822000" />
+      <workItem from="1554976103826" duration="3825000" />
     </task>
     <task id="LOCAL-00001" summary="Update State Indicator">
       <created>1553600820262</created>
@@ -775,11 +777,25 @@
       <option name="project" value="LOCAL" />
       <updated>1554977704076</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Hardware Updated">
+      <created>1554978062380</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1554978062380</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Transfer updated">
+      <created>1554984839274</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1554984839274</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113552000" />
+    <option name="totallyTimeSpent" value="115555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
@@ -865,7 +881,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="All hardware except CashDispenser Added but not tested!!" />
     <MESSAGE value="All hardware implemented" />
     <MESSAGE value="PIN input now hidden" />
     <MESSAGE value="TouchScreen Display updated" />
@@ -890,7 +905,8 @@
     <MESSAGE value="Unused Code removed" />
     <MESSAGE value="Move Logger Level control to ATM.cfg" />
     <MESSAGE value="Hardware Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hardware Updated" />
+    <MESSAGE value="Transfer updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfer updated" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/ATMSS/KeypadHandler/KeypadHandler.java">
@@ -1202,13 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3266">
-          <caret line="151" column="22" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppKickstarter/AppKickstarter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1426">
@@ -1281,27 +1290,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+        <state relative-caret-position="249">
+          <caret line="94" column="30" lean-forward="true" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#598#599#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-410">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/CashOut.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        <state relative-caret-position="529">
+          <caret line="25" column="54" lean-forward="true" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ATMSS/ATMSS/ATMSS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-973">
+          <caret line="151" column="22" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/ATM.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
         </state>
       </provider>
     </entry>
