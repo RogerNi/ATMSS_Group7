@@ -51,11 +51,13 @@ public class Deposit extends Activity {
                         stage = 2;
                         addQueue(TD_UpdateDisplay, "0:TEMP1:Account Number is "+accFrom+"\nPlease Input the money you want to save.:F", "td");
                         addQueue(CDC_Ready,"","cdc");
+                        addQueue(Msg.Type.BZ_LongBuzz,"","b");
                         break;
                     case 2:
                         stage = 3;
                         addQueue(TD_UpdateDisplay, "0:TEMP1:Account Number is "+accFrom+"\nPlease Input the money you want to save.:F", "td");
                         addQueue(CDC_Ready,"","cdc");
+                        addQueue(Msg.Type.BZ_LongBuzz,"","b");
                         break;
                     case 3:
 
@@ -65,6 +67,7 @@ public class Deposit extends Activity {
                                 stage = 2;
                                 addQueue(TD_UpdateDisplay, "0:TEMP1:Account Number is "+accFrom+"\nPlease Input the money you want to save.:F", "td");
                                 addQueue(CDC_Ready,"","cdc");
+                                addQueue(Msg.Type.BZ_LongBuzz,"","b");
                                 break;
                             case "1":
                                 stage = 4;
@@ -104,6 +107,8 @@ public class Deposit extends Activity {
                         +"\nHKD1000 x "+moneyIn[0]+" = "+moneyIn[0]*1000
                         +"\nTotal amount = "+amountOfCash
                         +":restore cash:Certain:F", "td");
+
+                addQueue(Msg.Type.BZ_Stop,"","b");
                 break;
             case CDC_Invalid:
                 addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please take away invalid money.:F", "td");
@@ -117,8 +122,10 @@ public class Deposit extends Activity {
                             + "\nHKD1000 x " + moneyIn[0] + " = " + moneyIn[0] * 1000
                             + "\nTotal amount = " + amountOfCash
                             + ":restore cash:Certain:F", "td");
+                    addQueue(Msg.Type.BZ_Stop,"","b");
                 }else{
                     addQueue(BAMS, "deposit:" + accFrom + ":" + amountOfCash, "");
+                    addQueue(Msg.Type.BZ_Stop,"","b");
                     addQueue(ACT_AbortNow, "Retain:End", "");
                 }
 
@@ -127,7 +134,7 @@ public class Deposit extends Activity {
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("deposit")) {
 
-                    addQueue(TD_UpdateDisplay, "0:TEMP3:Please collect your advice:Back to Main Menu:Eject card:F", "td");
+                    addQueue(TD_UpdateDisplay, "0:TEMP3:Please collect your advice:Main Menu:Eject card:F", "td");
                     addQueue(AP_Print, advice.generate(), "ap");
 
                 } else {

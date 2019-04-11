@@ -5,7 +5,7 @@ import AppKickstarter.misc.*;
 
 
 /**
- * Represents the advice printer handler.
+ * Represents the cash dispenser handler.
  */
 //======================================================================
 // CashDispenserHandler

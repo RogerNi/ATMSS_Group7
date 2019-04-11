@@ -43,6 +43,10 @@ public class CashDispenserEmulator extends CashDispenserHandler {
      */
     private Properties cfg;
 
+    /**
+     * The time limit for user to take away the cash since it's out, in milliseconds. The value will be read from
+     * the configuration file. If failed to read, it will be set to 10000.
+     */
     private long TIME_LIMIT;
     /**
      * The initial number of remaining 500 HKD notes. The value will be read from the configuration file. If failed to read,
