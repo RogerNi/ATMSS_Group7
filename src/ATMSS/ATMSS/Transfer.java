@@ -3,6 +3,7 @@ package ATMSS.ATMSS;
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import static AppKickstarter.misc.Msg.Type.*;
@@ -19,6 +20,8 @@ public class Transfer extends Activity {
 //5:finish transfer
     AdviceTemp advice;
     String[] accs;
+    ArrayList<String> list = new ArrayList<String>();
+    String[] accs2;
     String[] send = new String[3];
     InputBuffer inBuffer = new InputBuffer();
 
@@ -34,7 +37,7 @@ public class Transfer extends Activity {
             case ACT_Start:
                 // BAMS Transfer
                 if (msg.getDetails().equals("Transfer")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");  // Set screen to waiting
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
                     addQueue(BAMS, "getAcc", "");
 //                } else {
 //
@@ -62,7 +65,7 @@ public class Transfer extends Activity {
                 } else if (msg.getDetails().equals("Enter") && stage == 4) {
                     stage = 5;
                     send[2] = inBuffer.pop();
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");
                     addQueue(BAMS, "transfer:" + send[0] + ":" + send[1] + ":" + send[2], "");
                     advice = new AdviceTemp("Transfer");
                     advice.setAccount("from：" + send[0] + " to：" + send[1]);
@@ -94,13 +97,13 @@ public class Transfer extends Activity {
 
                     addQueue(BAMS, "getAcc", "");
                 } else if (stage == 2) {
-                    if (Integer.valueOf(msg.getDetails()) < accs.length) {
+                    if (Integer.valueOf(msg.getDetails()) < accs2.length) {
                         stage = 4;
-                        send[1] = accs[Integer.valueOf(msg.getDetails())];
+                        send[1] = accs2[Integer.valueOf(msg.getDetails())];
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Transfer money:T:amount", "td");
                     } else {
                         stage = 3;
-                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Transfer Account:T:amount number", "td");
+                        addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Transfer Account:T:account number", "td");
 
                     }
                 } else if (stage == 5) {
@@ -137,14 +140,27 @@ public class Transfer extends Activity {
                     // Select Account
                     accs = reply[1].split("/");
                     String accString = "";
-                    for (String acc : accs) {
-                        accString += ":" + acc;
-                    }
+
                     if (stage == 0) {
+                        for (String acc : accs) {
+                            accString += ":" + acc;
+                        }
                         stage = 1;
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Please select the account transferred from" +
                                 accString + ":F", "td");
                     } else if (stage == 2) {
+
+                        for(int i=0; i<accs.length; i++) {
+                            if (! accs[i].equals(send[0])) {
+                                list.add(accs[i]);
+                            }
+                        }
+                        accs2 = list.toArray(new String[list.size()]);
+
+                        for (String acc : accs2) {
+                            accString += ":" + acc;
+                        }
+
                         addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP2:Please select the account transferred to" +
                                 accString + ":other account:F", "td");
 

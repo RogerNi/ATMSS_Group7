@@ -48,6 +48,10 @@ public class CardReaderHandler extends AppThread {
 				handleCardRetain();
 				break;
 
+			case CR_MachError:
+				atmss.send(new Msg(id,mbox,Msg.Type.CR_MachError, msg.getDetails()));
+				break;
+
 		case Poll:
 		    atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
 		    break;
