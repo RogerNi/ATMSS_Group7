@@ -4,9 +4,17 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 
 
+/**
+ * Represents the advice printer handler.
+ */
 //======================================================================
 // AdvicePrinterHandler
 public class AdvicePrinterHandler extends AppThread {
+    /**
+     * Construct a new instance of advice printer handler.
+     * @param id The ID of advice printer
+     * @param appKickstarter An appKickstarter object, in this application, pass an ATMSSStarter to it.
+     */
     //------------------------------------------------------------
     // AdvicePrinterHandler
     public AdvicePrinterHandler(String id, AppKickstarter appKickstarter) {
@@ -14,6 +22,9 @@ public class AdvicePrinterHandler extends AppThread {
     } // AdvicePrinterHandler
 
 
+    /**
+     * Start the advice printer thread.
+     */
     //------------------------------------------------------------
     // run
     public void run() {
@@ -71,33 +82,20 @@ public class AdvicePrinterHandler extends AppThread {
     } // run
 
 
-    /*//------------------------------------------------------------
-    // handleCardInsert
-    protected void handleCardInsert() {
-        log.info(id + ": card inserted");
-    } // handleCardInsert
-
-
-    //------------------------------------------------------------
-    // handleCardEject
-    protected void handleCardEject() {
-        log.info(id + ": card ejected");
-    } // handleCardEject
-
-
-    //------------------------------------------------------------
-    // handleCardRemove
-    protected void handleCardRemove() {
-        log.info(id + ": card removed");
-    } // handleCardRemove*/
-
-    //Overriding method in its subclass will return a string indicating the printing status.
+    /**
+     * Handle the event that this advice printer is instructed by ATMSS to print out the advice.
+     * @param adviceText The content of the advice to be printed.
+     * @return nothing meaningful. Overriding method in its subclass will return a string indicating the printing status.
+     */
     protected String handlePrintAdvice(String adviceText)
     {
         log.info(id+": Print advice...");
         return null;
     }
 
+    /**
+     * Handle the situation that the user fails to take away the advice in time limit.
+     */
     protected void handleTimeout()
     {
         log.info(id+": Timeout");

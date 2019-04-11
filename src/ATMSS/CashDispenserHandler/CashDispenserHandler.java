@@ -4,9 +4,17 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 
 
+/**
+ * Represents the advice printer handler.
+ */
 //======================================================================
 // CashDispenserHandler
 public class CashDispenserHandler extends AppThread {
+    /**
+     * Construct a new instance of cash dispenser handler.
+     * @param id The ID of cash dispenser.
+     * @param appKickstarter An appKickstarter object, in this application, pass an ATMSSStarter to it.
+     */
     //------------------------------------------------------------
     // CashDispenserHandler
     public CashDispenserHandler(String id, AppKickstarter appKickstarter) {
@@ -14,6 +22,9 @@ public class CashDispenserHandler extends AppThread {
     } // CashDispenserHandler
 
 
+    /**
+     * Start the cash dispenser thread.
+     */
     //------------------------------------------------------------
     // run
     public void run() {
@@ -26,30 +37,6 @@ public class CashDispenserHandler extends AppThread {
             log.fine(id + ": message received: [" + msg + "].");
 
             switch (msg.getType()) {
-                /*case AP_Print:
-                    atmss.send(new Msg(id, mbox, Msg.Type.AP_PrintStarted, null));
-                    String status=this.handlePrintAdvice(msg.getDetails());
-                    if(status.equals("Out of paper"))
-                    {
-                        atmss.send(new Msg(id, mbox, Msg.Type.AP_OutOfPaper, null));
-                    }else if(status.equals("Jammed"))
-                    {
-                        atmss.send(new Msg(id, mbox, Msg.Type.AP_Jam, null));
-                    }else
-                    {
-                        atmss.send(new Msg(id, mbox, Msg.Type.AP_PrintCompleted, null));
-                    }
-                    break;
-
-                case AP_AdviceTaken:
-                    atmss.send(new Msg(this.id, this.mbox, Msg.Type.AP_AdviceTaken, null));
-                    break;
-
-
-                case TimesUp:
-                    this.handleTimeout();
-                    atmss.send(new Msg(this.id, this.mbox, Msg.Type.AP_TimesUp, null));
-                    break;*/
 
                 case CD_CashPrepare:
                     try {
@@ -121,38 +108,12 @@ public class CashDispenserHandler extends AppThread {
     } // run
 
 
-    /*//------------------------------------------------------------
-    // handleCardInsert
-    protected void handleCardInsert() {
-        log.info(id + ": card inserted");
-    } // handleCardInsert
 
-
-    //------------------------------------------------------------
-    // handleCardEject
-    protected void handleCardEject() {
-        log.info(id + ": card ejected");
-    } // handleCardEject
-
-
-    //------------------------------------------------------------
-    // handleCardRemove
-    protected void handleCardRemove() {
-        log.info(id + ": card removed");
-    } // handleCardRemove*/
-
-    //Overriding method in its subclass will return a string indicating the printing status.
-    /*protected String handlePrintAdvice(String adviceText)
-    {
-        log.info(id+": Print advice...");
-        return null;
-    }
-
-    protected void handleTimeout()
-    {
-        log.info(id+": Timeout");
-    }*/
-
+    /**
+     * Handle the event that this cash dispenser is instructed by ATMSS to prepare but not put out cash.
+     * @param amount The amount of cash to be prepared.
+     * @return nothing meaningful. Overriding method in its subclass will return a string indicating the preparation status.
+     */
     //Overriding method in its subclass will return a string indicating the cash preparing status.
     protected String handleCashPrepare(int amount)
     {
@@ -160,22 +121,35 @@ public class CashDispenserHandler extends AppThread {
         return null;
     }
 
+    /**
+     * Handle the instruction of retaining the prepared but not out cash.
+     */
     protected void handleCashRetain()
     {
         log.info(id+": Prepared cash will not be dispensed");
     }
 
+    /**
+     * Handle the instruction of putting out the prepared cash.
+     */
     protected void handleCashOut()
     {
         log.info(id+": Cash out.");
     }
 
+    /**
+     * Handle the situation that the user fails to take away the cash in time limit.
+     */
     protected void handleTimeout()
     {
         log.info(id+": Timeout! Out cash retained!");
     }
 
-    //Method at sub-class will return the requested information.
+    /**
+     * Handle the event that this cash dispenser is queried by ATMSS about the remaining bank notes of each kind.
+     * @return nothing meaningful. Overriding method in its subclass will return a string containing the requested information in a pre-defined format.
+     */
+    //Method at sub-class will return .
     protected String handlecashAmountQuery()
     {
         log.info(id+": Inquired by ATMSS  about the left amount of each kind of bank notes");
