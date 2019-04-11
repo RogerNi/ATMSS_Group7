@@ -4,10 +4,15 @@
     <list default="true" id="880984e7-2449-4fd1-8cf9-0b03db4b6166" name="Default" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" beforeDir="false" afterPath="$PROJECT_DIR$/etc/ATMSS.ATMSSEmulatorStarter.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/ATMSS/Withdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/ATMSS/Withdraw.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATMStarter/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/CardReaderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CardReaderHandler/Emulator/CardReaderEmulatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/CashDepositeCollectorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMSS/CashDepositeCollectorHandler/Emulator/CashDepositeCollectorEmulatorController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="165" column="49" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+            <state relative-caret-position="89">
+              <caret line="121" column="24" lean-forward="true" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -506,7 +511,7 @@
       <workItem from="1554397382171" duration="7527000" />
       <workItem from="1554450374113" duration="12162000" />
       <workItem from="1554536200017" duration="15362000" />
-      <workItem from="1554976103826" duration="10562000" />
+      <workItem from="1554976103826" duration="12092000" />
     </task>
     <task id="LOCAL-00001" summary="Update State Indicator">
       <created>1553600820262</created>
@@ -823,11 +828,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554999891319</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Update">
+      <created>1555002419995</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1555002419995</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122292000" />
+    <option name="totallyTimeSpent" value="123822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
@@ -1349,8 +1361,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ATMSS/TouchDisplayHandler/Emulator/TouchDisplayEmulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="165" column="49" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+        <state relative-caret-position="89">
+          <caret line="121" column="24" lean-forward="true" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

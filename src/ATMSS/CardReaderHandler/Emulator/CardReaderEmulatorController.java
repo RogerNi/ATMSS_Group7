@@ -12,19 +12,53 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 
+/**
+ * Represents the controller of GUI for card reader.
+ */
 //======================================================================
 // CardReaderEmulatorController
 public class CardReaderEmulatorController {
+	/**
+	 * The ID of card reader.
+	 */
     private String id;
+	/**
+	 * In this application, it is an ATMSSStarter.
+	 */
     private AppKickstarter appKickstarter;
+	/**
+	 * The logger to record the hardware running status
+	 */
     private Logger log;
+	/**
+	 * The card reader emulator.
+	 */
     private CardReaderEmulator cardReaderEmulator;
+	/**
+	 * The mailbox of card reader, used for communication with handler.
+	 */
     private MBox cardReaderMBox;
+	/**
+	 * The text of card number.
+	 */
     public TextField cardNumField;
+	/**
+	 * The status of card reader.
+	 */
     public TextField cardStatusField;
+	/**
+	 * The main text.
+	 */
     public TextArea cardReaderTextArea;
 
 
+	/**
+	 * Initial the controller.
+	 * @param id The ID of card reader.
+	 * @param appKickstarter In this application, it is an ATMSSStarter.
+	 * @param log The logger to record the hardware running status.
+	 * @param cardReaderEmulator The card reader emulator.
+	 */
     //------------------------------------------------------------
     // initialize
     public void initialize(String id, AppKickstarter appKickstarter, Logger log, CardReaderEmulator cardReaderEmulator) {
@@ -36,6 +70,10 @@ public class CardReaderEmulatorController {
     } // initialize
 
 
+	/**
+	 * Handle the button clicking events on card reader emulator GUI
+	 * @param actionEvent The event to be handled
+	 */
     //------------------------------------------------------------
     // buttonPressed
     public void buttonPressed(ActionEvent actionEvent) {
@@ -86,6 +124,10 @@ public class CardReaderEmulatorController {
     } // buttonPressed
 
 
+	/**
+	 * Update the status of card reader, which is used to specify the validity of actions.
+	 * @param status The new status of card reader.
+	 */
     //------------------------------------------------------------
     // updateCardStatus
     public void updateCardStatus(String status) {
@@ -95,6 +137,10 @@ public class CardReaderEmulatorController {
     } // updateCardStatus
 
 
+	/**
+	 * Output the status of card reader.
+	 * @param status The status of card reader.
+	 */
     //------------------------------------------------------------
     // appendTextArea
     public void appendTextArea(String status) {
@@ -103,6 +149,10 @@ public class CardReaderEmulatorController {
         });
     } // appendTextArea
 
+	/**
+	 * Get the present status of card reader.
+	 * @return Return the present status of card reader.
+	 */
 	//getStatus
 	public TextField getCardStatusField(){
     	return cardStatusField;

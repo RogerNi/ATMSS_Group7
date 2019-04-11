@@ -6,26 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ATMSS.CashDepositeCollectorHandler.Emulator.CashDepositeCollectorEmulatorController">
     <children>
         <AnchorPane prefHeight="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="+100" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="+500" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
-                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="+1000" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
-                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="80.0" text="+Invalid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="70.0" text="+1000" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="80.0" text="+Invalid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="-100" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="-500" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
-                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="50.0" text="-1000" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
-                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="80.0" text="-Invalid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="70.0" text="-1000" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="80.0" text="-Invalid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
             </children>
         </AnchorPane>
-        <TextArea fx:id="CashDepositeCollectorTextArea" editable="false" layoutX="20.0" layoutY="169.0" AnchorPane.bottomAnchor="120" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="110" />
-        <AnchorPane prefHeight="30.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <HBox layoutX="20.0" layoutY="63.0" prefHeight="30.0" prefWidth="310.0" AnchorPane.topAnchor="110.0">
+            <children>
+                <Label text="Total Amount : " />
+                <TextField fx:id="SumCashField" prefWidth="170.0" AnchorPane.rightAnchor="20" />
+            </children>
+        </HBox>
+        <TextArea fx:id="CashDepositeCollectorTextArea" editable="false" layoutX="20.0" layoutY="169.0" AnchorPane.bottomAnchor="120" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="160" />
+        <AnchorPane prefHeight="30.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="100.0" text="Enter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
                 <Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="150.0" text="Remove Invalid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>

@@ -4,9 +4,17 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 
 
+/**
+ * Represents the card reader handler.
+ */
 //======================================================================
 // CardReaderHandler
 public class CardReaderHandler extends AppThread {
+	/**
+	 * Construct a new instance of card reader handler.
+	 * @param id The ID of card reader.
+	 * @param appKickstarter An appKickstarter object, in this application, pass an ATMSSStarter to it.
+	 */
     //------------------------------------------------------------
     // CardReaderHandler
     public CardReaderHandler(String id, AppKickstarter appKickstarter) {
@@ -14,6 +22,9 @@ public class CardReaderHandler extends AppThread {
     } // CardReaderHandler
 
 
+	/**
+	 * Start the card reader thread.
+	 */
     //------------------------------------------------------------
     // run
     public void run() {
@@ -70,7 +81,9 @@ public class CardReaderHandler extends AppThread {
 	log.info(id + ": terminating...");
     } // run
 
-
+	/**
+	 * Handle the Card Insert action from the user.
+	 */
     //------------------------------------------------------------
     // handleCardInsert
     protected void handleCardInsert() {
@@ -78,6 +91,9 @@ public class CardReaderHandler extends AppThread {
     } // handleCardInsert
 
 
+	/**
+	 * Handle the Card Eject intrustion from ATMSS.
+	 */
     //------------------------------------------------------------
     // handleCardEject
     protected void handleCardEject() {
@@ -85,12 +101,18 @@ public class CardReaderHandler extends AppThread {
     } // handleCardEject
 
 
+	/**
+	 * Handle the Card Remove action from the user.
+	 */
     //------------------------------------------------------------
     // handleCardRemove
     protected void handleCardRemove() {
 	log.info(id + ": card removed");
     } // handleCardRemove
 
+	/**
+	 * Handle the Card Retain instruction from ATMSS.
+	 */
 	//handleCardRetain
 	protected void handleCardRetain()  {
 		log.info(id + ": card retained");

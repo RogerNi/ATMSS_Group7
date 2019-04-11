@@ -12,16 +12,39 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
+/**
+ * Represent the hardware component: card reader emulator.
+ */
 
 //======================================================================
 // CardReaderEmulator
 public class CardReaderEmulator extends CardReaderHandler {
+	/**
+	 * Reference to the ATMSS starter.
+	 */
     private ATMSSStarter atmssStarter;
+	/**
+	 * The ID of card reader.
+	 */
     private String id;
+	/**
+	 * The stage of GUI.
+	 */
     private Stage myStage;
+	/**
+	 * Reference to the controller of the GUI for card reader.
+	 */
     private CardReaderEmulatorController cardReaderEmulatorController;
-    private int timer_id;
+	/**
+	 * The ID of Timer.
+	 */
+	private int timer_id;
 
+	/**
+	 * Constructs a new Card Reader Emulator instance.
+	 * @param id The ID of card reader
+	 * @param atmssStarter The ATMSS Starter
+	 */
     //------------------------------------------------------------
     // CardReaderEmulator
     public CardReaderEmulator(String id, ATMSSStarter atmssStarter) {
@@ -32,6 +55,10 @@ public class CardReaderEmulator extends CardReaderHandler {
     } // CardReaderEmulator
 
 
+	/**
+	 * Start the card reader emulator.
+	 * @throws Exception
+	 */
     //------------------------------------------------------------
     // start
     public void start() throws Exception {
@@ -57,6 +84,10 @@ public class CardReaderEmulator extends CardReaderHandler {
     } // CardReaderEmulator
 
 
+	/**
+	 * Handle the Card Insert action from users
+	 * Update the status to Inserted.
+	 */
     //------------------------------------------------------------
     // handleCardInsert
     protected void handleCardInsert() {
@@ -67,6 +98,10 @@ public class CardReaderEmulator extends CardReaderHandler {
     } // handleCardInsert
 
 
+	/**
+	 * Handle the card eject instruction from the ATMSS.
+	 * Update the status to Ejected.
+	 */
     //------------------------------------------------------------
     // handleCardEject
     protected void handleCardEject() {
@@ -75,11 +110,15 @@ public class CardReaderEmulator extends CardReaderHandler {
 			super.handleCardEject();
 			cardReaderEmulatorController.appendTextArea("Card Ejected");
 			cardReaderEmulatorController.updateCardStatus("Card Ejected");
-			timer_id = Timer.setTimer(id,mbox,60000);
+			timer_id = Timer.setTimer(id,mbox,Integer.parseInt(appKickstarter.getProperty("CR.TimeLimit")));
 		}
     } // handleCardEject
 
 
+	/**
+	 * Handle the card remove action of users.
+	 * Update the status to Empty.
+	 */
     //------------------------------------------------------------
     // handleCardRemove
     protected void handleCardRemove() {
@@ -90,6 +129,10 @@ public class CardReaderEmulator extends CardReaderHandler {
 	Timer.cancelTimer(id, mbox,timer_id);
     } // handleCardRemove
 
+	/**
+	 * Handle the card retain instruction from the ATMSS.
+	 * Update the status to Empty.
+	 */
 	//handleCardRetain
 	protected  void handleCardRetain(){
     	if(cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Ejected")==0||cardReaderEmulatorController.getCardStatusField().getText().compareTo("Card Inserted")==0){
