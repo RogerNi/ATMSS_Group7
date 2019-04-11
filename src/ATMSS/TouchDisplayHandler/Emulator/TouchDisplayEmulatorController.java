@@ -16,39 +16,106 @@ import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * Represents the controller of GUI for touch screen display.
+ */
 //======================================================================
 // TouchDisplayEmulatorController
 public class TouchDisplayEmulatorController {
+    /**
+     * The ID of touch screen display.
+     */
     private String id;
+    /**
+     * In this application, it is an ATMSSStarter.
+     */
     private AppKickstarter appKickstarter;
+    /**
+     * The logger to record the hardware running status
+     */
     private Logger log;
+    /**
+     * The touch screen display emulator.
+     */
     private TouchDisplayEmulator touchDisplayEmulator;
+    /**
+     * The mailbox of touch screen display, used for communication with handler.
+     */
     private MBox touchDisplayMBox;
+    /**
+     * The filename of current FXML file used.
+     */
     private String currentFXML;
 
 
-
+    /**
+     * Font size used for main text.
+     */
     private static final double MAIN_TEXT_FONT_SIZE=20.0;
+    /**
+     * Font size used for input field prefix.
+     */
     private static final double INPUT_FIELD_PREFIX_FONT_SIZE=20.0;
+    /**
+     * Font size used for input field content.
+     */
     private static final double INPUT_FIELD_CONTENT_FONT_SIZE=20.0;
+    /**
+     * Font size used for button text.
+     */
     private static final double BUTTON_TEXT_FONT_SIZE=20.0;
 
 
-
+    /**
+     * The main text
+     */
     @FXML Text mainText;
+    /**
+     * The input filed prefix text
+     */
     @FXML Text inputFieldPrefix;
+    /**
+     * The input field content text.
+     */
     @FXML Text inputFieldContent;
+    /**
+     * The underline of input field content, to mimic the real ATM.
+     */
     @FXML Line inputFieldUnderline;
+    /**
+     * The text of button 0, which is the left top button in template 2 or left button in template 3.
+     */
     @FXML Text button0Text;
+    /**
+     * The text of button 1, which is the left middle button in template 2 or right button in template 3.
+     */
     @FXML Text button1Text;
+    /**
+     * The text of button 2, which is the left bottom button in template 2.
+     */
     @FXML Text button2Text;
+    /**
+     * The text of button 3, which is the right top button in template 2.
+     */
     @FXML Text button3Text;
+    /**
+     * The text of button 4, which is the right middle button in template 2.
+     */
     @FXML Text button4Text;
+    /**
+     * The text of button 5, which is the right bottom button in template 2.
+     */
     @FXML Text button5Text;
 
 
 
+    /**
+     * Initial the controller.
+     * @param id The ID of touch screen display.
+     * @param appKickstarter In this application, it is an ATMSSStarter.
+     * @param log The logger to record the hardware running status.
+     * @param touchDisplayEmulator The touch screen display emulator.
+     */
     //------------------------------------------------------------
     // initialize
     public void initialize(String id, AppKickstarter appKickstarter, Logger log, TouchDisplayEmulator touchDisplayEmulator) {
@@ -82,6 +149,10 @@ public class TouchDisplayEmulatorController {
     } // initialize
 
 
+    /**
+     * Handle the mouse clicking events on touch screen display emulator GUI.
+     * @param mouseEvent The event to be handled
+     */
     //------------------------------------------------------------
     // td_mouseClick
     public void td_mouseClick(MouseEvent mouseEvent) {
@@ -170,6 +241,9 @@ public class TouchDisplayEmulatorController {
     } // td_mouseClick
 
 
+    /**
+     * Used merely for testing purpose. Currently, none will call it.
+     */
     private void test()
     {
         this.mainText.setText("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -191,14 +265,10 @@ public class TouchDisplayEmulatorController {
         this.button1Text.setVisible(true);
     }
 
-    //In the following methods whose purpose is to update part of the display,
-    //I add the code to restart the timer.
-    //One update instruction received from ATMSS may cause several resets of the timer,
-    //but since the time between them is very short, the inaccuracy is tolerable.
-    //Our timer in touch screen is not doing some critical job, the only work is to
-    //inform the ATMSS that the screen has neither been updated nor interacted eith user for
-    //quite a while.
-
+    /**
+     * Set the content of the main text on the GUI
+     * @param mainT The content of main text.
+     */
     public void setMainText(String mainT)
     {
         this.mainText.setText(mainT);
@@ -206,6 +276,14 @@ public class TouchDisplayEmulatorController {
         this.log.fine(id+": Set main text to be: "+this.mainText.getText());
     }
 
+    /**
+     * Set the texts of 6 buttons in template 2.
+     * @param buttonsText A string array with 1 to 6 elements, which are the texts on the buttons in order. See
+     * {@link TouchDisplayEmulatorController#button0Text}, {@link TouchDisplayEmulatorController#button1Text},
+     * {@link TouchDisplayEmulatorController#button2Text}, {@link TouchDisplayEmulatorController#button3Text},
+     *  {@link TouchDisplayEmulatorController#button4Text}, {@link TouchDisplayEmulatorController#button5Text}, for the
+     *  positions of buttons.
+     */
     public void set6ButtonsText(String[] buttonsText)
     {
         int len=buttonsText.length;
@@ -258,6 +336,12 @@ public class TouchDisplayEmulatorController {
         this.log.fine(id+": Set the text of button 5 to be: "+this.button5Text.getText());
     }
 
+    /**
+     * Set the texts of 2 buttons in template 3.
+     * @param buttonsText A string array with exact 2 elements, which are the texts on the buttons in order.
+     *                    {@link TouchDisplayEmulatorController#button0Text}, {@link TouchDisplayEmulatorController#button1Text}
+     *                     for the positions of buttons.
+     */
     public void set2ButtonsText(String[] buttonsText)
     {
         this.button0Text.setText(buttonsText[0]);
@@ -268,6 +352,10 @@ public class TouchDisplayEmulatorController {
         this.log.fine(id+": Set the text of button 1 to be: "+this.button1Text.getText());
     }
 
+    /**
+     * Set the prefix of input field.
+     * @param prefix The prefix of input field
+     */
     public void setInputFieldPrefixAndUnderline(String prefix)
     {
         //According to our protocol, the ATMSS won't give me a colon, I have to add it here.
@@ -278,7 +366,11 @@ public class TouchDisplayEmulatorController {
         this.log.fine(id+": Display input field underline");
     }
 
-    //Other mehtod must be called by reloadStage method, and that part of reloadStage has been surrounded by
+    /**
+     * Set the content of input field.
+     * @param content The content of input field.
+     */
+    //Other method must be called by reloadStage method, and that part of reloadStage has been surrounded by
     //runLater block, only this method need to be treated specially: add runLater in this method.
     public void setInputFieldContent(String content)
     {
@@ -298,6 +390,10 @@ public class TouchDisplayEmulatorController {
 
     }
 
+    /**
+     * Inform the controller about the filename of FXML file currently used.
+     * @param nameOfFXML Filename of current FXML file.
+     */
     //Used by TouchScreenEmulator to tell this controller what fxml file I am using
     public void setCurrentPage(String nameOfFXML)
     {
@@ -305,20 +401,6 @@ public class TouchDisplayEmulatorController {
     }
 
 
-    /*//Return the number of pixels per character.
-    private double pixelsPerChar(double fontSize)
-    {
-        //After read table about font size to pixel conversion,
-        //I feel that this formula is a satisfactory approximation.
-        //We only need this to approximately determine where should I
-        //display the line after the input field prefix.
-        return (double) Math.round(fontSize*1.33);
-    }*/
-
-    /*public void freeze()
-    {
-        this.touchDisplayMBox.send(new Msg(null, null, Msg.Type.TD_Freeze, null));
-    }*/
 
 
 } // TouchDisplayEmulatorController

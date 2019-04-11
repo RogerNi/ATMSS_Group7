@@ -181,11 +181,11 @@ public class AdvicePrinterEmulator extends AdvicePrinterHandler {
         if(this.ABLE_TO_RETAIN_ADVICE)
         {
             this.advicePrinterEmulatorController.retainAdvice();
+            this.adviceStatus="Ready";
         }else
         {
             this.advicePrinterEmulatorController.timeoutWithoutRetainingAdvice();
         }
-        this.adviceStatus="Ready";
         this.advicePrinterEmulatorController.setAdviceStatusField(this.adviceStatus);
     }
 
