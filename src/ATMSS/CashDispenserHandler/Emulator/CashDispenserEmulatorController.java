@@ -16,26 +16,62 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 
 
+/**
+ * Represents the controller of GUI for cash dispenser.
+ */
 //======================================================================
 // CashDispenserEmulatorController
 public class CashDispenserEmulatorController {
+    /**
+     * The ID of cash dispenser.
+     */
     private String id;
+    /**
+     * In this application, it is an ATMSSStarter.
+     */
     private AppKickstarter appKickstarter;
+    /**
+     * The logger to record the hardware running status
+     */
     private Logger log;
+    /**
+     * The cash dispenser emulator.
+     */
     private CashDispenserEmulator cashDispenserEmulator;
+    /**
+     * The mailbox of cash dispenser, used for communication with handler.
+     */
     private MBox cashDispenserMBox;
 
 
 
-    /*@FXML TextArea advicePrinterTextArea;
-    @FXML TextField adviceStatusField;
-    @FXML TextField remainingPaperField;*/
 
+    /**
+     * The text field at the top, used for showing the number of remaining 500HKD notes for easier testing. In real case,
+     * cash dispenser cannot display that.
+     */
     @FXML TextField remaining500HKDNotesField;
+    /**
+     * The text field at the top, used for showing the number of remaining 100HKD notes for easier testing. In real case,
+     * cash dispenser cannot display that.
+     */
     @FXML TextField remaining100HKDNotesField;
+    /**
+     * The big text area in the middle. it is dedicated to display the numbers of each kind of bank notes which is out.
+     */
     @FXML TextArea cashOutArea;
+    /**
+     * The text field at the bottom. It is to display the current status of cash dispenser.
+     */
     @FXML TextField cashStatusField;
 
+    /**
+     * Initial the controller.
+     * @param id The ID of cash dispenser.
+     * @param appKickstarter In this application, it is an ATMSSStarter.
+     * @param log The logger to record the hardware running status.
+     * @param cashDispenserEmulator The cash dispenser emulator.
+     */
     //------------------------------------------------------------
     // initialize
     public void initialize(String id, AppKickstarter appKickstarter, Logger log, CashDispenserEmulator cashDispenserEmulator) {
@@ -47,46 +83,16 @@ public class CashDispenserEmulatorController {
     } // initialize
 
 
+    /**
+     * Handle the button clicking events on cash dispenser emulator GUI
+     * @param actionEvent The event to be handled
+     */
     //------------------------------------------------------------
     // buttonPressed
     public void buttonPressed(ActionEvent actionEvent) {
         Button btn = (Button) actionEvent.getSource();
 
         switch (btn.getText()) {
-            /*case "Card 1":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card1"));
-                break;
-
-            case "Card 2":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card2"));
-                break;
-
-            case "Card 3":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card3"));
-                break;
-
-            case "Reset":
-                cardNumField.setText("");
-                break;*/
-
-            /*case "Take Away Advice":
-                *//*if (cardNumField.getText().length() != 0) {
-                    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
-                    cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
-                    cardStatusField.setText("Card Inserted");
-                }*//*
-                //If the user take away the advice, clear the area
-                this.advicePrinterEmulator.takeAwayAdvice();
-                this.advicePrinterMBox.send(new Msg(this.id, this.advicePrinterMBox, Msg.Type.AP_AdviceTaken, null));
-                break;
-
-            case "Let It Get Jammed":
-                *//*if (cardStatusField.getText().compareTo("Card Ejected") == 0) {
-                    cardReaderTextArea.appendText("Removing card\n");
-                    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardRemoved, cardNumField.getText()));
-                }*//*
-                advicePrinterEmulator.letItGetJammed();
-                break;*/
 
             case "Take Away Cash":
                 if(this.cashStatusField.getText().equals("Cash to be taken away"))
@@ -105,41 +111,11 @@ public class CashDispenserEmulatorController {
     } // buttonPressed
 
 
-    /*//------------------------------------------------------------
-    // updateCardStatus
-    public void updateCardStatus(String status) {
-        cardStatusField.setText(status);
-    } // updateCardStatus
-
-
-    //------------------------------------------------------------
-    // appendTextArea
-    public void appendTextArea(String status) {
-        cardReaderTextArea.appendText(status+"\n");
-    } // appendTextArea*/
-
-    /*public void setMainText(String adviceText)
-    {
-        this.advicePrinterTextArea.setText(adviceText);
-    }
-
-    public void setRemainingPaperText(String num)
-    {
-        this.remainingPaperField.setText(num);
-    }
-
-    public void setAdviceStatusField(String status)
-    {
-        this.adviceStatusField.setText(status);
-    }
-
-    public void retainAdvice()
-    {
-        this.setMainText("");
-        JOptionPane.showMessageDialog(null, "Advice retained!");
-
-    }*/
-
+    /**
+     * Set the content of the text field indicating the number of remaining 500HKD notes. This method won't affect
+     * the true value of the number of remaining 500HKD notes which is stored in emulator
+     * @param s A string to be displayed, containing the information of remaining 500HKD notes.
+     */
     public void setRemaining500HKDNotesField(String s)
     {
         Platform.runLater(new Runnable() {
@@ -155,6 +131,11 @@ public class CashDispenserEmulatorController {
         });
     }
 
+    /**
+     * Set the content of the text field indicating the number of remaining 100HKD notes. This method won't affect
+     * the true value of the number of remaining 100HKD notes which is stored in emulator
+     * @param s A string to be displayed, containing the information of remaining 100HKD notes.
+     */
     public void setRemaining100HKDNotesField(String s)
     {
         Platform.runLater(new Runnable() {
@@ -170,6 +151,12 @@ public class CashDispenserEmulatorController {
         });
     }
 
+
+    /**
+     * Set the content of the text field indicating the status of cash dispenser. This method won't affect
+     * the true value of the status of cash dispenser.
+     * @param s A string indicating the new status of cash dispenser.
+     */
     public void setCashStatusField(String s)
     {
         Platform.runLater(new Runnable() {
@@ -185,6 +172,10 @@ public class CashDispenserEmulatorController {
         });
     }
 
+    /**
+     * Set the content of the big text area on the GUI
+     * @param s The string to be displayed on the text area. It should contain information about what kind of cash and how many are out.
+     */
     public void setCashOutArea(String s)
     {
         Platform.runLater(new Runnable() {
@@ -200,13 +191,19 @@ public class CashDispenserEmulatorController {
         });
     }
 
+    /**
+     * Get the string indicating the current status of cash dispenser
+     * @return a string indicating the current status of cash dispenser
+     */
     public String getCashStatus()
     {
         return this.cashStatusField.getText();
     }
 
-    //Different from "retain cash", which means retain prepared but not out yet cash
-    //Here "retain out cash" means retain the cash which is already out
+    /**
+     * Handle the retaining cash event. Different from "retain cash", which means retain prepared but not out yet cash
+     * Here "retain out cash" means retain the cash which is already out.
+     */
     public void retainOutCash()
     {
         Platform.runLater(new Runnable() {
@@ -228,13 +225,15 @@ public class CashDispenserEmulatorController {
 
     }
 
+    /**
+     * Handle the timeout event if the dispenser does not have the ability to retain cash which is already out.
+     */
     public void timeoutWithoutRetainingOutCash()
     {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 try {
-                    //JOptionPane.showMessageDialog(null, "Cash Dispenser Timeout!");
                     Alert alert=new Alert(Alert.AlertType.INFORMATION, "Cash Dispenser Timeout!");
                     alert.show();
                 } catch (Exception e) {

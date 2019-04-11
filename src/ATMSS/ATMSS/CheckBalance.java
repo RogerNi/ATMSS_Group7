@@ -31,11 +31,11 @@ public class CheckBalance extends Activity {
             case ACT_Start:
                 // BAMS Check_Balance
                 if (msg.getDetails().equals("CheckBalance")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");  // Set screen to waiting
                     addQueue(BAMS, "getAcc", "");
                 } else {
                     stage = 4;
-                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
+                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F:N", "td");
                     addQueue(BAMS, "enquiry:" + msg.getDetails(), "");
                 }
                 break;
@@ -53,7 +53,7 @@ public class CheckBalance extends Activity {
                     String account = accs[Integer.valueOf(msg.getDetails())];
                     advice = new AdviceTemp("Check Balance");
                     advice.setAccount(account);
-                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
+                    addQueue(TD_UpdateDisplay, "0:TEMP1:Please Wait.:F:N", "td");
                     addQueue(BAMS, "enquiry:" + account, "");
                 } else if (stage == 3) {
                     switch (msg.getDetails()) {

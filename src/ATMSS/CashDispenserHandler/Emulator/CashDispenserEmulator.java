@@ -12,44 +12,117 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
+import java.io.FileInputStream;
+import java.util.Properties;
 
+
+/**
+ * Represent the hardware component: cash dispenser emulator.
+ */
 //======================================================================
 // CashDispenserEmulator
 public class CashDispenserEmulator extends CashDispenserHandler {
+    /**
+     * Reference to the ATMSS starter.
+     */
     private ATMSSStarter atmssStarter;
+    /**
+     * The ID of cash dispenser.
+     */
     private String id;
+    /**
+     * The stage of GUI.
+     */
     private Stage myStage;
+    /**
+     * Reference to the controller of the GUI for cash dispenser.
+     */
     private CashDispenserEmulatorController cashDispenserEmulatorController;
+    /**
+     * Configuration information loaded from ATM.cfg
+     */
+    private Properties cfg;
 
-//    private static final int INITIAL_NUM_OF_PAPER_PIECES=3;
-    private static final long TIME_LIMIT=10000;
-    private static final int INITIAL_NUM_OF_500HKD_NOTES=3;
-    private static final int INITIAL_NUM_OF_100HKD_NOTES=10;
-    //In case we are provided hardware that cannot retain cash
-    private static final boolean ABLE_TO_RETAIN_CASH=false;
+    private long TIME_LIMIT;
+    /**
+     * The initial number of remaining 500 HKD notes. The value will be read from the configuration file. If failed to read,
+     * it will be set to 3.
+     */
+    private int INITIAL_NUM_OF_500HKD_NOTES;
+    /**
+     * The initial number of remaining 100 HKD notes. The value will be read from the configuration file. If failed to read,
+     * it will be set to 10.
+     */
+    private int INITIAL_NUM_OF_100HKD_NOTES;
+    /**
+     * Whether the cash dispenser has the ability to retain the cash which is already out if time out. True
+     * means the cash dispenser is able to retain the cash if the user does not take away the cash in time limit. False
+     * means the cash dispenser is not able to do that. It can only report timeout to ATMSS. The value is read from the
+     * configuration file. If failed to read it, it will be set to false
+     */
+    private boolean ABLE_TO_RETAIN_CASH;
 
 
-    /*private int numOfRemainingPaperPieces;
-    private boolean isJammed;
-    private String adviceStatus;*/
+    /**
+     * Current number of remaining 500 HKD notes
+     */
     private int currentNumOf500HKDNotes;
+    /**
+     * Current number of remaining 100 HKD notes
+     */
     private int currentNumOf100HKDNotes;
+    /**
+     * It is used for roll back if necessary, (e.g. ATMSS instructs it to retain the cash which is prepared but not out)
+     */
     private int previousNumOf500HKDNotes;
+    /**
+     * It is used for roll back if necessary, (e.g. ATMSS instructs it to retain the cash which is prepared but not out)
+     */
     private int previousNumOf100HKDNotes;
+    /**
+     * The timer ID of current timer. If no current timer, its value is -1.
+     */
     private int timerId;
 
+    /**
+     * Constructs a new Cash Dispenser Emulator instance.
+     * @param id The ID of cash dispenser
+     * @param atmssStarter The ATMSS Starter
+     */
     //------------------------------------------------------------
     // CashDispenserEmulator
     public CashDispenserEmulator(String id, ATMSSStarter atmssStarter) {
         super(id, atmssStarter);
         this.atmssStarter = atmssStarter;
         this.id = id;
-
-
         this.timerId=-1;
+        cfg = new Properties();
+        try {
+            FileInputStream in = new FileInputStream("etc/ATM.cfg");
+            cfg.load(in);
+            log.finer("Properties Read Successfully");
+            in.close();
+            TIME_LIMIT=Long.valueOf(cfg.getProperty("CD.TimeLimit"));
+            INITIAL_NUM_OF_500HKD_NOTES=Integer.valueOf(cfg.getProperty("CD.InitialNumberOf500HKDNotes"));
+            INITIAL_NUM_OF_100HKD_NOTES=Integer.valueOf(cfg.getProperty("CD.InitialNumberOf100HKDNotes"));
+            ABLE_TO_RETAIN_CASH=Boolean.valueOf(cfg.getProperty("CD.AbleToRetainCash"));
+
+        } catch (Exception e) {
+            log.severe("Properties Read Failed");
+            e.printStackTrace();
+            //Set them to default value if fails to load configuration file
+            TIME_LIMIT=10000;
+            INITIAL_NUM_OF_500HKD_NOTES=3;
+            INITIAL_NUM_OF_100HKD_NOTES=10;
+            ABLE_TO_RETAIN_CASH=false;
+        }
     } // CashDispenserEmulator
 
 
+    /**
+     * Start the cash dispenser emulator.
+     * @throws Exception
+     */
     //------------------------------------------------------------
     // start
     public void start() throws Exception {
@@ -61,8 +134,6 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         root = loader.load();
         cashDispenserEmulatorController = (CashDispenserEmulatorController) loader.getController();
         cashDispenserEmulatorController.initialize(id, atmssStarter, log, this);
-        /*cashDispenserEmulatorController.setRemainingPaperText("Number of remaining paper pieces: "+Integer.toString(INITIAL_NUM_OF_PAPER_PIECES));
-        cashDispenserEmulatorController.setAdviceStatusField(this.adviceStatus);*/
         this.currentNumOf500HKDNotes=INITIAL_NUM_OF_500HKD_NOTES;
         this.currentNumOf100HKDNotes=INITIAL_NUM_OF_100HKD_NOTES;
         this.previousNumOf500HKDNotes=INITIAL_NUM_OF_500HKD_NOTES;
@@ -82,84 +153,13 @@ public class CashDispenserEmulator extends CashDispenserHandler {
     } // CashDispenserEmulator
 
 
-    /*//------------------------------------------------------------
-    // handleCardInsert
-    protected void handleCardInsert() {
-        // fixme
-        super.handleCardInsert();
-        cardReaderEmulatorController.appendTextArea("Card Inserted");
-        cardReaderEmulatorController.updateCardStatus("Card Inserted");
-    } // handleCardInsert
-
-
-    //------------------------------------------------------------
-    // handleCardEject
-    protected void handleCardEject() {
-        // fixme
-        super.handleCardEject();
-        cardReaderEmulatorController.appendTextArea("Card Ejected");
-        cardReaderEmulatorController.updateCardStatus("Card Ejected");
-    } // handleCardEject
-
-
-    //------------------------------------------------------------
-    // handleCardRemove
-    protected void handleCardRemove() {
-        // fixme
-        super.handleCardRemove();
-        cardReaderEmulatorController.appendTextArea("Card Removed");
-        cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
-    } // handleCardRemove*/
-
-    //It will return a string indicating the printing status.
-    /*protected String handlePrintAdvice(String adviceText)
-    {
-        super.handlePrintAdvice(adviceText);
-        if(this.numOfRemainingPaperPieces<=0)
-        {
-            return "Out of paper";
-        }
-        if(this.isJammed)
-        {
-            return "Jammed";
-        }
-        this.advicePrinterEmulatorController.setMainText(adviceText);
-        this.numOfRemainingPaperPieces--;
-        this.adviceStatus="Advice to be taken away";
-        this.advicePrinterEmulatorController.setRemainingPaperText("Number of remaining paper pieces: "+Integer.toString(this.numOfRemainingPaperPieces));
-        this.advicePrinterEmulatorController.setAdviceStatusField(adviceStatus);
-        this.timerId= Timer.setTimer(this.id, this.mbox, TIME_LIMIT);
-        return "Fine";
-    }
-
-    protected void handleTimeout()
-    {
-        super.handleTimeout();
-        this.advicePrinterEmulatorController.retainAdvice();
-        this.adviceStatus="Ready";
-        this.advicePrinterEmulatorController.setAdviceStatusField(this.adviceStatus);
-    }
-
-    public void letItGetJammed()
-    {
-        this.adviceStatus="Jammed";
-        this.isJammed=true;
-        this.advicePrinterEmulatorController.setAdviceStatusField(this.adviceStatus);
-    }
-
-    public void takeAwayAdvice()
-    {
-        //If there is no advice, just return.
-        if(!this.adviceStatus.equals("Advice to be taken away"))
-        {
-            return;
-        }
-        Timer.cancelTimer(this.id, this.mbox, this.timerId);
-        this.adviceStatus="Ready";
-        this.advicePrinterEmulatorController.setMainText("");
-        this.advicePrinterEmulatorController.setAdviceStatusField(this.adviceStatus);
-    }*/
-
+    /**
+     * Handle the preparing cash but not out instruction from the ATMSS
+     * @param amount The amount of cash to be prepared. It must be integer and divisible by 100.
+     * @return "Insufficient total notes" if amount of cash in the dispenser is insufficient to pay that much.
+     * "Insufficient 100 HKD notes" if the amount of 100HKD notes is insufficient so that it cannot pay the exact requested amount.
+     * "Fine" if successfully prepared.
+     */
     protected String handleCashPrepare(int amount)
     {
         super.handleCashPrepare(amount);
@@ -191,6 +191,9 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         return "Fine";
     }
 
+    /**
+     * Handle the retaining prepared but not out cash instruction from the ATMSS.
+     */
     protected void handleCashRetain()
     {
         super.handleCashRetain();
@@ -200,6 +203,9 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         this.cashDispenserEmulatorController.setCashStatusField("Ready");
     }
 
+    /**
+     * Handle the putting out cash instruction from the ATMSS
+     */
     protected void handleCashOut()
     {
         super.handleCashOut();
@@ -211,6 +217,9 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         this.timerId=Timer.setTimer(this.id, this.mbox, TIME_LIMIT);
     }
 
+    /**
+     * Handle the taking away cash event of user
+     */
     public void takeAwayCash()
     {
         //Confirm the change of remaining cash
@@ -224,14 +233,26 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         }
     }
 
+    /**
+     * Get the current number of 500 HKD notes in dispenser.
+     * @return current number of 500 HKD notes in dispenser.
+     */
     public int getCurrentNumOf500HKDNotes() {
         return currentNumOf500HKDNotes;
     }
 
+    /**
+     * Get the current number of 100 HKD notes in dispenser.
+     * @return current number of 100 HKD notes in dispenser.
+     */
     public int getCurrentNumOf100HKDNotes() {
         return currentNumOf100HKDNotes;
     }
 
+    /**
+     * Handle the situation that user fails to take away the cash which is already out. According
+     * to whether our dispenser is able to retain the cash which is already out, it will perform differently.
+     */
     protected void handleTimeout()
     {
         super.handleTimeout();
@@ -255,6 +276,11 @@ public class CashDispenserEmulator extends CashDispenserHandler {
 
     }
 
+    /**
+     * Handle the query of remaining bank notes from ATMSS.
+     * @return a string containing the number of remaining 500HKD and 100HKD notes in dispenser, in the format of
+     * "num_500HKDNotes,num_100HKDNotes", as specified in our protocol of communicating with ATMSS.
+     */
     protected String handlecashAmountQuery()
     {
         super.handlecashAmountQuery();

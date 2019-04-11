@@ -52,7 +52,7 @@ public class Withdraw extends Activity {
         switch (msg.getType()) {
             case ACT_Start:
                 if (msg.getDetails().equals("Withdraw")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");  // Set screen to waiting
                     addQueue(CD_CashAmountLeft,"","cd");
                     addQueue(BAMS, "getAcc", "");
                 }
@@ -82,7 +82,7 @@ public class Withdraw extends Activity {
                                 addQueue(TD_UpdateDisplay, "0:TEMP2:Input amount of money:100:300:500:1000:T:Cash", "td");
                                 break;
                             }
-                            addQueue(TD_UpdateDisplay, "0:TEMP1:Waiting!:F", "td");
+                            addQueue(TD_UpdateDisplay, "0:TEMP1:Waiting!:F:N", "td");
                             addQueue(BAMS, "withdraw:" + accFrom + ":" + amountOfCash, "");
                             advice.setAmount(String.valueOf(amountOfCash));
                             stage = 3;
@@ -125,7 +125,7 @@ public class Withdraw extends Activity {
                         }
                         stage = 3;
                         advice.setAmount(String.valueOf(amountOfCash));
-                        addQueue(TD_UpdateDisplay, "0:TEMP1:Waiting!:F", "td");
+                        addQueue(TD_UpdateDisplay, "0:TEMP1:Waiting!:F:N", "td");
                         addQueue(BAMS, "withdraw:" + accFrom + ":" + amountOfCash, "");
                         break;
                     case 4:
@@ -165,7 +165,7 @@ public class Withdraw extends Activity {
                         addQueue(ACT_Abort, "PrintAdvice,"+advice.generate()+":End", "");
                     } else {
                         stage = 5;
-                        addQueue(TD_UpdateDisplay,"0:TEMP1:Please Wait.:F","td");
+                        addQueue(TD_UpdateDisplay,"0:TEMP1:Please Wait.:F:N","td");
                         addQueue(CD_CashPrepare,String.valueOf(amountOfCash),"cd");
                     }
                 } else {

@@ -16,7 +16,7 @@ public class PrintAdvice extends Activity {
         log.info("Print Advice: Get Msg: Type: "+msg.getType()+" Msg: "+msg.getDetails());
         switch (msg.getType()) {
             case ACT_Start:
-                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Waiting for advice printing:F", "td");
+                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Waiting for advice printing:F:N", "td");
                 addQueue(Msg.Type.AP_Print, msg.getDetails(), "ap");
                 break;
             case AP_PrintCompleted:

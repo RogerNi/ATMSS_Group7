@@ -16,23 +16,56 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 
 
+/**
+ * Represents the controller of GUI for advice printer
+ */
 //======================================================================
 // AdvicePrinterEmulatorController
 public class AdvicePrinterEmulatorController {
+    /**
+     * The ID of advice printer.
+     */
     private String id;
+    /**
+     * In this application, it is an ATMSSStarter.
+     */
     private AppKickstarter appKickstarter;
+    /**
+     * The logger to record the hardware running status
+     */
     private Logger log;
+    /**
+     * The advice printer emulator.
+     */
     private AdvicePrinterEmulator advicePrinterEmulator;
+    /**
+     * The mailbox of advice printer, used for communication with handler.
+     */
     private MBox advicePrinterMBox;
 
 
-
+    /**
+     * The big text area in the middle. it is dedicated to display the content of advice.
+     */
     @FXML TextArea advicePrinterTextArea;
+    /**
+     * The text field at the bottom. It is to display the current status of advcie printer.
+     */
     @FXML TextField adviceStatusField;
+    /**
+     * The text field at the top, used for showing the number of remaining paper pieces for easier testing. In real case,
+     * advice printer cannot display that.
+     */
     @FXML TextField remainingPaperField;
 
 
-
+    /**
+     * Initial the controller.
+     * @param id The ID of advice printer.
+     * @param appKickstarter In this application, it is an ATMSSStarter.
+     * @param log The logger to record the hardware running status.
+     * @param advicePrinterEmulator The advice printer emulator.
+     */
     //------------------------------------------------------------
     // initialize
     public void initialize(String id, AppKickstarter appKickstarter, Logger log, AdvicePrinterEmulator advicePrinterEmulator) {
@@ -44,44 +77,23 @@ public class AdvicePrinterEmulatorController {
     } // initialize
 
 
+    /**
+     * Handle the button clicking events on advice printer emulator GUI
+     * @param actionEvent The event to be handled
+     */
     //------------------------------------------------------------
     // buttonPressed
     public void buttonPressed(ActionEvent actionEvent) {
         Button btn = (Button) actionEvent.getSource();
 
         switch (btn.getText()) {
-            /*case "Card 1":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card1"));
-                break;
-
-            case "Card 2":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card2"));
-                break;
-
-            case "Card 3":
-                cardNumField.setText(appKickstarter.getProperty("CardReader.Card3"));
-                break;
-
-            case "Reset":
-                cardNumField.setText("");
-                break;*/
-
             case "Take Away Advice":
-                /*if (cardNumField.getText().length() != 0) {
-                    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
-                    cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
-                    cardStatusField.setText("Card Inserted");
-                }*/
                 //If the user take away the advice, clear the area
                 this.advicePrinterEmulator.takeAwayAdvice();
                 this.advicePrinterMBox.send(new Msg(this.id, this.advicePrinterMBox, Msg.Type.AP_AdviceTaken, null));
                 break;
 
             case "Let It Get Jammed":
-                /*if (cardStatusField.getText().compareTo("Card Ejected") == 0) {
-                    cardReaderTextArea.appendText("Removing card\n");
-                    cardReaderMBox.send(new Msg(id, cardReaderMBox, Msg.Type.CR_CardRemoved, cardNumField.getText()));
-                }*/
                 advicePrinterEmulator.letItGetJammed();
                 break;
 
@@ -92,19 +104,10 @@ public class AdvicePrinterEmulatorController {
     } // buttonPressed
 
 
-    /*//------------------------------------------------------------
-    // updateCardStatus
-    public void updateCardStatus(String status) {
-        cardStatusField.setText(status);
-    } // updateCardStatus
-
-
-    //------------------------------------------------------------
-    // appendTextArea
-    public void appendTextArea(String status) {
-        cardReaderTextArea.appendText(status+"\n");
-    } // appendTextArea*/
-
+    /**
+     * Set the content of the big text area on the GUI
+     * @param adviceText The advice content that is printed out.
+     */
     public void setMainText(String adviceText)
     {
         Platform.runLater(new Runnable() {
@@ -120,6 +123,11 @@ public class AdvicePrinterEmulatorController {
         });
     }
 
+    /**
+     * Set the content of the text field indicating the number of remaining paper pieces. This method won't affect
+     * the true value of the number of remaining paper pieces which is stored in emulator
+     * @param num The new number of remaining pieces of paper.
+     */
     public void setRemainingPaperText(String num)
     {
         Platform.runLater(new Runnable() {
@@ -135,6 +143,11 @@ public class AdvicePrinterEmulatorController {
         });
     }
 
+    /**
+     * Set the content of the text field indicating the status of advice printer. This method won't affect
+     * the true value of the status of advice printer which is stored in emulator
+     * @param status A string indicating the new status of advice printer.
+     */
     public void setAdviceStatusField(String status)
     {
         Platform.runLater(new Runnable() {
@@ -150,6 +163,9 @@ public class AdvicePrinterEmulatorController {
         });
     }
 
+    /**
+     * Update the relevant GUI components as if this advice printer retains the advice.
+     */
     public void retainAdvice()
     {
         Platform.runLater(new Runnable() {
@@ -170,6 +186,9 @@ public class AdvicePrinterEmulatorController {
 
     }
 
+    /**
+     * Update the relevant GUI components as if this advice printer times out without retaining the advice.
+     */
     public void timeoutWithoutRetainingAdvice()
     {
         Platform.runLater(new Runnable() {
