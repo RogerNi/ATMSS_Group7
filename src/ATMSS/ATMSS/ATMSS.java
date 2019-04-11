@@ -29,6 +29,7 @@ public class ATMSS extends AppThread {
     Properties cfg;
 
     int [] cashLeft = new int[2];
+    boolean AP_OK = true;
 
     String cardNum;
     String cred;
@@ -203,6 +204,9 @@ public class ATMSS extends AppThread {
 
                 case CR_MachError:
                     log.warning("Card Reader Fails!");
+                    currentRun = null;
+                    touchDisplayMBox.send(new Msg(id,mbox, Msg.Type.TD_UpdateDisplay,"0:TEMP1:Sorry! This machine meets severe problem\nAnd is now out of service.\nPlease contact the bank for more information.:F"));
+                    touchDisplayMBox.send(new Msg(id,mbox, Msg.Type.TD_UpdateDisplay,"0:TEMP1:Out of Service!:F"));
                     break;
 
                 case TimesUp:
@@ -236,6 +240,14 @@ public class ATMSS extends AppThread {
                     } else
                         log.info("Keypad: " + "invalid press");
                     break;
+                case AP_OutOfPaper:
+                case AP_Jam:
+                    AP_OK = false;
+                    if (currentRun != null) {
+                        log.fine("Redirect current message: " + msg.getType());
+                        redirect(msg);
+                    }
+                    break;
                 case CD_CashAmountLeft:
                     String [] msgInfo = msg.getDetails().split(",");
                     cashLeft[0] = Integer.valueOf(msgInfo[0]);
@@ -268,12 +280,18 @@ public class ATMSS extends AppThread {
     private String noCashInfo(){
         if(cashLeft[0]==0)
             if(cashLeft[1]==0)
-                return "\nThis machine does not provide cash withdraw!";
+                return "\nThis machine does not provide cash withdraw!" + AP_Info();
             else
-                return "\nThis machine does not provide 500 HKD cash!";
+                return "\nThis machine does not provide 500 HKD cash!" + AP_Info();
         if(cashLeft[1]==0)
-            return "This machine does not provide 100 HKD cash!";
-        return "";
+            return "This machine does not provide 100 HKD cash!" + AP_Info();
+        return ""+AP_Info();
+    }
+
+    private String AP_Info(){
+        if(AP_OK)
+            return "";
+        return "\nThis machine does not provide Advice!";
     }
 
     // Assistant Function

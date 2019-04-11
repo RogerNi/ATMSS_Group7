@@ -27,9 +27,10 @@ public class PrintAdvice extends Activity {
                 addQueue(Msg.Type.BZ_Stop, "", "b");
                 addQueue(Msg.Type.ACT_Abort, "", "");
                 break;
+            case AP_OutOfPaper:
             case AP_Jam:
                 addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Sorry!\nSomething wrong with Advice Printer.\n" +
-                        "We cannot provide you the advice.\n For more information, please contact with the bank", "td");
+                        "We cannot provide you the advice.\n For more information, please contact with the bank:F", "td");
                 addQueue(Msg.Type.BZ_Stop,"","b");
                 addQueue(Msg.Type.ACT_Abort,"","");
                 break;
