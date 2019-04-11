@@ -163,7 +163,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 
 	//According to the protocol that my teammates and I discussed, we separate the
 	// parameters in msg.details by colon.
-	String[] params=msg.getDetails().split(":");
+	String[] params=msg.getDetails().split(":",-1);
 
 	if(params[0].equals("0"))
 	{

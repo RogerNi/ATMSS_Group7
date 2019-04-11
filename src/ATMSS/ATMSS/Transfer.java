@@ -81,6 +81,7 @@ public class Transfer extends Activity {
                     if(msg.getDetails().equals("00")){
                         inBuffer.buff('0');
                         inBuffer.buff('0');
+                        addQueue(Msg.Type.TD_UpdateDisplay, "1:" + inBuffer.get(), "td");
                         break;
                     }
                     inBuffer.buff(msg.getDetails().toCharArray()[0]);

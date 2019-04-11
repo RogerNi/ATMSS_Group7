@@ -155,6 +155,9 @@ public class Withdraw extends Activity {
                 addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Select your next steps:" +
                         "Eject Card:Check Balance and Eject card:Print Advice and Eject Card:Check Balance, Print Advice\nand Eject Card:F", "td");
                 break;
+            case TD_TimesUp:
+                addQueue(ACT_AbortNow, "Retain:End", "");
+                break;
             case BAMS:
                 String[] reply = msg.getDetails().split(":");
                 if (reply[0].equals("withdraw")) {

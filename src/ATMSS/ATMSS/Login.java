@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import static AppKickstarter.misc.Msg.Type.ACT_AbortNow;
+
 public class Login extends Activity {
     InputBuffer inBuffer = new InputBuffer();
     int retry = 0;
@@ -56,6 +58,9 @@ public class Login extends Activity {
                         // Update Display
                         break;
                 }
+                break;
+            case TD_TimesUp:
+                addQueue(ACT_AbortNow, "Retain:End", "");
                 break;
             case BAMS:
                 String[] reply = msg.getDetails().split(":", -1);
