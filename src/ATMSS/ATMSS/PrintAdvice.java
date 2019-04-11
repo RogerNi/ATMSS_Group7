@@ -37,7 +37,7 @@ public class PrintAdvice extends Activity {
                 break;
             case AP_TimesUp:
                 addQueue(Msg.Type.BZ_Stop,"","b");
-                addQueue(Msg.Type.ACT_AbortNow,"","");
+                addQueue(Msg.Type.ACT_Abort,"","");
                 break;
         }
     }
