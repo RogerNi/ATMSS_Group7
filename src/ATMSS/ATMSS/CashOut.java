@@ -2,7 +2,6 @@ package ATMSS.ATMSS;
 
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
-import com.sun.javaws.ui.UpdateDialog;
 
 import java.util.logging.Logger;
 
