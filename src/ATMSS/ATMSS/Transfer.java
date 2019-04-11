@@ -37,7 +37,7 @@ public class Transfer extends Activity {
             case ACT_Start:
                 // BAMS Transfer
                 if (msg.getDetails().equals("Transfer")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");  // Set screen to waiting
                     addQueue(BAMS, "getAcc", "");
 //                } else {
 //
@@ -65,7 +65,7 @@ public class Transfer extends Activity {
                 } else if (msg.getDetails().equals("Enter") && stage == 4) {
                     stage = 5;
                     send[2] = inBuffer.pop();
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");
                     addQueue(BAMS, "transfer:" + send[0] + ":" + send[1] + ":" + send[2], "");
                     advice = new AdviceTemp("Transfer");
                     advice.setAccount("from：" + send[0] + " to：" + send[1]);
