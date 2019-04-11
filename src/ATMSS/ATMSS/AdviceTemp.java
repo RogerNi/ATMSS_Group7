@@ -6,7 +6,8 @@ public class AdviceTemp {
     String account;
     String amount;
     public AdviceTemp(String type){
-        content += "Bank of Group_7\n\nAdvice\n";
+        content += "Bank of Group_7\n===========================\nAdvice\n";
+        content += "---------------------------------------------\n";
         this.type = type;
     }
     public void setAccount(String account){
@@ -18,7 +19,8 @@ public class AdviceTemp {
     }
 
     public String generate(){
-        content += "Account\t"+account+"\nOperation\t"+type+"\nAmount\t"+amount;
+        content += "Account\t\t"+account+"\nOperation\t"+type+"\nAmount\t\t"+amount;
+        content += "\n----------------------------------------------\n";
         content += "\nThank you for using our ATM service.\nSee you next time!";
         return content;
     }

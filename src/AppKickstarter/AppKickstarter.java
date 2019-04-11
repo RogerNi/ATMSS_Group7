@@ -71,9 +71,9 @@ public abstract class AppKickstarter {
 	log.addHandler(logConHd);
 	log.addHandler(logFileHd);
 	log.setUseParentHandlers(false);
-	log.setLevel(Level.FINER);
-	logConHd.setLevel(Level.INFO);
-	logFileHd.setLevel(Level.INFO);
+	log.setLevel(Level.parse(cfgProps.getProperty("Log.Level")));
+	logConHd.setLevel(Level.parse(cfgProps.getProperty("LogConHd.Level")));
+	logFileHd.setLevel(Level.parse(cfgProps.getProperty("LogFileHd.Level")));
 	appThreads = new Hashtable<String, AppThread>();
     } // AppKickstarter
 

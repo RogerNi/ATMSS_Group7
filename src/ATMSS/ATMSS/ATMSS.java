@@ -178,7 +178,7 @@ public class ATMSS extends AppThread {
         MBoxes.put("ap", advicePrinterMBox);
         MBoxes.put("b", buzzerMBox);
 
-        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please:F"));
+        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:Bank of Group_7\nATM\nInsert Card Please:F"));
         buzzerMBox.send(new Msg(id,mbox, Msg.Type.BZ_ShortBuzz,""));
         for (boolean quit = false; !quit; ) {
             Msg msg = mbox.receive();
@@ -253,7 +253,7 @@ public class ATMSS extends AppThread {
                     cashLeft[0] = Integer.valueOf(msgInfo[0]);
                     cashLeft[1] = Integer.valueOf(msgInfo[1]);
                     if(currentRun == null)
-                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
+                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:Bank of Group_7\nATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
                 default:
                     if (currentRun != null) {
                         log.fine("Redirect current message: " + msg.getType());
@@ -284,7 +284,7 @@ public class ATMSS extends AppThread {
     private String AP_Info(){
         if(AP_OK)
             return "";
-        return "\nThis machine does not provide Advice!";
+        return "\n\nThis machine does not provide Advice!";
     }
 
     // Assistant Function
