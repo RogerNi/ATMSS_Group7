@@ -269,13 +269,6 @@ public class ATMSS extends AppThread {
         log.info(id + ": terminating...");
     } // run
 
-    // Initializing Function
-    private void init() {
-        currentRun = null;
-        cardNum = cred = "";
-        activities.clear();
-        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
-    }
 
     private String noCashInfo(){
         if(cashLeft[0]==0)
@@ -302,26 +295,4 @@ public class ATMSS extends AppThread {
         );
     }
 
-
-    //------------------------------------------------------------
-    // processKeyPressed
-    private void processKeyPressed(Msg msg) {
-        // *** The following is an example only!! ***
-        if (msg.getDetails().compareToIgnoreCase("Cancel") == 0) {
-            cardReaderMBox.send(new Msg(id, mbox, Msg.Type.CR_EjectCard, ""));
-        } else if (msg.getDetails().compareToIgnoreCase("1") == 0) {
-            touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "BlankScreen"));
-        } else if (msg.getDetails().compareToIgnoreCase("2") == 0) {
-            touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "MainMenu"));
-        } else if (msg.getDetails().compareToIgnoreCase("3") == 0) {
-            touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "Confirmation"));
-        }
-    } // processKeyPressed
-
-
-    //------------------------------------------------------------
-    // processMouseClicked
-    private void processMouseClicked(Msg msg) {
-        // *** process mouse click here!!! ***
-    } // processMouseClicked
 } // CardReaderHandler
