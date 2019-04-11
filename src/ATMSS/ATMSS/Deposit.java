@@ -35,7 +35,7 @@ public class Deposit extends Activity {
         switch (msg.getType()) {
             case ACT_Start:
                 if (msg.getDetails().equals("Deposit")) {
-                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F", "td");  // Set screen to waiting
+                    addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait!:F:N", "td");  // Set screen to waiting
                     addQueue(BAMS, "getAcc", "");
                     moneyIn[0] = 0;
                     moneyIn[1] = 0;
@@ -69,7 +69,7 @@ public class Deposit extends Activity {
                             case "1":
                                 stage = 4;
                                 addQueue(BAMS, "deposit:" + accFrom + ":" + amountOfCash, "");
-                                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
+                                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait.:F:N", "td");
                                 advice.setAmount(String.valueOf(amountOfCash));
                                 break;
 
@@ -95,7 +95,7 @@ public class Deposit extends Activity {
                 moneyIn[1] += Integer.valueOf(number[1]);
                 moneyIn[2] += Integer.valueOf(number[2]);
                 amountOfCash = moneyIn[0]*1000+moneyIn[1]*500+moneyIn[2]*100;
-                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait.:F", "td");
+                addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please Wait.:F:N", "td");
                 break;
             case CDC_Complete:
                 stage = 3;
