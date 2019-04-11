@@ -157,7 +157,9 @@ public class AdvicePrinterEmulatorController {
             public void run() {
                 try {
                     setMainText("");
-                    JOptionPane.showMessageDialog(null, "Advice retained!");
+                    //JOptionPane.showMessageDialog(null, "Advice retained!");
+                    Alert alert=new Alert(Alert.AlertType.INFORMATION, "Advice retained!");
+                    alert.show();
                 } catch (Exception e) {
                     log.severe(id + ": failed to show retaining advice event");
                     e.printStackTrace();
@@ -166,6 +168,23 @@ public class AdvicePrinterEmulatorController {
         });
 
 
+    }
+
+    public void timeoutWithoutRetainingAdvice()
+    {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //JOptionPane.showMessageDialog(null, "Advice Printer Timeout!");
+                    Alert alert=new Alert(Alert.AlertType.INFORMATION, "Advice Printer Timeout!");
+                    alert.show();
+                } catch (Exception e) {
+                    log.severe(id + ": failed to show Advice Printer Timeout event");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 } // CardReaderEmulatorController

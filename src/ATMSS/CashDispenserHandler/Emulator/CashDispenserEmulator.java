@@ -25,6 +25,8 @@ public class CashDispenserEmulator extends CashDispenserHandler {
     private static final long TIME_LIMIT=10000;
     private static final int INITIAL_NUM_OF_500HKD_NOTES=3;
     private static final int INITIAL_NUM_OF_100HKD_NOTES=10;
+    //In case we are provided hardware that cannot retain cash
+    private static final boolean ABLE_TO_RETAIN_CASH=false;
 
 
     /*private int numOfRemainingPaperPieces;
@@ -216,7 +218,10 @@ public class CashDispenserEmulator extends CashDispenserHandler {
         this.previousNumOf100HKDNotes=this.currentNumOf100HKDNotes;
         this.cashDispenserEmulatorController.setCashOutArea("");
         this.cashDispenserEmulatorController.setCashStatusField("Ready");
-        Timer.cancelTimer(this.id, this.mbox, this.timerId);
+        if(this.timerId!=-1)
+        {
+            Timer.cancelTimer(this.id, this.mbox, this.timerId);
+        }
     }
 
     public int getCurrentNumOf500HKDNotes() {
@@ -231,12 +236,23 @@ public class CashDispenserEmulator extends CashDispenserHandler {
     {
         super.handleTimeout();
         this.timerId=-1;
-        this.cashDispenserEmulatorController.retainOutCash();
-        //Roll back
-        this.currentNumOf100HKDNotes=this.previousNumOf100HKDNotes;
-        this.currentNumOf500HKDNotes=this.previousNumOf500HKDNotes;
-        this.cashDispenserEmulatorController.setRemaining500HKDNotesField("Remaining number of 500 HKD notes: "+this.currentNumOf500HKDNotes);
-        this.cashDispenserEmulatorController.setRemaining100HKDNotesField("Remaining number of 100 HKD notes: "+this.currentNumOf100HKDNotes);
+        if(this.ABLE_TO_RETAIN_CASH)
+        {
+            this.cashDispenserEmulatorController.retainOutCash();
+            //Roll back
+            this.currentNumOf100HKDNotes=this.previousNumOf100HKDNotes;
+            this.currentNumOf500HKDNotes=this.previousNumOf500HKDNotes;
+            this.cashDispenserEmulatorController.setRemaining500HKDNotesField("Remaining number of 500 HKD notes: "+this.currentNumOf500HKDNotes);
+            this.cashDispenserEmulatorController.setRemaining100HKDNotesField("Remaining number of 100 HKD notes: "+this.currentNumOf100HKDNotes);
+        }else
+        {
+            this.cashDispenserEmulatorController.timeoutWithoutRetainingOutCash();
+            this.previousNumOf100HKDNotes=this.currentNumOf100HKDNotes;
+            this.previousNumOf500HKDNotes=this.currentNumOf500HKDNotes;
+            this.cashDispenserEmulatorController.setRemaining500HKDNotesField("Remaining number of 500 HKD notes: "+this.currentNumOf500HKDNotes);
+            this.cashDispenserEmulatorController.setRemaining100HKDNotesField("Remaining number of 100 HKD notes: "+this.currentNumOf100HKDNotes);
+        }
+
     }
 
     protected String handlecashAmountQuery()

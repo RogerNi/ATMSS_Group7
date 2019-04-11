@@ -3,6 +3,7 @@ package ATMSS.CashDepositeCollectorHandler.Emulator;
 import ATMSS.ATMSSStarter;
 import ATMSS.CashDepositeCollectorHandler.CashDepositeCollectorHandler;
 
+import AppKickstarter.timer.Timer;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,11 +17,13 @@ public class CashDepositeCollectorEmulator extends CashDepositeCollectorHandler 
     private String id;
     private Stage myStage;
     private CashDepositeCollectorEmulatorController cashDepositeCollectorEmulatorController;
+    private int timer_id;
 
     public CashDepositeCollectorEmulator(String id, ATMSSStarter atmssStarter) {
         super(id, atmssStarter);
         this.atmssStarter = atmssStarter;
         this.id = id;
+        this.timer_id = timer_id;
     }
 
     //------------------------------------------------------------
@@ -52,14 +55,35 @@ public class CashDepositeCollectorEmulator extends CashDepositeCollectorHandler 
         super.handleReady();
         cashDepositeCollectorEmulatorController.appendTextArea("Ready");
         cashDepositeCollectorEmulatorController.setStatus("Ready");
+        timer_id = Timer.setTimer(id,mbox,10000);
     }
 
-    protected void handleTimeOut() {
+    protected int handleTimeOut() {
         // fixme
         super.handleTimeOut();
-        cashDepositeCollectorEmulatorController.appendTextArea("Retain Invalid Money.");
-        cashDepositeCollectorEmulatorController.setStatus("Clear");
-        cashDepositeCollectorEmulatorController.setNum_Invalid();
+        if(cashDepositeCollectorEmulatorController.getStatus().compareTo("Obstacle")==0){
+            cashDepositeCollectorEmulatorController.appendTextArea("Retain Invalid Money.");
+            cashDepositeCollectorEmulatorController.setNum_Invalid();
+            cashDepositeCollectorEmulatorController.setInvalidCashField("Clear");
+            cashDepositeCollectorEmulatorController.setStatus("Close");
+            return 1;
+        }else if(cashDepositeCollectorEmulatorController.getStatus().compareTo("Ready")==0){
+            cashDepositeCollectorEmulatorController.appendTextArea("Time Out!");
+            cashDepositeCollectorEmulatorController.setStatus("Close");
+            return 0;
+        }
+        return -1;
+    }
+
+    protected void handleComplete() {
+        super.handleComplete();
+        cashDepositeCollectorEmulatorController.appendTextArea("Close");
+        cashDepositeCollectorEmulatorController.setStatus("Close");
+    }
+
+    protected void handleCashIn(){
+        super.handleCashIn();
+        Timer.cancelTimer(id, mbox,timer_id);
     }
 }
 

@@ -46,7 +46,7 @@ public class ATMSS extends AppThread {
         currentRun.forward(msg);
         TransMsg transMsg = currentRun.collect();
         while (transMsg != null) {
-            log.info("Receive transMsg with Type: " + transMsg.msg.getType());
+            log.fine("Receive transMsg with Type: " + transMsg.msg.getType());
             switch (transMsg.msg.getType()) {
                 case ACT_AbortNow:
                     activities.clear();
@@ -58,6 +58,7 @@ public class ATMSS extends AppThread {
                         top_act = activities.poll();
                     } while (top_act.equals(""));
                     if (top_act.equals("End")) {
+                        touchDisplayMBox.send(new Msg(id, mbox,Msg.Type.TD_UpdateDisplay,"0:TEMP1:Thank you!:F"));
                         cashDispenserMBox.send(new Msg(id,mbox, Msg.Type.CD_CashAmountLeft,""));
                         log.info("Activity triggers End!");
                         currentRun = null;
@@ -72,14 +73,14 @@ public class ATMSS extends AppThread {
                 case BAMS:
                     String reply = "";
                     String[] params = transMsg.msg.getDetails().split(":", -1);
-                    log.info("Receive BAMS request: " + params[0]);
+                    log.fine("Receive BAMS request: " + params[0]);
                     try {
                         switch (params[0]) {
                             case "login":
                                 reply = bams.login(cardNum, params[1]);
                                 break;
                             case "getAcc":
-                                log.info("Send BAMS Request to server: cardNum: "+cardNum+" cred: "+cred);
+                                log.fine("Send BAMS Request to server: cardNum: "+cardNum+" cred: "+cred);
                                 reply = bams.getAccounts(cardNum, cred);
                                 break;
                             case "withdraw":
@@ -97,21 +98,21 @@ public class ATMSS extends AppThread {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        log.warning("BAMS_Error: Connection failed!");
+                        log.severe("BAMS_Error: Connection failed!");
                         touchDisplayMBox.send(new Msg(id,mbox, Msg.Type.TD_UpdateDisplay,"0:TEMP1:ATM lost connection to the server\nPlease try again later\nSorry for any inconvenience:F"));
                         transMsg = new TransMsg(new Msg(id,mbox, Msg.Type.ACT_AbortNow,"Eject:End"),"");
                         continue;
                     }
                     reply = params[0] + ":" + reply;
-                    log.info("Reply from BAMS: " + reply);
+                    log.fine("Reply from BAMS: " + reply);
                     currentRun.forward(new Msg(id, mbox, Msg.Type.BAMS, reply));
                     break;
                 case ACT_CRED:
                     cred = transMsg.msg.getDetails();
-                    log.info("ATMSS: Cred Update to "+cred);
+                    log.fine("ATMSS: Cred Update to "+cred);
                     break;
                 default:
-                    log.info("Redirect Messsage: " + transMsg.msg.getType() + ": " + transMsg.msg.getDetails() + " from current Activity to " + transMsg.destination);
+                    log.fine("Redirect Messsage: " + transMsg.msg.getType() + ": " + transMsg.msg.getDetails() + " from current Activity to " + transMsg.destination);
 //                    if(transMsg.destination.equals("td"))
 //                        break;
                     MBoxes.get(transMsg.destination).send(transMsg.msg);
@@ -141,10 +142,10 @@ public class ATMSS extends AppThread {
         try {
             FileInputStream in = new FileInputStream("etc/ATM.cfg");
             cfg.load(in);
-            log.info("Properties Read Successfully");
+            log.finer("Properties Read Successfully");
             in.close();
         } catch (Exception e) {
-            log.warning("Properties Read Failed");
+            log.severe("Properties Read Failed");
             e.printStackTrace();
         }
 //        log.info(cfg.toString());
@@ -209,7 +210,7 @@ public class ATMSS extends AppThread {
                     log.info("Poll: " + msg.getDetails());
                     pollAckTable.forEach((key, value) -> {
                         if (value == false)
-                            log.warning("PollError: " + key.toString() + "does not respond!");
+                            log.severe("PollError: " + key.toString() + "does not respond!");
                     });
 
                     MBoxes.values().forEach(x -> pollAckTable.put(x, false)); // Set all to false
@@ -231,7 +232,7 @@ public class ATMSS extends AppThread {
                     if (currentRun != null) {
                         redirect(msg);
 //                      log.warning(id + ": unknown message type: [" + msg + "]");
-                        log.info("Redirect current message: " + msg);
+                        log.fine("Redirect current message: " + msg);
                     } else
                         log.info("Keypad: " + "invalid press");
                     break;
@@ -239,10 +240,11 @@ public class ATMSS extends AppThread {
                     String [] msgInfo = msg.getDetails().split(",");
                     cashLeft[0] = Integer.valueOf(msgInfo[0]);
                     cashLeft[1] = Integer.valueOf(msgInfo[1]);
-//                  touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
+                    if(currentRun == null)
+                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "0:TEMP1:ATM\nInsert Card Please"+noCashInfo()+":F")); // Resume to init screen
                 default:
                     if (currentRun != null) {
-                        log.info("Redirect current message: " + msg.getType());
+                        log.fine("Redirect current message: " + msg.getType());
                         redirect(msg);
 //                      log.warning(id + ": unknown message type: [" + msg + "]");
 //                        log.info("Redirect current message: " + msg);

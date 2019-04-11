@@ -22,12 +22,13 @@ public class CashOut extends Activity {
                 break;
             case CD_Complete:
                 addQueue(Msg.Type.BZ_Stop,"","b");
+                break;
+            case CD_CashAmountLeft:
                 addQueue(Msg.Type.ACT_Abort,"End","");
                 break;
             case CD_TimeOut:
                 addQueue(Msg.Type.BZ_Stop,"","b");
                 addQueue(Msg.Type.TD_UpdateDisplay,"0:TEMP1:Time Out\nCash Retained:F","td");
-                addQueue(Msg.Type.ACT_AbortNow,"End","");
                 break;
         }
     }

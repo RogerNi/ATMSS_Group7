@@ -144,7 +144,7 @@ public class Withdraw extends Activity {
                                 addQueue(ACT_Abort, "PrintAdvice,"+advice.generate()+":Eject:CashOut:End", "");
                                 break;
                             case "3":
-                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":PrintAdvice,"+advice.generate()+":Eject:CashOut", "");
+                                addQueue(ACT_Abort, "CheckBalance,"+accFrom+":PrintAdvice,"+advice.generate()+":Eject:CashOut:End", "");
                                 break;
                         }
                         break;
@@ -153,7 +153,7 @@ public class Withdraw extends Activity {
             case CD_CashPrepared:
                 stage = 6;
                 addQueue(Msg.Type.TD_UpdateDisplay, "0:" + "TEMP2:" + "Select your next steps:" +
-                        "Eject Card:Check Balance and Eject card:Print Advice and Eject Card:Check Balance, Print Advice and Eject Card:F", "td");
+                        "Eject Card:Check Balance and Eject card:Print Advice and Eject Card:Check Balance, Print Advice\nand Eject Card:F", "td");
                 break;
             case BAMS:
                 String[] reply = msg.getDetails().split(":");
