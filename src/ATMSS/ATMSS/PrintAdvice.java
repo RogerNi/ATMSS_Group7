@@ -22,6 +22,7 @@ public class PrintAdvice extends Activity {
             case AP_PrintCompleted:
                 addQueue(Msg.Type.TD_UpdateDisplay, "0:TEMP1:Please take away your advice!:F", "td");
                 addQueue(Msg.Type.BZ_LongBuzz, "", "b");
+//                addQueue(Msg.Type.ACT_Abort, "", "");
                 break;
             case AP_AdviceTaken:
                 addQueue(Msg.Type.BZ_Stop, "", "b");
@@ -36,7 +37,7 @@ public class PrintAdvice extends Activity {
                 break;
             case AP_TimesUp:
                 addQueue(Msg.Type.BZ_Stop,"","b");
-                addQueue(Msg.Type.ACT_AbortNow,"Retain:End","");
+                addQueue(Msg.Type.ACT_AbortNow,"","");
                 break;
         }
     }
